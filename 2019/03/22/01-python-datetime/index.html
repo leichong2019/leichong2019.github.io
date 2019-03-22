@@ -81,20 +81,20 @@
 
 
 
-<meta name="description" content="[TOC] Python 的时间类型处理Python中和时间相关的模块包括time datetime calendar time在time模块中时间表示的格式主要有三种：  timestamp（时间戳）时间戳表示的是从1970年1月1日00:00:00开始按秒计算的偏移量。如：1528116025.5841389，它表示的就是2018年6月4日10:40:25距离1970年1月1日00:00:00">
+<meta name="description" content="Python中和时间相关的模块包括time datetime calendar time在time模块中时间表示的格式主要有三种：  timestamp（时间戳）时间戳表示的是从1970年1月1日00:00:00开始按秒计算的偏移量。如：1528116025.5841389，它表示的就是2018年6月4日10:40:25距离1970年1月1日00:00:00的总秒数。 struct_time（时间">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="01 Python 基础之时间类型处理">
 <meta property="og:url" content="https://leichong2019.github.io/2019/03/22/01-python-datetime/index.html">
 <meta property="og:site_name" content="Chong&#39;s Site book">
-<meta property="og:description" content="[TOC] Python 的时间类型处理Python中和时间相关的模块包括time datetime calendar time在time模块中时间表示的格式主要有三种：  timestamp（时间戳）时间戳表示的是从1970年1月1日00:00:00开始按秒计算的偏移量。如：1528116025.5841389，它表示的就是2018年6月4日10:40:25距离1970年1月1日00:00:00">
+<meta property="og:description" content="Python中和时间相关的模块包括time datetime calendar time在time模块中时间表示的格式主要有三种：  timestamp（时间戳）时间戳表示的是从1970年1月1日00:00:00开始按秒计算的偏移量。如：1528116025.5841389，它表示的就是2018年6月4日10:40:25距离1970年1月1日00:00:00的总秒数。 struct_time（时间">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://leichong2019.github.io/2019/03/22/01-python-datetime/Datetime_process.png">
 <meta property="og:image" content="https://leichong2019.github.io/2019/03/22/01-python-datetime/DatetimeFormatString.png">
-<meta property="og:updated_time" content="2019-03-22T07:53:16.598Z">
+<meta property="og:updated_time" content="2019-03-22T07:58:49.856Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="01 Python 基础之时间类型处理">
-<meta name="twitter:description" content="[TOC] Python 的时间类型处理Python中和时间相关的模块包括time datetime calendar time在time模块中时间表示的格式主要有三种：  timestamp（时间戳）时间戳表示的是从1970年1月1日00:00:00开始按秒计算的偏移量。如：1528116025.5841389，它表示的就是2018年6月4日10:40:25距离1970年1月1日00:00:00">
+<meta name="twitter:description" content="Python中和时间相关的模块包括time datetime calendar time在time模块中时间表示的格式主要有三种：  timestamp（时间戳）时间戳表示的是从1970年1月1日00:00:00开始按秒计算的偏移量。如：1528116025.5841389，它表示的就是2018年6月4日10:40:25距离1970年1月1日00:00:00的总秒数。 struct_time（时间">
 <meta name="twitter:image" content="https://leichong2019.github.io/2019/03/22/01-python-datetime/Datetime_process.png">
 
 
@@ -377,8 +377,7 @@
       
 
       
-        <p>[TOC]</p>
-<h2 id="Python-的时间类型处理"><a href="#Python-的时间类型处理" class="headerlink" title="Python 的时间类型处理"></a>Python 的时间类型处理</h2><p>Python中和时间相关的模块包括<code>time</code> <code>datetime</code> <code>calendar</code></p>
+        <p>Python中和时间相关的模块包括<code>time</code> <code>datetime</code> <code>calendar</code></p>
 <h3 id="time"><a href="#time" class="headerlink" title="time"></a>time</h3><p>在time模块中时间表示的格式主要有三种：</p>
 <ul>
 <li><em>timestamp（时间戳）</em><br>时间戳表示的是从1970年1月1日00:00:00开始按秒计算的<strong>偏移量</strong>。<br>如：1528116025.5841389，它表示的就是2018年6月4日10:40:25距离1970年1月1日00:00:00的总秒数。</li>
@@ -685,7 +684,7 @@ time.struct_time(tm_year=2019, tm_mon=3, tm_mday=22, tm_hour=3, tm_min=39, tm_se
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-的时间类型处理"><span class="nav-number">1.</span> <span class="nav-text">Python 的时间类型处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#time"><span class="nav-number">1.1.</span> <span class="nav-text">time</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#time转换为struct-time元组"><span class="nav-number">1.1.1.</span> <span class="nav-text">time转换为struct_time元组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#struct-time元组转换为time时间戳"><span class="nav-number">1.1.2.</span> <span class="nav-text">struct_time元组转换为time时间戳</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#struct-time元组转换成-format-string"><span class="nav-number">1.1.3.</span> <span class="nav-text">struct_time元组转换成 format string</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#format-string-转换成struct-time"><span class="nav-number">1.1.4.</span> <span class="nav-text">format string 转换成struct_time</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按固定格式，time-struct-time-也可以转换成format-string的"><span class="nav-number">1.1.5.</span> <span class="nav-text">按固定格式，time(struct_time)也可以转换成format string的</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pandas的to-datetime"><span class="nav-number">1.2.</span> <span class="nav-text">Pandas的to_datetime()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chronyk时间解析库"><span class="nav-number">1.3.</span> <span class="nav-text">chronyk时间解析库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#timestring-函数"><span class="nav-number">1.3.1.</span> <span class="nav-text">timestring()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#timestamp-函数"><span class="nav-number">1.3.2.</span> <span class="nav-text">timestamp()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、relativestring-函数、timestring-函数"><span class="nav-number">1.3.3.</span> <span class="nav-text">3、relativestring()函数、timestring()函数</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#time"><span class="nav-number">1.</span> <span class="nav-text">time</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#time转换为struct-time元组"><span class="nav-number">1.1.</span> <span class="nav-text">time转换为struct_time元组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#struct-time元组转换为time时间戳"><span class="nav-number">1.2.</span> <span class="nav-text">struct_time元组转换为time时间戳</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#struct-time元组转换成-format-string"><span class="nav-number">1.3.</span> <span class="nav-text">struct_time元组转换成 format string</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#format-string-转换成struct-time"><span class="nav-number">1.4.</span> <span class="nav-text">format string 转换成struct_time</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按固定格式，time-struct-time-也可以转换成format-string的"><span class="nav-number">1.5.</span> <span class="nav-text">按固定格式，time(struct_time)也可以转换成format string的</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pandas的to-datetime"><span class="nav-number">2.</span> <span class="nav-text">Pandas的to_datetime()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chronyk时间解析库"><span class="nav-number">3.</span> <span class="nav-text">chronyk时间解析库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#timestring-函数"><span class="nav-number">3.1.</span> <span class="nav-text">timestring()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#timestamp-函数"><span class="nav-number">3.2.</span> <span class="nav-text">timestamp()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、relativestring-函数、timestring-函数"><span class="nav-number">3.3.</span> <span class="nav-text">3、relativestring()函数、timestring()函数</span></a></li></ol></li></ol></div>
             
 
           </div>
