@@ -1,0 +1,206 @@
+<h2 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h2><p>学习Pandas的资料，最权威的应该就是Pandas作者本人开源的<a href="https://github.com/wesm/pydata-book">《Python for Data Analysis, 2nd Edition》</a></p>
+<p>这本书有经过作者本人认可的<a href="https://github.com/BrambleXu/pydata-notebook">中文译本</a>，多亏有大牛们种树。对于初学者，按照这本书从Python基础一步一步学习，确实是挺好的学习体验。</p>
+<p>读过这两本书之后，在去看pandas的官方在先文档，就会有似曾相识的感觉。<a href="https://pandas.pydata.org/pandas-docs/stable/getting_started/index.html">pandas官方文档</a></p>
+<h2 id="Getting-Started-with-pandas"><a href="#Getting-Started-with-pandas" class="headerlink" title="Getting Started with pandas"></a>Getting Started with pandas</h2><p>首先第一步，当然是导入pandas模块。顺便也把numpy一起导入了吧。</p>
+<pre><code class="python"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd
+<span class="keyword">import</span> numpy <span class="keyword">as</span> np
+</code></pre>
+<h3 id="Introduction-to-pandas-Data-Structures"><a href="#Introduction-to-pandas-Data-Structures" class="headerlink" title="Introduction to pandas Data Structures"></a>Introduction to pandas Data Structures</h3><p>Pansas 的数据结构其实就是 Series（一维）和Dataframe（二维）</p>
+<h4 id="Series"><a href="#Series" class="headerlink" title="Series"></a>Series</h4><pre><code class="python"><span class="comment"># 生成一个10个元素的正态分布序列，Index是0-9</span>
+obj = pd.Series(np.random.randn(<span class="number">10</span>),index=np.arange(<span class="number">10</span>))
+print(obj)
+</code></pre>
+<pre><code>0   -2.030423
+1   -0.142240
+2    0.467358
+3   -1.106364
+4    1.700141
+5   -1.656620
+6   -0.302091
+7    0.205873
+8   -0.769502
+9   -0.022895
+dtype: float64
+</code></pre><h4 id="DataFrame"><a href="#DataFrame" class="headerlink" title="DataFrame"></a>DataFrame</h4><p>把dataframe当成Excel或者数据库二维表格是最直观的理解方法。就是现实中的二维数据的抽象。</p>
+<pre><code class="python"><span class="comment"># dict 转换成dataframe</span>
+
+data = {<span class="string">'state'</span>: [<span class="string">'Ohio'</span>, <span class="string">'Ohio'</span>, <span class="string">'Ohio'</span>, <span class="string">'Nevada'</span>, <span class="string">'Nevada'</span>, <span class="string">'Nevada'</span>], 
+        <span class="string">'year'</span>: [<span class="number">2000</span>, <span class="number">2001</span>, <span class="number">2002</span>, <span class="number">2001</span>, <span class="number">2002</span>, <span class="number">2003</span>], 
+        <span class="string">'pop'</span>: [<span class="number">1.5</span>, <span class="number">1.7</span>, <span class="number">3.6</span>, <span class="number">2.4</span>, <span class="number">2.9</span>, <span class="number">3.2</span>]}
+
+frame = pd.DataFrame(data)
+frame
+</code></pre>
+<div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>state</th><br>      <th>year</th><br>      <th>pop</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>Ohio</td><br>      <td>2000</td><br>      <td>1.5</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>Ohio</td><br>      <td>2001</td><br>      <td>1.7</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>Ohio</td><br>      <td>2002</td><br>      <td>3.6</td><br>    </tr><br>    <tr><br>      <th>3</th><br>      <td>Nevada</td><br>      <td>2001</td><br>      <td>2.4</td><br>    </tr><br>    <tr><br>      <th>4</th><br>      <td>Nevada</td><br>      <td>2002</td><br>      <td>2.9</td><br>    </tr><br>    <tr><br>      <th>5</th><br>      <td>Nevada</td><br>      <td>2003</td><br>      <td>3.2</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+
+<pre><code class="python"><span class="comment"># 生成 3*5 的正态分布dataframe</span>
+df = pd.DataFrame(np.random.randn(<span class="number">3</span>,<span class="number">5</span>), index=[<span class="string">'2019'</span>,<span class="string">'2020'</span>,<span class="string">'2021'</span>], columns=[<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'D'</span>,<span class="string">'E'</span>])
+df
+</code></pre>
+<div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>A</th><br>      <th>B</th><br>      <th>C</th><br>      <th>D</th><br>      <th>E</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>2019</th><br>      <td>0.625769</td><br>      <td>-0.359062</td><br>      <td>-1.444692</td><br>      <td>-0.908577</td><br>      <td>0.968998</td><br>    </tr><br>    <tr><br>      <th>2020</th><br>      <td>-0.472260</td><br>      <td>-0.275508</td><br>      <td>-1.666659</td><br>      <td>-1.202708</td><br>      <td>-1.542985</td><br>    </tr><br>    <tr><br>      <th>2021</th><br>      <td>-0.866006</td><br>      <td>-0.203043</td><br>      <td>0.436053</td><br>      <td>-0.703099</td><br>      <td>1.131525</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+
+<pre><code class="python">print(df.dtypes)
+print(df.describe())
+</code></pre>
+<pre><code>A    float64
+B    float64
+C    float64
+D    float64
+E    float64
+dtype: object
+              A         B         C         D         E
+count  3.000000  3.000000  3.000000  3.000000  3.000000
+mean  -0.237499 -0.279205 -0.891766 -0.938128  0.185846
+std    0.773099  0.078075  1.155268  0.251112  1.499415
+min   -0.866006 -0.359062 -1.666659 -1.202708 -1.542985
+25%   -0.669133 -0.317285 -1.555675 -1.055642 -0.286993
+50%   -0.472260 -0.275508 -1.444692 -0.908577  0.968998
+75%    0.076755 -0.239276 -0.504320 -0.805838  1.050262
+max    0.625769 -0.203043  0.436053 -0.703099  1.131525
+</code></pre><blockquote>
+<p>注意：columns返回的是一个view(slice切片)，而不是新建了一个copy。因此，任何对series的改变，会反映在DataFrame上。除非我们用copy方法来新建一个。</p>
+</blockquote>
+<pre><code class="python"><span class="comment"># 用切片修改列，没问题</span>
+df[[<span class="string">'B'</span>,<span class="string">'C'</span>]] = <span class="number">0</span>
+df
+</code></pre>
+<div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>A</th><br>      <th>B</th><br>      <th>C</th><br>      <th>D</th><br>      <th>E</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>2019</th><br>      <td>0.625769</td><br>      <td>0.0</td><br>      <td>0.0</td><br>      <td>-0.908577</td><br>      <td>0.968998</td><br>    </tr><br>    <tr><br>      <th>2020</th><br>      <td>-0.472260</td><br>      <td>0.0</td><br>      <td>0.0</td><br>      <td>-1.202708</td><br>      <td>-1.542985</td><br>    </tr><br>    <tr><br>      <th>2021</th><br>      <td>-0.866006</td><br>      <td>0.0</td><br>      <td>0.0</td><br>      <td>-0.703099</td><br>      <td>1.131525</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+
+<pre><code class="python"><span class="comment"># 用切片修改行，也没问题</span>
+df[<span class="number">1</span>:<span class="number">2</span>]=<span class="number">0</span>
+df
+</code></pre>
+<div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>A</th><br>      <th>B</th><br>      <th>C</th><br>      <th>D</th><br>      <th>E</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>2019</th><br>      <td>0.625769</td><br>      <td>0.0</td><br>      <td>0.0</td><br>      <td>-0.908577</td><br>      <td>0.968998</td><br>    </tr><br>    <tr><br>      <th>2020</th><br>      <td>0.000000</td><br>      <td>0.0</td><br>      <td>0.0</td><br>      <td>0.000000</td><br>      <td>0.000000</td><br>    </tr><br>    <tr><br>      <th>2021</th><br>      <td>-0.866006</td><br>      <td>0.0</td><br>      <td>0.0</td><br>      <td>-0.703099</td><br>      <td>1.131525</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+
+<pre><code class="python"><span class="comment"># 如果用切片来修改指定行列的dataframe，pandas会警告，让我们用loc来替换</span>
+df[[<span class="string">'B'</span>,<span class="string">'C'</span>]][<span class="number">1</span>:<span class="number">2</span>]=<span class="number">1</span>
+df
+</code></pre>
+<pre><code>/home/yutianc/miniconda3/lib/python3.7/site-packages/ipykernel_launcher.py:2: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
+</code></pre><div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>A</th><br>      <th>B</th><br>      <th>C</th><br>      <th>D</th><br>      <th>E</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>2019</th><br>      <td>0.625769</td><br>      <td>0.0</td><br>      <td>0.0</td><br>      <td>-0.908577</td><br>      <td>0.968998</td><br>    </tr><br>    <tr><br>      <th>2020</th><br>      <td>0.000000</td><br>      <td>0.0</td><br>      <td>0.0</td><br>      <td>0.000000</td><br>      <td>0.000000</td><br>    </tr><br>    <tr><br>      <th>2021</th><br>      <td>-0.866006</td><br>      <td>0.0</td><br>      <td>0.0</td><br>      <td>-0.703099</td><br>      <td>1.131525</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+
+<pre><code class="python"><span class="comment"># 应该是pandas加强了安全校验，推荐使用loc而不是slice切边赋值。</span>
+<span class="comment"># 说好的loc来了, 警告没了。 </span>
+
+df.loc[<span class="string">'2020'</span>,[<span class="string">'B'</span>,<span class="string">'C'</span>]] = <span class="number">2</span>
+df
+</code></pre>
+<div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>A</th><br>      <th>B</th><br>      <th>C</th><br>      <th>D</th><br>      <th>E</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>2019</th><br>      <td>0.625769</td><br>      <td>0.0</td><br>      <td>0.0</td><br>      <td>-0.908577</td><br>      <td>0.968998</td><br>    </tr><br>    <tr><br>      <th>2020</th><br>      <td>0.000000</td><br>      <td>2.0</td><br>      <td>2.0</td><br>      <td>0.000000</td><br>      <td>0.000000</td><br>    </tr><br>    <tr><br>      <th>2021</th><br>      <td>-0.866006</td><br>      <td>0.0</td><br>      <td>0.0</td><br>      <td>-0.703099</td><br>      <td>1.131525</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+<h4 id="Index-Objects-索引对象）"><a href="#Index-Objects-索引对象）" class="headerlink" title="Index Objects(索引对象）"></a>Index Objects(索引对象）</h4><p>Series 和Dataframe都包含Index对象，Series可以看作有索引的数据，而dataframe则可以看作一组公用索引的Series。</p>
+<p>一个数组或其他一个序列标签，只要被用来做构建series或DataFrame，就会被自动转变为index：</p>
+<pre><code class="python">obj = pd.Series(range(<span class="number">3</span>), index=[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>])
+index = obj.index
+print(index)
+index[<span class="number">1</span>:]
+</code></pre>
+<pre><code>Index([&apos;a&apos;, &apos;b&apos;, &apos;c&apos;], dtype=&apos;object&apos;)
+
+
+
+
+
+Index([&apos;b&apos;, &apos;c&apos;], dtype=&apos;object&apos;)
+</code></pre><pre><code class="python">labels = pd.Index(np.arange(<span class="number">3</span>))
+labels
+obj2 = pd.Series([<span class="number">1.5</span>, <span class="number">-2.5</span>, <span class="number">0</span>], index=labels)
+print(obj2)
+obj2.index <span class="keyword">is</span> labels
+</code></pre>
+<pre><code>0    1.5
+1   -2.5
+2    0.0
+dtype: float64
+
+
+
+
+
+True
+</code></pre><p>Index对象，不可改变。</p>
+<p>正因为不可修改，所以data structure中分享index object是很安全的：</p>
+<pre><code class="python">index[<span class="number">1</span>] = <span class="string">'B'</span>
+</code></pre>
+<pre><code>---------------------------------------------------------------------------
+
+TypeError                                 Traceback (most recent call last)
+
+&lt;ipython-input-93-717d70dc796b&gt; in &lt;module&gt;
+----&gt; 1 index[1] = &apos;B&apos;
+
+
+~/miniconda3/lib/python3.7/site-packages/pandas/core/indexes/base.py in __setitem__(self, key, value)
+   2063 
+   2064     def __setitem__(self, key, value):
+-&gt; 2065         raise TypeError(&quot;Index does not support mutable operations&quot;)
+   2066 
+   2067     def __getitem__(self, key):
+
+
+TypeError: Index does not support mutable operations
+</code></pre><p>index除了想数组，还能像大小一定的set.<br>与python里的set不同，pandas的index可以有重复的labels：</p>
+<h3 id="Essential-Functionality-基本方法"><a href="#Essential-Functionality-基本方法" class="headerlink" title="Essential Functionality(基本方法)"></a>Essential Functionality(基本方法)</h3><h4 id="Reindexing"><a href="#Reindexing" class="headerlink" title="Reindexing"></a>Reindexing</h4><pre><code class="python"><span class="comment"># For Series</span>
+obj = pd.Series([<span class="number">4.5</span>, <span class="number">7.2</span>, <span class="number">-5.3</span>, <span class="number">3.6</span>], index=[<span class="string">'d'</span>, <span class="string">'b'</span>, <span class="string">'a'</span>, <span class="string">'c'</span>])
+obj
+</code></pre>
+<pre><code>d    4.5
+b    7.2
+a   -5.3
+c    3.6
+dtype: float64
+</code></pre><pre><code class="python">obj2 = obj.reindex([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>])
+obj2
+</code></pre>
+<pre><code>a   -5.3
+b    7.2
+c    3.6
+d    4.5
+e    NaN
+dtype: float64
+</code></pre><pre><code class="python"><span class="comment"># For Dataframe</span>
+<span class="comment"># Conform DataFrame to new index with optional filling logic, placing</span>
+<span class="comment"># NA/NaN in locations having no value in the previous index. A new object</span>
+<span class="comment"># is produced unless the new index is equivalent to the current one and</span>
+<span class="comment"># copy=False</span>
+
+frame = pd.DataFrame(np.arange(<span class="number">9</span>).reshape((<span class="number">3</span>, <span class="number">3</span>)),
+                     index=[<span class="string">'a'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>],
+                     columns=[<span class="string">'Ohio'</span>, <span class="string">'Texas'</span>, <span class="string">'California'</span>])
+print(frame)
+frame2 = frame.reindex([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>])
+frame2
+</code></pre>
+<pre><code>   Ohio  Texas  California
+a     0      1           2
+c     3      4           5
+d     6      7           8
+</code></pre><div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>Ohio</th><br>      <th>Texas</th><br>      <th>California</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>a</th><br>      <td>0.0</td><br>      <td>1.0</td><br>      <td>2.0</td><br>    </tr><br>    <tr><br>      <th>b</th><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>    </tr><br>    <tr><br>      <th>c</th><br>      <td>3.0</td><br>      <td>4.0</td><br>      <td>5.0</td><br>    </tr><br>    <tr><br>      <th>d</th><br>      <td>6.0</td><br>      <td>7.0</td><br>      <td>8.0</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+
+<pre><code class="python">pd.options.display.max_rows
+</code></pre>
+<pre><code>60
+</code></pre>
