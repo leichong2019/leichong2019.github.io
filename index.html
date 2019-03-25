@@ -309,7 +309,7 @@
       
     
 
-    <a href="/hexo-next-docs/" rel="section"><i class="menu-item-icon fa fa-fw fa-files-o"></i> <br>Next Docs(copy from Next)</a>
+    <a href="/docs/" rel="section"><i class="menu-item-icon fa fa-fw fa-files-o"></i> <br>Next Docs(copy from Next)</a>
 
   </li>
 
@@ -482,12 +482,24 @@
                 
               
 
-              <time title="创建时间：2019-03-24 16:21:06 / 修改时间：22:23:31" itemprop="dateCreated datePublished" datetime="2019-03-24T16:21:06+08:00">2019-03-24</time>
+              <time title="创建时间：2019-03-24 16:21:06" itemprop="dateCreated datePublished" datetime="2019-03-24T16:21:06+08:00">2019-03-24</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-25 14:27:08" itemprop="dateModified" datetime="2019-03-25T14:27:08+08:00">2019-03-25</time>
               
             
           </span>
@@ -1657,7 +1669,7 @@
 <h2 id="关于收费"><a href="#关于收费" class="headerlink" title="关于收费"></a>关于收费</h2><p><strong>马克飞象</strong>为新用户提供 10 天的试用期，试用期过后需要<a href="maxiang.info/vip.html">续费</a>才能继续使用。未购买或者未及时续费，将不能同步新的笔记。之前保存过的笔记依然可以编辑。</p>
 <h2 id="反馈与建议"><a href="#反馈与建议" class="headerlink" title="反馈与建议"></a>反馈与建议</h2><ul>
 <li>微博：<a href="http://weibo.com/u/2788354117" target="_blank" rel="noopener">@马克飞象</a>，<a href="http://weibo.com/ggock" title="开发者个人账号" target="_blank" rel="noopener">@GGock</a></li>
-<li>邮箱：<a href="mailto:&#104;&#x75;&#x73;&#x74;&#x67;&#111;&#x63;&#107;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;" target="_blank" rel="noopener">&#104;&#x75;&#x73;&#x74;&#x67;&#111;&#x63;&#107;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;</a></li>
+<li>邮箱：<a href="mailto:&#104;&#x75;&#115;&#116;&#103;&#111;&#x63;&#x6b;&#x40;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#x6d;" target="_blank" rel="noopener">&#104;&#x75;&#115;&#116;&#103;&#111;&#x63;&#x6b;&#x40;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#x6d;</a></li>
 </ul>
 <hr>
 <p>感谢阅读这份帮助文档。请点击右上角，绑定印象笔记账号，开启全新的记录与分享体验吧。</p>
@@ -2384,6 +2396,32 @@
   
 
   
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
 
   
 
