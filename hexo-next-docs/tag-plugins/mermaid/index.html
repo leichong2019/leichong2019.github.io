@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="NexT User Docs – NexT Supported Tags – Mermaid">
+<meta name="keywords" content="EBS,财务模块,APEX,Python,数据分析">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mermaid">
+<meta property="og:url" content="https://leichong2019.github.io/hexo-next-docs/tag-plugins/mermaid/index.html">
+<meta property="og:site_name" content="Chong&#39;s Site book">
+<meta property="og:description" content="NexT User Docs – NexT Supported Tags – Mermaid">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-22T18:01:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mermaid">
+<meta name="twitter:description" content="NexT User Docs – NexT Supported Tags – Mermaid">
+
+
+
+
+
+
+  <link rel="canonical" href="https://leichong2019.github.io/hexo-next-docs/tag-plugins/mermaid/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Mermaid | Chong's Site book</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chong's Site book</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">4</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">5</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">9</span></a>
+
+  </li>
+        
+        
+        
+          
+            
+            
+            
+              
+              
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-next-docs(copy-from-next) menu-item-active">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexo-next-docs/" rel="section"><i class="menu-item-icon fa fa-fw fa-files-o"></i> <br>Next Docs(copy from Next)</a>
+
+  </li>
+
+
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+        
+        
+        
+        
+          
+            
+            
+            
+              
+              
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-reference">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/references/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>reference</a>
+
+  </li>
+
+
+            
+          
+        
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+  
+
+  
+
+  <a href="https://github.com/leichong2019" class="github-corner" title="GitHub" aria-label="GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+
+        
+        
+        
+
+          
+          <ul id="sub-menu" class="sub-menu menu">
+          
+            
+            
+              
+              
+                
+              
+            
+          
+            
+            
+              
+              
+              
+                
+                  
+                  
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-getting-started">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexo-next-docs/getting-started/" rel="section"><i class="menu-item-icon fa fa-fw fa-flag"></i> <br>Getting Started</a>
+
+  </li>
+
+
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+            
+            
+              
+              
+              
+                
+                  
+                  
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-theme-settings">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexo-next-docs/theme-settings/" rel="section"><i class="menu-item-icon fa fa-fw fa-star"></i> <br>Theme Settings</a>
+
+  </li>
+
+
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+            
+            
+              
+              
+              
+                
+                  
+                  
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-third-party-services">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexo-next-docs/third-party-services/" rel="section"><i class="menu-item-icon fa fa-fw fa-plug"></i> <br>Third Party Services</a>
+
+  </li>
+
+
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+            
+            
+              
+              
+              
+                
+                  
+                  
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-tag-plugins menu-item-active">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexo-next-docs/tag-plugins/" rel="section"><i class="menu-item-icon fa fa-fw fa-rocket"></i> <br>Tag Plugins</a>
+
+  </li>
+
+
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+            
+            
+              
+              
+                
+                  
+                
+                
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-advanced-settings">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexo-next-docs/advanced-settings/" rel="section"><i class="menu-item-icon fa fa-fw fa-cogs"></i> <br>Advanced Settings</a>
+
+  </li>
+
+
+              
+            
+          
+            
+            
+              
+              
+                
+                  
+                
+                
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-faq's">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexo-next-docs/faqs/" rel="section"><i class="menu-item-icon fa fa-fw fa-life-ring"></i> <br>FAQ's</a>
+
+  </li>
+
+
+              
+            
+          
+            
+            
+              
+              
+                
+                  
+                
+                
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-troubleshooting">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexo-next-docs/troubleshooting/" rel="section"><i class="menu-item-icon fa fa-fw fa-bug"></i> <br>Troubleshooting</a>
+
+  </li>
+
+
+              
+            
+          
+          </ul>
+          
+
+          
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+
+              
+                
+                
+                  
+                
+                
+              
+                
+                
+                
+
+                  
+                  
+                  
+                    
+                  
+                  
+
+                
+              
+                
+                
+                
+
+                  
+                  
+                  
+                    
+                  
+                  
+
+                
+              
+                
+                
+                
+
+                  
+                  
+                  
+                    
+                  
+                  
+
+                
+              
+                
+                
+                
+
+                  
+                  
+                  
+                    
+
+                      
+                      <ul id="sub-menu-2" class="sub-menu menu">
+                      
+                        
+                        
+                        
+                          
+                        
+                      
+                        
+                        
+                        
+                          
+                            
+                          
+                          
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-full-image">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexo-next-docs/tag-plugins/full-image/" rel="section"><i class="menu-item-icon fa fa-fw fa-picture-o"></i> <br>Full Image</a>
+
+  </li>
+
+
+                        
+                      
+                        
+                        
+                        
+                          
+                            
+                          
+                          
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-note">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexo-next-docs/tag-plugins/note/" rel="section"><i class="menu-item-icon fa fa-fw fa-comment"></i> <br>Note</a>
+
+  </li>
+
+
+                        
+                      
+                        
+                        
+                        
+                          
+                            
+                          
+                          
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-button">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexo-next-docs/tag-plugins/button/" rel="section"><i class="menu-item-icon fa fa-fw fa-square"></i> <br>Button</a>
+
+  </li>
+
+
+                        
+                      
+                        
+                        
+                        
+                          
+                            
+                          
+                          
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-label">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexo-next-docs/tag-plugins/label/" rel="section"><i class="menu-item-icon fa fa-fw fa-font"></i> <br>Label</a>
+
+  </li>
+
+
+                        
+                      
+                        
+                        
+                        
+                          
+                            
+                          
+                          
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-tabs">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexo-next-docs/tag-plugins/tabs/" rel="section"><i class="menu-item-icon fa fa-fw fa-columns"></i> <br>Tabs</a>
+
+  </li>
+
+
+                        
+                      
+                        
+                        
+                        
+                          
+                            
+                          
+                          
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-mermaid menu-item-active">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexo-next-docs/tag-plugins/mermaid/" rel="section"><i class="menu-item-icon fa fa-fw fa-tasks"></i> <br>Mermaid</a>
+
+  </li>
+
+
+                        
+                      
+                        
+                        
+                        
+                          
+                            
+                          
+                          
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-video">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexo-next-docs/tag-plugins/video/" rel="section"><i class="menu-item-icon fa fa-fw fa-video-camera"></i> <br>Video</a>
+
+  </li>
+
+
+                        
+                      
+                        
+                        
+                        
+                          
+                            
+                          
+                          
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-group-pictures">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexo-next-docs/tag-plugins/group-pictures/" rel="section"><i class="menu-item-icon fa fa-fw fa-file-image-o"></i> <br>Group Pictures</a>
+
+  </li>
+
+
+                        
+                      
+                        
+                        
+                        
+                          
+                            
+                          
+                          
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-pdf">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexo-next-docs/tag-plugins/pdf/" rel="section"><i class="menu-item-icon fa fa-fw fa-file-pdf-o"></i> <br>PDF</a>
+
+  </li>
+
+
+                        
+                      
+                      </ul>
+                      
+
+                    
+                  
+                  
+
+                
+              
+                
+                
+                
+              
+                
+                
+                
+              
+                
+                
+                
+              
+
+            
+          
+            
+            
+
+              
+                
+                
+                  
+                
+                
+              
+
+            
+          
+          
+
+        
+        
+
+      
+    
+      
+      
+
+        
+        
+        
+        
+
+      
+    
+    
+
+  
+
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">Mermaid
+
+</h1>
+
+<div class="post-meta">
+  
+    <div class="post-description">NexT User Docs – NexT Supported Tags – Mermaid</div>
+  
+  
+
+
+  
+  
+  <ul class="breadcrumb">
+    
+      
+      
+        
+          
+            
+          
+          <li><a href="/hexo-next-docs/">HEXO-NEXT-DOCS</a></li>
+        
+      
+    
+      
+      
+        
+          
+            
+          
+          <li><a href="/hexo-next-docs/tag-plugins/">TAG-PLUGINS</a></li>
+        
+      
+    
+      
+      
+        
+          <li>MERMAID</li>
+        
+      
+    
+      
+      
+    
+  </ul>
+
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+        
+        
+          <h3 id="Settings"><a href="#Settings" class="headerlink" title="Settings"></a>Settings</h3><figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Mermaid tag</span></span><br><span class="line"><span class="attr">mermaid:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Available themes: default | dark | forest | neutral</span></span><br><span class="line"><span class="attr">  theme:</span> <span class="string">forest</span></span><br><span class="line">  <span class="comment"># Use 8.0.0 as default, jsdelivr as default CDN, works everywhere even in China</span></span><br><span class="line"><span class="attr">  cdn:</span> <span class="string">//cdn.jsdelivr.net/npm/mermaid@8.0.0/dist/mermaid.min.js</span></span><br><span class="line">  <span class="comment"># CDNJS, provided by cloudflare, maybe the best CDN, but not works in China</span></span><br><span class="line">  <span class="comment">#cdn: //cdnjs.cloudflare.com/ajax/libs/mermaid/8.0.0/mermaid.min.js</span></span><br></pre></td></tr></table></figure>
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><figure class="highlight md"><figcaption><span>grouppicture.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;% mermaid type %&#125;</span><br><span class="line">&#123;% endmermaid %&#125;</span><br><span class="line"></span><br><span class="line">type : type of the mermaid chart, visit https://github.com/knsv/mermaid for more information.</span><br></pre></td></tr></table></figure>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;% mermaid graph TD %&#125;</span><br><span class="line">A[Christmas] --&gt;|Get money| B(Go shopping)</span><br><span class="line">B --&gt; C&#123;Let me thinksssss<span class="xml"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span>ssssssssssssssssssssss<span class="xml"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span>sssssssssssssssssssssssssss&#125;</span><br><span class="line">C --&gt;|One| D[Laptop]</span><br><span class="line">C --&gt;|Two| E[iPhone]</span><br><span class="line">C --&gt;|Three| F[Car]</span><br><span class="line">&#123;% endmermaid %&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;% mermaid graph LR %&#125;</span><br><span class="line">47(SAM.CommonFA.FMESummary)--&gt;48(SAM.CommonFA.CommonFAFinanceBudget)</span><br><span class="line">37(SAM.CommonFA.BudgetSubserviceLineVolume)--&gt;48(SAM.CommonFA.CommonFAFinanceBudget)</span><br><span class="line">35(SAM.CommonFA.PopulationFME)--&gt;47(SAM.CommonFA.FMESummary)</span><br><span class="line">41(SAM.CommonFA.MetricCost)--&gt;47(SAM.CommonFA.FMESummary)</span><br><span class="line">44(SAM.CommonFA.MetricOutliers)--&gt;47(SAM.CommonFA.FMESummary)</span><br><span class="line">46(SAM.CommonFA.MetricOpportunity)--&gt;47(SAM.CommonFA.FMESummary)</span><br><span class="line">40(SAM.CommonFA.OPVisits)--&gt;47(SAM.CommonFA.FMESummary)</span><br><span class="line">38(SAM.CommonFA.CommonFAFinanceRefund)--&gt;47(SAM.CommonFA.FMESummary)</span><br><span class="line">43(SAM.CommonFA.CommonFAFinancePicuDays)--&gt;47(SAM.CommonFA.FMESummary)</span><br><span class="line">42(SAM.CommonFA.CommonFAFinanceNurseryDays)--&gt;47(SAM.CommonFA.FMESummary)</span><br><span class="line">45(SAM.CommonFA.MetricPreOpportunity)--&gt;46(SAM.CommonFA.MetricOpportunity)</span><br><span class="line">35(SAM.CommonFA.PopulationFME)--&gt;45(SAM.CommonFA.MetricPreOpportunity)</span><br><span class="line">41(SAM.CommonFA.MetricCost)--&gt;45(SAM.CommonFA.MetricPreOpportunity)</span><br><span class="line">41(SAM.CommonFA.MetricCost)--&gt;44(SAM.CommonFA.MetricOutliers)</span><br><span class="line">39(SAM.CommonFA.ChargeDetails)--&gt;43(SAM.CommonFA.CommonFAFinancePicuDays)</span><br><span class="line">39(SAM.CommonFA.ChargeDetails)--&gt;42(SAM.CommonFA.CommonFAFinanceNurseryDays)</span><br><span class="line">39(SAM.CommonFA.ChargeDetails)--&gt;41(SAM.CommonFA.MetricCost)</span><br><span class="line">39(SAM.CommonFA.ChargeDetails)--&gt;40(SAM.CommonFA.OPVisits)</span><br><span class="line">35(SAM.CommonFA.PopulationFME)--&gt;39(SAM.CommonFA.ChargeDetails)</span><br><span class="line">36(SAM.CommonFA.PremetricCost)--&gt;39(SAM.CommonFA.ChargeDetails)</span><br><span class="line">&#123;% endmermaid %&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">&#123;% mermaid graph TD %&#125;</span><br><span class="line">9e122290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002("fa:fa-creative-commons My System | Test Environment")</span><br><span class="line">82072290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002("fa:fa-cogs Shared Business Logic Server:Service 1")</span><br><span class="line">db052290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002("fa:fa-cogs Shared Business Logic Server:Service 2")</span><br><span class="line">4e112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002("fa:fa-cogs Shared Report Server:Service 1")</span><br><span class="line">30122290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002("fa:fa-cogs Shared Report Server:Service 2")</span><br><span class="line">5e112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002("fa:fa-cogs Dedicated Test Business Logic Server:Service 1")</span><br><span class="line">c1112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002("fa:fa-cogs Dedicated Test Business Logic Server:Service 2")</span><br><span class="line">b7042290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002("fa:fa-circle [DBServer\SharedDbInstance].[SupportDb]")</span><br><span class="line">8f102290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002("fa:fa-circle [DBServer\SharedDbInstance].[DevelopmentDb]")</span><br><span class="line">0e102290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002("fa:fa-circle [DBServer\SharedDbInstance].[TestDb]")</span><br><span class="line">07132290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002("fa:fa-circle [DBServer\SharedDbInstance].[SharedReportingDb]")</span><br><span class="line">c7072290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002("fa:fa-server Shared Business Logic Server")</span><br><span class="line">ca122290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002("fa:fa-server Shared Report Server")</span><br><span class="line">68102290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002("fa:fa-server Dedicated Test Business Logic Server")</span><br><span class="line">f4112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002("fa:fa-database [DBServer\SharedDbInstance]")</span><br><span class="line">d6072290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002("fa:fa-server DBServer")</span><br><span class="line">71082290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002("fa:fa-cogs DBServer\:MSSQLSERVER")</span><br><span class="line">c0102290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002("fa:fa-cogs DBServer\:SQLAgent")</span><br><span class="line">9a072290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002("fa:fa-cogs DBServer\:SQLBrowser")</span><br><span class="line">1d0a2290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002("fa:fa-server VmHost1")</span><br><span class="line">200a2290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002("fa:fa-server VmHost2")</span><br><span class="line">1c0a2290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002("fa:fa-server VmHost3")</span><br><span class="line">9e122290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;82072290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">9e122290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;db052290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">9e122290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;4e112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">9e122290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;30122290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">9e122290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;5e112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">9e122290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;c1112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">82072290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;b7042290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">82072290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;8f102290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">82072290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;0e102290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">82072290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;c7072290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">db052290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;c7072290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">db052290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;82072290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">4e112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;b7042290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">4e112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;8f102290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">4e112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;0e102290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">4e112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;07132290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">4e112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;ca122290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">30122290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;ca122290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">30122290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;4e112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">5e112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;8f102290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">5e112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;68102290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">c1112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;68102290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">c1112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;5e112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">b7042290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;f4112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">8f102290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;f4112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">0e102290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;f4112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">07132290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;f4112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">c7072290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;1d0a2290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">ca122290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;200a2290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">68102290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;1c0a2290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">f4112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;d6072290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">f4112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;71082290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">f4112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;c0102290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">f4112290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;9a072290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">d6072290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;1c0a2290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">71082290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;d6072290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">c0102290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;d6072290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">c0102290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;71082290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">9a072290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;d6072290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">9a072290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002--&gt;71082290<span class="emphasis">_1ec3_</span>e711<span class="emphasis">_8c5a_</span>005056ad0002</span><br><span class="line">&#123;% endmermaid %&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;% mermaid sequenceDiagram %&#125;</span><br><span class="line">participant Alice</span><br><span class="line">participant Bob</span><br><span class="line">participant John as John<span class="xml"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span>Second Line</span><br><span class="line">Alice -&gt;&gt; Bob: Hello Bob, how are you?</span><br><span class="line">Bob--&gt;&gt;John: How about you John?</span><br><span class="line">Bob--x Alice: I am good thanks!</span><br><span class="line">Bob-x John: I am good thanks!</span><br><span class="line">Note right of John: Bob thinks a long<span class="xml"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span>long time, so long<span class="xml"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span>that the text does<span class="xml"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span>not fit on a row.</span><br><span class="line">Bob--&gt;Alice: Checking with John...</span><br><span class="line">alt either this</span><br><span class="line">Alice-&gt;&gt;John: Yes</span><br><span class="line">else or this</span><br><span class="line">Alice-&gt;&gt;John: No</span><br><span class="line">else or this will happen</span><br><span class="line">Alice-&gt;John: Maybe</span><br><span class="line">end</span><br><span class="line">par this happens in parallel</span><br><span class="line">Alice --&gt;&gt; Bob: Parallel message 1</span><br><span class="line">and</span><br><span class="line">Alice --&gt;&gt; John: Parallel message 2</span><br><span class="line">end</span><br><span class="line">&#123;% endmermaid %&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;% mermaid gantt %&#125;</span><br><span class="line">dateFormat  YYYY-MM-DD</span><br><span class="line">axisFormat  %d/%m</span><br><span class="line">title Adding GANTT diagram to mermaid</span><br><span class="line"></span><br><span class="line">section A section</span><br><span class="line">Completed task            :done,    des1, 2014-01-06,2014-01-08</span><br><span class="line">Active task               :active,  des2, 2014-01-09, 3d</span><br><span class="line">Future task               :         des3, after des2, 5d</span><br><span class="line">Future task2               :         des4, after des3, 5d</span><br><span class="line"></span><br><span class="line">section Critical tasks</span><br><span class="line">Completed task in the critical line :crit, done, 2014-01-06,24h</span><br><span class="line">Implement parser and jison          :crit, done, after des1, 2d</span><br><span class="line">Create tests for parser             :crit, active, 3d</span><br><span class="line">Future task in critical line        :crit, 5d</span><br><span class="line">Create tests for renderer           :2d</span><br><span class="line">Add to mermaid                      :1d</span><br><span class="line"></span><br><span class="line">section Documentation</span><br><span class="line">Describe gantt syntax               :active, a1, after des1, 3d</span><br><span class="line">Add gantt diagram to demo page      :after a1  , 20h</span><br><span class="line">Add another diagram to demo page    :doc1, after a1  , 48h</span><br><span class="line"></span><br><span class="line">section Last section</span><br><span class="line">Describe gantt syntax               :after doc1, 3d</span><br><span class="line">Add gantt diagram to demo page      : 20h</span><br><span class="line">Add another diagram to demo page    : 48h</span><br><span class="line">&#123;% endmermaid %&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;% mermaid gitGraph: %&#125;</span><br><span class="line">options</span><br><span class="line">&#123;</span><br><span class="line"><span class="code">    "nodeSpacing": 150,</span></span><br><span class="line"><span class="code">    "nodeRadius": 10</span></span><br><span class="line">&#125;</span><br><span class="line">end</span><br><span class="line">commit</span><br><span class="line">branch newbranch</span><br><span class="line">checkout newbranch</span><br><span class="line">commit</span><br><span class="line">commit</span><br><span class="line">checkout master</span><br><span class="line">commit</span><br><span class="line">commit</span><br><span class="line">merge newbranch</span><br><span class="line">&#123;% endmermaid %&#125;</span><br></pre></td></tr></table></figure>
+
+        
+      </div>
+      
+      
+      
+    </div>
+    
+
+
+  
+  
+  <ul class="breadcrumb">
+    
+      
+      
+        
+          
+            
+          
+          <li><a href="/hexo-next-docs/">HEXO-NEXT-DOCS</a></li>
+        
+      
+    
+      
+      
+        
+          
+            
+          
+          <li><a href="/hexo-next-docs/tag-plugins/">TAG-PLUGINS</a></li>
+        
+      
+    
+      
+      
+        
+          <li>MERMAID</li>
+        
+      
+    
+      
+      
+    
+  </ul>
+
+
+    
+    
+    
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Chong">
+            
+              <p class="site-author-name" itemprop="name">Chong</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/leichong2019" title="GitHub &rarr; https://github.com/leichong2019" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:chong.lei@gmail.com" title="E-Mail &rarr; mailto:chong.lei@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Settings"><span class="nav-number">1.</span> <span class="nav-text">Settings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Usage"><span class="nav-number">2.</span> <span class="nav-text">Usage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Examples"><span class="nav-number">3.</span> <span class="nav-text">Examples</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chong</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
