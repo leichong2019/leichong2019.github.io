@@ -107,18 +107,18 @@
 
 
 
-  <meta name="description" content="linux下文件的复制、移动与删除命令为：cp，mv，rm 功能: 复制文件或目录 说明: cp指令用于复制文件或目录，如同时指定两个以上的文件或目录，且最后的目的地是一个已经存在的目录，则它会把前面指定的所有文件或目录复制到此目录中。若同时指定多个文件或目录，而最后的目的地并非一个已存在的目录，则会出现错误信息 参数:  -a 或 –archive     此参数的效果和同时指定”-dpR”参数">
+  <meta name="description" content="linux下文件的复制、移动与删除命令为：cp，mv，rm 功能: 复制文件或目录 说明: cp指令用于复制文件或目录，如同时指定两个以上的文件或目录，且最后的目的地是一个已经存在的目录，则它会把前面指定的所有文件或目录复制到此目录中。若同时指定多个文件或目录，而最后的目的地并非一个已存在的目录，则会出现错误信息">
 <meta name="keywords" content="Linux,cp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux cp 命令使用">
 <meta property="og:url" content="https://leichong2019.github.io/2019/03/31/Linux-cp/index.html">
 <meta property="og:site_name" content="Chong&#39;s Site book">
-<meta property="og:description" content="linux下文件的复制、移动与删除命令为：cp，mv，rm 功能: 复制文件或目录 说明: cp指令用于复制文件或目录，如同时指定两个以上的文件或目录，且最后的目的地是一个已经存在的目录，则它会把前面指定的所有文件或目录复制到此目录中。若同时指定多个文件或目录，而最后的目的地并非一个已存在的目录，则会出现错误信息 参数:  -a 或 –archive     此参数的效果和同时指定”-dpR”参数">
+<meta property="og:description" content="linux下文件的复制、移动与删除命令为：cp，mv，rm 功能: 复制文件或目录 说明: cp指令用于复制文件或目录，如同时指定两个以上的文件或目录，且最后的目的地是一个已经存在的目录，则它会把前面指定的所有文件或目录复制到此目录中。若同时指定多个文件或目录，而最后的目的地并非一个已存在的目录，则会出现错误信息">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-31T07:28:24.252Z">
+<meta property="og:updated_time" content="2019-03-31T08:44:46.469Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux cp 命令使用">
-<meta name="twitter:description" content="linux下文件的复制、移动与删除命令为：cp，mv，rm 功能: 复制文件或目录 说明: cp指令用于复制文件或目录，如同时指定两个以上的文件或目录，且最后的目的地是一个已经存在的目录，则它会把前面指定的所有文件或目录复制到此目录中。若同时指定多个文件或目录，而最后的目的地并非一个已存在的目录，则会出现错误信息 参数:  -a 或 –archive     此参数的效果和同时指定”-dpR”参数">
+<meta name="twitter:description" content="linux下文件的复制、移动与删除命令为：cp，mv，rm 功能: 复制文件或目录 说明: cp指令用于复制文件或目录，如同时指定两个以上的文件或目录，且最后的目的地是一个已经存在的目录，则它会把前面指定的所有文件或目录复制到此目录中。若同时指定多个文件或目录，而最后的目的地并非一个已存在的目录，则会出现错误信息">
 
 
 
@@ -490,7 +490,7 @@
                 
               
 
-              <time title="创建时间：2019-03-31 15:06:39 / 修改时间：15:28:24" itemprop="dateCreated datePublished" datetime="2019-03-31T15:06:39+08:00">2019-03-31</time>
+              <time title="创建时间：2019-03-31 15:06:39 / 修改时间：16:44:46" itemprop="dateCreated datePublished" datetime="2019-03-31T15:06:39+08:00">2019-03-31</time>
             
 
             
@@ -557,6 +557,7 @@
         <p>linux下文件的复制、移动与删除命令为：cp，mv，rm</p>
 <p><strong>功能:</strong> 复制文件或目录</p>
 <p><strong>说明:</strong> cp指令用于复制文件或目录，如同时指定两个以上的文件或目录，且最后的目的地是一个已经存在的目录，则它会把前面指定的所有文件或目录复制到此目录中。若同时指定多个文件或目录，而最后的目的地并非一个已存在的目录，则会出现错误信息</p>
+<a id="more"></a>
 <p><strong>参数:</strong></p>
 <ul>
 <li>-a 或 –archive     此参数的效果和同时指定”-dpR”参数相同</li>
@@ -638,6 +639,11 @@
 <li><p>.指定备份文件尾标    </p>
 <blockquote>
 <p>cp -b -S _bak a.txt /tmp</p>
+</blockquote>
+</li>
+<li><p>.将指定目录，保留目录属性、结构，整体复制到另外一个位置</p>
+<blockquote>
+<p>cp -apR /u01/UAT  /u02/UAT</p>
 </blockquote>
 </li>
 </ul>
