@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="Chong&#39;s Site book">
 <meta property="og:description" content="df 检查文件系统的磁盘空间占用情况 命令功能：df 查看已挂载磁盘的总容量、使用容量、剩余容量等，可以不加任何参数，默认是按k为单位显示的显示指定磁盘文件的可用空间。如果没有文件名被指定，则所有当前被挂载的文件系统的可用空间将被显示。默认情况下，磁盘空间将以 1KB 为单位进行显示，除非环境变量 POSIXLY_CORRECT 被指定，那样将以512字节为单位进行显示  df 语法 df [选项">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-01T10:08:27.675Z">
+<meta property="og:updated_time" content="2019-04-01T10:19:39.637Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux 磁盘管理">
 <meta name="twitter:description" content="df 检查文件系统的磁盘空间占用情况 命令功能：df 查看已挂载磁盘的总容量、使用容量、剩余容量等，可以不加任何参数，默认是按k为单位显示的显示指定磁盘文件的可用空间。如果没有文件名被指定，则所有当前被挂载的文件系统的可用空间将被显示。默认情况下，磁盘空间将以 1KB 为单位进行显示，除非环境变量 POSIXLY_CORRECT 被指定，那样将以512字节为单位进行显示  df 语法 df [选项">
@@ -271,7 +271,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">12</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">8</span></a>
 
   </li>
         
@@ -490,7 +490,7 @@
                 
               
 
-              <time title="创建时间：2019-04-01 10:33:39 / 修改时间：18:08:27" itemprop="dateCreated datePublished" datetime="2019-04-01T10:33:39+08:00">2019-04-01</time>
+              <time title="创建时间：2019-04-01 10:33:39 / 修改时间：18:19:39" itemprop="dateCreated datePublished" datetime="2019-04-01T10:33:39+08:00">2019-04-01</time>
             
 
             
@@ -561,8 +561,7 @@
 <p>df [选项]… [FILE]…</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">文件-a, --all 包含所有的具有 0 Blocks 的文件系统</span><br><span class="line">文件--block-size=&#123;SIZE&#125; 使用 &#123;SIZE&#125; 大小的 Blocks</span><br><span class="line">文件-h, --human-readable 使用人类可读的格式(预设值是不加这个选项的...)</span><br><span class="line">文件-H, --si 很像 -h, 但是用 1000 为单位而不是用 1024</span><br><span class="line">文件-i, --inodes 列出 inode 资讯，不列出已使用 block</span><br><span class="line">文件-k, --kilobytes 就像是 --block-size=1024</span><br><span class="line">文件-l, --local 限制列出的文件结构</span><br><span class="line">文件-m, --megabytes 就像 --block-size=1048576</span><br><span class="line">文件--no-sync 取得资讯前不 sync (预设值)</span><br><span class="line">文件-P, --portability 使用 POSIX 输出格式</span><br><span class="line">文件--sync 在取得资讯前 sync</span><br><span class="line">文件-t, --type=TYPE 限制列出文件系统的 TYPE</span><br><span class="line">文件-T, --print-type 显示文件系统的形式</span><br><span class="line">文件-x, --exclude-type=TYPE 限制列出文件系统不要显示 TYPE</span><br><span class="line">文件-v (忽略)</span><br><span class="line">文件--help 显示这个帮手并且离开</span><br><span class="line">文件--version 输出版本资讯并且离开</span><br></pre></td></tr></table></figure>
-<h3 id="df-实例"><a href="#df-实例" class="headerlink" title="df 实例"></a>df 实例</h3><p>显示文件系统的磁盘使用情况统计：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># df </span><br><span class="line">Filesystem          1K-blocks     Used Available Use% Mounted on</span><br><span class="line">devtmpfs              4960744        0   4960744   0% /dev</span><br><span class="line">tmpfs                 4979320        0   4979320   0% /dev/shm</span><br><span class="line">tmpfs                 4979320    34548   4944772   1% /run</span><br><span class="line">tmpfs                 4979320        0   4979320   0% /sys/fs/cgroup</span><br><span class="line">/dev/mapper/ol-root 157209600 26427816 130781784  17% /</span><br><span class="line">/dev/sda1             1038336   230400    807936  23% /boot</span><br><span class="line">/dev/mapper/ol-home  46163944   558676  45605268   2% /home</span><br><span class="line">/dev/sr0              4464028  4464028         0 100% /run/media/root/OL-7.6 Server.x86_64</span><br><span class="line">tmpfs                  995868        4    995864   1% /run/user/42</span><br><span class="line">tmpfs                  995868       44    995824   1% /run/user/501</span><br><span class="line">overlay             157209600 26427816 130781784  17% /var/lib/docker/overlay2/merged</span><br><span class="line">shm                     65536        0     65536   0% /var/lib/docker/containers/mounts/shm</span><br></pre></td></tr></table></figure>
+<h3 id="df-实例"><a href="#df-实例" class="headerlink" title="df 实例"></a>df 实例</h3><p>显示文件系统的磁盘使用情况统计：<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># df </span><br><span class="line">Filesystem          1K-blocks     Used Available Use% Mounted on</span><br><span class="line">devtmpfs              4960744        0   4960744   0% /dev</span><br><span class="line">tmpfs                 4979320        0   4979320   0% /dev/shm</span><br><span class="line">tmpfs                 4979320    34548   4944772   1% /run</span><br><span class="line">tmpfs                 4979320        0   4979320   0% /sys/fs/cgroup</span><br><span class="line">/dev/mapper/ol-root 157209600 26427816 130781784  17% /</span><br><span class="line">/dev/sda1             1038336   230400    807936  23% /boot</span><br><span class="line">/dev/mapper/ol-home  46163944   558676  45605268   2% /home</span><br><span class="line">/dev/sr0              4464028  4464028         0 100% /run/media/root/OL-7.6 Server.x86_64</span><br><span class="line">tmpfs                  995868        4    995864   1% /run/user/42</span><br><span class="line">tmpfs                  995868       44    995824   1% /run/user/501</span><br><span class="line">overlay             157209600 26427816 130781784  17% /var/lib/docker/overlay2/merged</span><br><span class="line">shm                     65536        0     65536   0% /var/lib/docker/containers/mounts/shm</span><br></pre></td></tr></table></figure></p>
 <p>第一列指定文件系统的名称，第二列指定一个特定的文件系统1K-块1K是1024字节为单位的总内存。用和可用列正在使用中，分别指定的内存量。Mounted on 显示所挂载的目录。</p>
 <p>使用列指定使用的内存的百分比，而最后一栏”安装在”指定的文件系统的挂载点。</p>
 <p>df也可以显示磁盘使用的文件系统信息：</p>
@@ -744,14 +743,6 @@
                     
                   
                     
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
                     
                       
                     
