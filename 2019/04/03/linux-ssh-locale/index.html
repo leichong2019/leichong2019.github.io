@@ -107,25 +107,25 @@
 
 
 
-  <meta name="description" content="linux下文件的复制、移动与删除命令为：cp，mv，rm 功能: 复制文件或目录 说明: cp指令用于复制文件或目录，如同时指定两个以上的文件或目录，且最后的目的地是一个已经存在的目录，则它会把前面指定的所有文件或目录复制到此目录中。若同时指定多个文件或目录，而最后的目的地并非一个已存在的目录，则会出现错误信息">
-<meta name="keywords" content="Linux,cp">
+  <meta name="description" content="对于Linux内核来说，运行的内核版本都是一样，只要有对应中文的编码解码规则（字符集），有中文字体显示支持，Linux就能处理好中文信息。同理，对于其他语言也是一样。 什么是locale在Linux中，它使用locale命令来设置和显示程序运行的语言环境（也就是系统运行语言环境，应用进程是在系统的进程之上运行的，应用程序的父进程是init进程） locale的英文直译为场所，地区，地域，但它在Li">
+<meta name="keywords" content="Linux,locale">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux cp 命令使用">
-<meta property="og:url" content="https://leichong2019.github.io/2019/03/31/Linux-cp/index.html">
+<meta property="og:title" content="linux ssh 中文编码">
+<meta property="og:url" content="https://leichong2019.github.io/2019/04/03/linux-ssh-locale/index.html">
 <meta property="og:site_name" content="Chong&#39;s Site book">
-<meta property="og:description" content="linux下文件的复制、移动与删除命令为：cp，mv，rm 功能: 复制文件或目录 说明: cp指令用于复制文件或目录，如同时指定两个以上的文件或目录，且最后的目的地是一个已经存在的目录，则它会把前面指定的所有文件或目录复制到此目录中。若同时指定多个文件或目录，而最后的目的地并非一个已存在的目录，则会出现错误信息">
+<meta property="og:description" content="对于Linux内核来说，运行的内核版本都是一样，只要有对应中文的编码解码规则（字符集），有中文字体显示支持，Linux就能处理好中文信息。同理，对于其他语言也是一样。 什么是locale在Linux中，它使用locale命令来设置和显示程序运行的语言环境（也就是系统运行语言环境，应用进程是在系统的进程之上运行的，应用程序的父进程是init进程） locale的英文直译为场所，地区，地域，但它在Li">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-31T08:44:46.469Z">
+<meta property="og:updated_time" content="2019-04-03T08:13:01.797Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux cp 命令使用">
-<meta name="twitter:description" content="linux下文件的复制、移动与删除命令为：cp，mv，rm 功能: 复制文件或目录 说明: cp指令用于复制文件或目录，如同时指定两个以上的文件或目录，且最后的目的地是一个已经存在的目录，则它会把前面指定的所有文件或目录复制到此目录中。若同时指定多个文件或目录，而最后的目的地并非一个已存在的目录，则会出现错误信息">
+<meta name="twitter:title" content="linux ssh 中文编码">
+<meta name="twitter:description" content="对于Linux内核来说，运行的内核版本都是一样，只要有对应中文的编码解码规则（字符集），有中文字体显示支持，Linux就能处理好中文信息。同理，对于其他语言也是一样。 什么是locale在Linux中，它使用locale命令来设置和显示程序运行的语言环境（也就是系统运行语言环境，应用进程是在系统的进程之上运行的，应用程序的父进程是init进程） locale的英文直译为场所，地区，地域，但它在Li">
 
 
 
 
 
 
-  <link rel="canonical" href="https://leichong2019.github.io/2019/03/31/Linux-cp/">
+  <link rel="canonical" href="https://leichong2019.github.io/2019/04/03/linux-ssh-locale/">
 
 
 
@@ -135,7 +135,7 @@
   };
 </script>
 
-  <title>Linux cp 命令使用 | Chong's Site book</title>
+  <title>linux ssh 中文编码 | Chong's Site book</title>
   
 
 
@@ -447,7 +447,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://leichong2019.github.io/2019/03/31/Linux-cp/">
+    <link itemprop="mainEntityOfPage" href="https://leichong2019.github.io/2019/04/03/linux-ssh-locale/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chong">
@@ -464,7 +464,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux cp 命令使用
+          <h1 class="post-title" itemprop="name headline">linux ssh 中文编码
 
               
             
@@ -490,7 +490,7 @@
                 
               
 
-              <time title="创建时间：2019-03-31 15:06:39 / 修改时间：16:44:46" itemprop="dateCreated datePublished" datetime="2019-03-31T15:06:39+08:00">2019-03-31</time>
+              <time title="创建时间：2019-04-03 15:35:45 / 修改时间：16:13:01" itemprop="dateCreated datePublished" datetime="2019-04-03T15:35:45+08:00">2019-04-03</time>
             
 
             
@@ -554,100 +554,48 @@
       
 
       
-        <p>linux下文件的复制、移动与删除命令为：cp，mv，rm</p>
-<p><strong>功能:</strong> 复制文件或目录</p>
-<p><strong>说明:</strong> cp指令用于复制文件或目录，如同时指定两个以上的文件或目录，且最后的目的地是一个已经存在的目录，则它会把前面指定的所有文件或目录复制到此目录中。若同时指定多个文件或目录，而最后的目的地并非一个已存在的目录，则会出现错误信息</p>
-<a id="more"></a>
-<p><strong>参数:</strong></p>
-<ul>
-<li>-a 或 –archive     此参数的效果和同时指定”-dpR”参数相同</li>
-<li>-b 或 –backup      删除、覆盖目的文件先备份，备份的文件或目录亦建立为符号链接，并指向源文件或目录链接的源文件或目录。假如没有加上这个参数，在复制过程中若遇到符号链接，则会直接复制源文件或目录</li>
-<li>-f 或 –force       强行复制文件或目录， 不论目的文件或目录是否已经存在</li>
-<li>-i 或 –interactive 覆盖文件之前先询问用户</li>
-<li>-l 或 –link        对源文件建立硬链接，而非复制文件</li>
-<li>-p 或 –preserve    保留源文件或目录的属性，包括所有者、所属组、权限与时间</li>
-<li>-P 或 –parents     保留源文件或目录的路径，此路径可以是绝对路径或相对路径，且目的目录必须已经丰在</li>
-<li>-r                  递归处理，将指定目录下的文件与子目录一并处理。若源文件或目录的形态，不属于目录或符号链接，则一律视为普通文件处理</li>
-<li>-R 或 –recursive   递归处理，将指定目录下的文件及子目录一并处理</li>
-<li>-s 或 –symbolic-link  对源文件建立符号链接，而非复制文件</li>
-<li>-S &lt;备份字尾字符串&gt; 或 –suffix=&lt;备份字尾字符串&gt; 用”-b”参数备份目的文件后，备份文件的字尾会被加上一个备份字符串。默认的备份字尾符串是符号”~”</li>
-<li>-u 或 –update      使用这项参数之后，只会在源文件的修改时间(Modification Time)较目的文件更新时，或是名称相互对应的目的文件并不存在，才复制文件</li>
-<li>-v 或 –verbose     显示执行过程<ul>
-<li>-V &lt;备份方式&gt; 或 –version-control=&lt;备份方式&gt;  指定当备份文件时，备份文件名的命名方式，有以下3种:</li>
-<li>1.numbered或t, 将使用备份编号，会在字尾加上~1~字符串，其数字编号依次递增</li>
-<li>2.simple或never 将使用简单备份，默认的备份字尾字符串是~, 也可通过-S来指定</li>
-<li>3.existing或nil将使用当前方式，程序会先检查是否存在着备份编号，若有则采用备份编号，若无则采用简单备份</li>
-</ul>
-</li>
-<li>-x 或 –one-file-system  复制的文件或目录存放的文件系统，必须与cp指令执行时所处的文件系统相同，否则不复制，亦不处理位于其他分区的文件</li>
-<li>–help              显示在线帮助</li>
-<li>–sparse=&lt;使用时机&gt;  设置保存希疏文件的时机</li>
-<li>–version           显示版本</li>
-</ul>
-<p><strong>示例:</strong></p>
-<ul>
-<li><p>.复制文件，只有源文件较目的文件的修改时间新时，才复制文件</p>
+        <p>对于Linux内核来说，运行的内核版本都是一样，只要有对应中文的编码解码规则（字符集），有中文字体显示支持，Linux就能处理好中文信息。<br>同理，对于其他语言也是一样。</p>
+<h2 id="什么是locale"><a href="#什么是locale" class="headerlink" title="什么是locale"></a>什么是locale</h2><p>在Linux中，它使用locale命令来设置和显示程序运行的语言环境（也就是系统运行语言环境，应用进程是在系统的进程之上运行的，应用程序的父进程是init进程）</p>
+<p>locale的英文直译为场所，地区，地域，但它在Linux中含义要更大，在Linux中Locale根据计算机用户所使用的语言，所在国家或者地区，以及当地的文化传统定义一个软件运行时的语言环境 。</p>
+<p>locale的主要作用是描述某一个地域内的人们的语言习惯和文化传统和生活习惯。一个地区的locale就是根据几大类的习惯（变量）定义的。</p>
+<h2 id="locale的命名规则"><a href="#locale的命名规则" class="headerlink" title="locale的命名规则"></a>locale的命名规则</h2><p>locale 命名规则：</p>
 <blockquote>
-<p>cp -u -v file1 file2</p>
+<p>&lt;语言&gt;_&lt;地区&gt;.&lt;字符集编码&gt;&lt;@修正值&gt;</p>
 </blockquote>
-</li>
-<li><p>.将文件file1复制成文件file2</p>
+<p>例如：<br><code>zh_CN.UTF-8</code>，zh代表中文，CN代表大陆地区，UTF-8表示字符集。</p>
+<p><code>de_DE.UTF-8@euro</code>, de表示德语，DE表示德国，UTF-8表示字符集，euro表示按照欧洲习惯加以修正 </p>
+<p>这个命令规则就是说我们在设置locale的相关变量时，都是使用这种格式给变量进行赋值</p>
+<h2 id="locale命令及参数讲解"><a href="#locale命令及参数讲解" class="headerlink" title="locale命令及参数讲解"></a>locale命令及参数讲解</h2><p>设置Locale的根本其实就是设置一组总共12个LC开头的变量（不包括LANG和LC_ALL）</p>
+<p>Linux中locale文件存放位置： /usr/share/i18n/locales</p>
+<h3 id="LANG"><a href="#LANG" class="headerlink" title="LANG"></a>LANG</h3><p>LANG的优先级是最低的，它是所有LC_<em>变量的默认值。下方所有以LC_开头变量（不包括LC_ALL）中，如果存在没有设置变量值的变量，那么系统将会使用LANG的变量值来给这个变量进行赋值。如果变量有值，则保持不变，不受影响。可以看到，我们上面示例中的输出中的LC_</em>变量的值其实就是LANG变量决定的</p>
+<h3 id="LC-CTYPE"><a href="#LC-CTYPE" class="headerlink" title="LC_CTYPE"></a>LC_CTYPE</h3><p><strong>用于字符分类和字符串处理，控制所有字符的处理方式，包括字符编码，字符是单字节还是多字节，如何打印等，这个变量是最重要的。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">LC_NUMERIC              #用于格式化非货币的数字显示。</span><br><span class="line">LC_TIME                      #用于格式化时间和日期。</span><br><span class="line">LC_COLLATE                #用于比较和排序。</span><br><span class="line">LC_MONETORY           #用于格式化货币单位。</span><br><span class="line">LC_MESSAGES             #用于控制程序输出时所使用的语言，主要是提示信息，错误信息，状态信息， 标题，标签， 按钮和菜单等。</span><br><span class="line">LC_PAPER                     #默认纸张尺寸大小</span><br><span class="line">LC_NAME                     #姓名书写方式</span><br><span class="line">LC_ADDRESS                #地址书写方式</span><br><span class="line">LC_TELEPHONE            #电话号码书写方式</span><br><span class="line">LC_MEASUREMENT     #度量衡表达方式</span><br><span class="line">LC_IDENTIFICATION    #locale对自身包含信息的概述</span><br></pre></td></tr></table></figure>
+<h3 id="LC-ALL"><a href="#LC-ALL" class="headerlink" title="LC_ALL"></a>LC_ALL</h3><p>它不是环境变量，它是一个宏，可通过该变量的设置覆盖所有的LC_<em>变量。这个变量设置之后，可以废除LC_</em>的设置值，使得这些变量的设置值与LC_ALL的值一致，注意，LANG变量不受影响。</p>
+<p>宏：可能会有人对宏没概念，简单说明下，我们在计算机领域说的宏（Macro)，是批量处理的一个说法。宏是一种通过某种指定规则来处理数据的过程，可以称之为语法替换（大家应该在编辑器里匹配替换过数据，但这这里要复杂点），这里不同数据替换，宏是获取某种输入（通常是字符串），然后如何根据事先定义的规则，转换成对应的输出（通常也是字符串)。真实的宏要比这里说的复杂，有兴趣可以自行查资料。<br>在这里，我们这个宏操作就是用LC_ALL的值去覆盖LC_*的变量值</p>
+<p>格式化：上面的含义讲到格式化，可能会有人不太清楚，格式化就是重新设定组织数据的规则，拿我们日常生活举例子，我们要记录一段数据，我们可以记在方格纸上，可以记在横格纸上，可以记在白纸上等等，这里的这种的纸张格式就是组织数据的一种方式，不同格式，记录方式和数据量等都不一样，我们在Windows系统中，经常做的格式化优盘操作就是这样，可以把自带的FAT32格式，重新格式化定义为NTFS格式，你可以理解为，将优盘的记录数据从方格纸方式变成横格纸方式。</p>
+<span class="label primary">优先级级别：LC_ALL>LC_*>LANG</span>
+<span class="label primary">注意：定义这么多变量在某些情况下是很有用的，例如，当我需要一个能够输入中文的英文环境，我可以把 LC_CTYPE设定成zh_CN.GB18030，而其他所有的项都是en_US.UTF-8。</span>
+<p>总结：LANG是LC_<em>的默认值，而LC_ALL比LC_</em>的优先级都高，设置完LC_ALL之后，会强制重置LC_<em>的值，如果不将LC_ALL的值重置为空，则无法再去设置LC_</em>的值</p>
+<p>补充：一般来说，我们在新装系统之后，我们的变量的值将会是下面这种情况：<br>NTP-slave:~ # locale<br>LANG=POSIX<br>LC_CTYPE=en_US.UTF-8<br>LC_NUMERIC=”POSIX”<br>LC_TIME=”POSIX”<br>LC_COLLATE=”POSIX”<br>LC_MONETARY=”POSIX”<br>LC_MESSAGES=”POSIX”<br>LC_PAPER=”POSIX”<br>LC_NAME=”POSIX”<br>LC_ADDRESS=”POSIX”<br>LC_TELEPHONE=”POSIX”<br>LC_MEASUREMENT=”POSIX”<br>LC_IDENTIFICATION=”POSIX”<br>LC_ALL=</p>
+<p>讲解：C是系统默认的locale，而POSIX是C的别名，这是标准的C Locale。它所指定的属性和行为由ISO C标准所指定。当我们新安装完一个系统时，默认的locale就是C或POSIX。<br>我们这里说的C其实就是ASCII编码。</p>
+<p>POSIX：可移植操作系统接口（Portable Operating System Interface of UNIX，缩写为 POSIX ），POSIX标准定义了操作系统应该为应用程序提供的接口标准，是IEEE为要在各种UNIX操作系统上运行的软件而定义的一系列API标准的总称，其正式称呼为IEEE 1003，而国际标准名称为ISO/IEC 9945。<br>换句话说，为一个POSIX兼容的操作系统编写的程序，可以在任何其它的POSIX操作系统（即使是来自另一个厂商）上编译执行。</p>
+<p>总结：POSIX是一种类UNIX系统的通用接口标准，基于这个标准开发的程序，能够灵活的迁移到不同版本系统上使用。</p>
+<p>在这里，locale中的POSIX说的就是一种业内统一的默认locale标准，不区分地域，所有Linux发行版本都支持。</p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令:"></a>常用命令:</h2><h3 id="查看当前locale设置"><a href="#查看当前locale设置" class="headerlink" title="查看当前locale设置"></a>查看当前locale设置</h3><blockquote>
+<p>locale</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[oracle@CASystem ~]$ locale</span><br><span class="line">LANG=zh_CN.UTF-8</span><br><span class="line">LC_CTYPE=zh_CN.UTF-8</span><br><span class="line">LC_NUMERIC=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_TIME=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_COLLATE=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_MONETARY=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_MESSAGES=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_PAPER=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_NAME=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_ADDRESS=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_TELEPHONE=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_MEASUREMENT=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_IDENTIFICATION=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_ALL=</span><br></pre></td></tr></table></figure>
+<h3 id="查看当前系统的所有可用locale"><a href="#查看当前系统的所有可用locale" class="headerlink" title="查看当前系统的所有可用locale"></a>查看当前系统的所有可用locale</h3><blockquote>
+<p>locale -a</p>
+</blockquote>
+<h3 id="设置系统的locale（此处以zh-CN-utf8为例）"><a href="#设置系统的locale（此处以zh-CN-utf8为例）" class="headerlink" title="设置系统的locale（此处以zh_CN.utf8为例）"></a>设置系统的locale（此处以zh_CN.utf8为例）</h3><blockquote>
+<p>1）编辑文件：/etc/profie，在文件末尾添加以下内容并报错退出</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#vim /etc/profile</span><br><span class="line">export LC_ALL=zh_CN.utf8</span><br><span class="line">export LANG=zh_CN.utf8</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>cp file1 file2</p>
+<p>2）执行生效命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#source /etc/profile</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-</li>
-<li><p>.采用交互方式将文件file1复制成文件file2</p>
-<blockquote>
-<p>cp -i file1 file2</p>
-</blockquote>
-</li>
-<li><p>.将文件file1复制成file2，因为目的文件已经存在，所以指定使用强制复制的模式</p>
-<blockquote>
-<p>cp -f file1 file2</p>
-</blockquote>
-</li>
-<li><p>.将目录dir1复制成目录dir2</p>
-<blockquote>
-<p>cp -R file1 file2</p>
-</blockquote>
-</li>
-<li><p>.同时将文件file1、file2、file3与目录dir1复制到dir2</p>
-<blockquote>
-<p>cp -R file1 file2 file3 dir1 dir2</p>
-</blockquote>
-</li>
-<li><p>.复制时保留文件属性</p>
-<blockquote>
-<p>cp -p a.txt tmp/</p>
-</blockquote>
-</li>
-<li><p>.复制时保留文件的目录结构</p>
-<blockquote>
-<p>cp -P  /var/tmp/a.txt  ./temp/</p>
-</blockquote>
-</li>
-<li><p>.复制时产生备份文件</p>
-<blockquote>
-<p>cp -b a.txt tmp/</p>
-</blockquote>
-</li>
-<li><p>.复制时产生备份文件，尾标 ~1~格式</p>
-<blockquote>
-<p>cp -b -V t   a.txt /tmp    </p>
-</blockquote>
-</li>
-<li><p>.指定备份文件尾标    </p>
-<blockquote>
-<p>cp -b -S _bak a.txt /tmp</p>
-</blockquote>
-</li>
-<li><p>.将指定目录，保留目录属性、结构，整体复制到另外一个位置</p>
-<blockquote>
-<p>cp -apR /u01/UAT  /u02/UAT</p>
-</blockquote>
-</li>
-</ul>
-
+<h3 id="最后保持Linux服务器端-LC-设置和-ssh工具的编码设置一致，即可正常显示中文"><a href="#最后保持Linux服务器端-LC-设置和-ssh工具的编码设置一致，即可正常显示中文" class="headerlink" title="最后保持Linux服务器端 LC#设置和 ssh工具的编码设置一致，即可正常显示中文"></a>最后保持Linux服务器端 LC#设置和 ssh工具的编码设置一致，即可正常显示中文</h3>
       
     </div>
 
@@ -672,7 +620,7 @@
           
             <a href="/tags/Linux/" rel="tag"># Linux</a>
           
-            <a href="/tags/cp/" rel="tag"># cp</a>
+            <a href="/tags/locale/" rel="tag"># locale</a>
           
         </div>
       
@@ -685,8 +633,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/25/01-Get-Start-with-Pandas/" rel="next" title="01 Get Start with Pandas">
-                <i class="fa fa-chevron-left"></i> 01 Get Start with Pandas
+              <a href="/2019/04/01/Linux-Disk-Management/" rel="next" title="Linux 磁盘管理">
+                <i class="fa fa-chevron-left"></i> Linux 磁盘管理
               </a>
             
           </div>
@@ -694,10 +642,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/01/Linux-Disk-Management/" rel="prev" title="Linux 磁盘管理">
-                Linux 磁盘管理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -741,8 +685,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -884,6 +837,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是locale"><span class="nav-number">1.</span> <span class="nav-text">什么是locale</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#locale的命名规则"><span class="nav-number">2.</span> <span class="nav-text">locale的命名规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#locale命令及参数讲解"><span class="nav-number">3.</span> <span class="nav-text">locale命令及参数讲解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LANG"><span class="nav-number">3.1.</span> <span class="nav-text">LANG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LC-CTYPE"><span class="nav-number">3.2.</span> <span class="nav-text">LC_CTYPE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LC-ALL"><span class="nav-number">3.3.</span> <span class="nav-text">LC_ALL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用命令"><span class="nav-number">4.</span> <span class="nav-text">常用命令:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看当前locale设置"><span class="nav-number">4.1.</span> <span class="nav-text">查看当前locale设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看当前系统的所有可用locale"><span class="nav-number">4.2.</span> <span class="nav-text">查看当前系统的所有可用locale</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置系统的locale（此处以zh-CN-utf8为例）"><span class="nav-number">4.3.</span> <span class="nav-text">设置系统的locale（此处以zh_CN.utf8为例）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后保持Linux服务器端-LC-设置和-ssh工具的编码设置一致，即可正常显示中文"><span class="nav-number">4.4.</span> <span class="nav-text">最后保持Linux服务器端 LC#设置和 ssh工具的编码设置一致，即可正常显示中文</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
