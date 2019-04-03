@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="Chong&#39;s Site book">
 <meta property="og:description" content="对于Linux内核来说，运行的内核版本都是一样，只要有对应中文的编码解码规则（字符集），有中文字体显示支持，Linux就能处理好中文信息。同理，对于其他语言也是一样。 什么是locale在Linux中，它使用locale命令来设置和显示程序运行的语言环境（也就是系统运行语言环境，应用进程是在系统的进程之上运行的，应用程序的父进程是init进程） locale的英文直译为场所，地区，地域，但它在Li">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-03T08:13:01.797Z">
+<meta property="og:updated_time" content="2019-04-03T08:15:51.445Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux ssh 中文编码">
 <meta name="twitter:description" content="对于Linux内核来说，运行的内核版本都是一样，只要有对应中文的编码解码规则（字符集），有中文字体显示支持，Linux就能处理好中文信息。同理，对于其他语言也是一样。 什么是locale在Linux中，它使用locale命令来设置和显示程序运行的语言环境（也就是系统运行语言环境，应用进程是在系统的进程之上运行的，应用程序的父进程是init进程） locale的英文直译为场所，地区，地域，但它在Li">
@@ -490,7 +490,7 @@
                 
               
 
-              <time title="创建时间：2019-04-03 15:35:45 / 修改时间：16:13:01" itemprop="dateCreated datePublished" datetime="2019-04-03T15:35:45+08:00">2019-04-03</time>
+              <time title="创建时间：2019-04-03 15:35:45 / 修改时间：16:15:51" itemprop="dateCreated datePublished" datetime="2019-04-03T15:35:45+08:00">2019-04-03</time>
             
 
             
@@ -566,7 +566,7 @@
 <p><code>de_DE.UTF-8@euro</code>, de表示德语，DE表示德国，UTF-8表示字符集，euro表示按照欧洲习惯加以修正 </p>
 <p>这个命令规则就是说我们在设置locale的相关变量时，都是使用这种格式给变量进行赋值</p>
 <h2 id="locale命令及参数讲解"><a href="#locale命令及参数讲解" class="headerlink" title="locale命令及参数讲解"></a>locale命令及参数讲解</h2><p>设置Locale的根本其实就是设置一组总共12个LC开头的变量（不包括LANG和LC_ALL）</p>
-<p>Linux中locale文件存放位置： /usr/share/i18n/locales</p>
+<p>Linux中locale文件存放位置： /usr/share/i18n/locales<br><a id="more"></a></p>
 <h3 id="LANG"><a href="#LANG" class="headerlink" title="LANG"></a>LANG</h3><p>LANG的优先级是最低的，它是所有LC_<em>变量的默认值。下方所有以LC_开头变量（不包括LC_ALL）中，如果存在没有设置变量值的变量，那么系统将会使用LANG的变量值来给这个变量进行赋值。如果变量有值，则保持不变，不受影响。可以看到，我们上面示例中的输出中的LC_</em>变量的值其实就是LANG变量决定的</p>
 <h3 id="LC-CTYPE"><a href="#LC-CTYPE" class="headerlink" title="LC_CTYPE"></a>LC_CTYPE</h3><p><strong>用于字符分类和字符串处理，控制所有字符的处理方式，包括字符编码，字符是单字节还是多字节，如何打印等，这个变量是最重要的。</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">LC_NUMERIC              #用于格式化非货币的数字显示。</span><br><span class="line">LC_TIME                      #用于格式化时间和日期。</span><br><span class="line">LC_COLLATE                #用于比较和排序。</span><br><span class="line">LC_MONETORY           #用于格式化货币单位。</span><br><span class="line">LC_MESSAGES             #用于控制程序输出时所使用的语言，主要是提示信息，错误信息，状态信息， 标题，标签， 按钮和菜单等。</span><br><span class="line">LC_PAPER                     #默认纸张尺寸大小</span><br><span class="line">LC_NAME                     #姓名书写方式</span><br><span class="line">LC_ADDRESS                #地址书写方式</span><br><span class="line">LC_TELEPHONE            #电话号码书写方式</span><br><span class="line">LC_MEASUREMENT     #度量衡表达方式</span><br><span class="line">LC_IDENTIFICATION    #locale对自身包含信息的概述</span><br></pre></td></tr></table></figure>
