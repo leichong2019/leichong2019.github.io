@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://leichong2019.github.io/2019/04/20/Python-basic-2-number/</loc>
+    
+    <lastmod>2019-04-20T15:54:23.918Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://leichong2019.github.io/2019/04/19/Python-basic(1)-string/</loc>
     
     <lastmod>2019-04-20T15:43:53.540Z</lastmod>
@@ -93,21 +100,7 @@
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/third-party-services/external-libraries/index.html</loc>
-    
-    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://leichong2019.github.io/docs/third-party-services/math-equations/index.html</loc>
-    
-    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://leichong2019.github.io/docs/theme-settings/sidebar/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/theme-settings/posts/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
@@ -121,7 +114,14 @@
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/theme-settings/posts/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/theme-settings/sidebar/index.html</loc>
+    
+    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/docs/third-party-services/math-equations/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
@@ -135,7 +135,7 @@
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/faqs/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/third-party-services/external-libraries/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
@@ -143,6 +143,13 @@
   
   <url>
     <loc>https://leichong2019.github.io/docs/tag-plugins/index.html</loc>
+    
+    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/docs/faqs/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
@@ -191,14 +198,14 @@
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/getting-started/update-from-v5/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/getting-started/installation/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/getting-started/installation/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/getting-started/update-from-v5/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
