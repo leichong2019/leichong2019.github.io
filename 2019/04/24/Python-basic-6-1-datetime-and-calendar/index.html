@@ -1,0 +1,2007 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8828931900622945",
+    enable_page_level_ads: true
+  });
+</script>
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="主要涉及的模块ModulesJupter notebook NBViewer传送门  datetime Fast implementation of the datetime type. datetime提供操作日期和时间相关的类型 calendar Calendar printing functions. calendar模块提供和日历操作及显示打印相关的类 time This module p">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python-基础(6.1)-datetime and calendar">
+<meta property="og:url" content="https://leichong2019.github.io/2019/04/24/Python-basic-6-1-datetime-and-calendar/index.html">
+<meta property="og:site_name" content="Chong&#39;s Site book">
+<meta property="og:description" content="主要涉及的模块ModulesJupter notebook NBViewer传送门  datetime Fast implementation of the datetime type. datetime提供操作日期和时间相关的类型 calendar Calendar printing functions. calendar模块提供和日历操作及显示打印相关的类 time This module p">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-24T05:55:55.554Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python-基础(6.1)-datetime and calendar">
+<meta name="twitter:description" content="主要涉及的模块ModulesJupter notebook NBViewer传送门  datetime Fast implementation of the datetime type. datetime提供操作日期和时间相关的类型 calendar Calendar printing functions. calendar模块提供和日历操作及显示打印相关的类 time This module p">
+
+
+
+
+
+
+  <link rel="canonical" href="https://leichong2019.github.io/2019/04/24/Python-basic-6-1-datetime-and-calendar/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Python-基础(6.1)-datetime and calendar | Chong's Site book</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chong's Site book</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">13</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">16</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">22</span></a>
+
+  </li>
+        
+        
+        
+          
+            
+            
+            
+              
+              
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-next-docs(copy-from-next)">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/" rel="section"><i class="menu-item-icon fa fa-fw fa-files-o"></i> <br>Next Docs(copy from Next)</a>
+
+  </li>
+
+
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+        
+        
+        
+        
+          
+            
+            
+            
+              
+              
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-reference">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/references/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>reference</a>
+
+  </li>
+
+
+            
+          
+        
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+  
+
+  
+
+  <a href="https://github.com/leichong2019" class="github-corner" title="GitHub" aria-label="GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://leichong2019.github.io/2019/04/24/Python-basic-6-1-datetime-and-calendar/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chong's Site book">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python-基础(6.1)-datetime and calendar
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-24 13:49:41 / 修改时间：13:55:55" itemprop="dateCreated datePublished" datetime="2019-04-24T13:49:41+08:00">2019-04-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/basic/" itemprop="url" rel="index"><span itemprop="name">basic</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/basic/DateTime/" itemprop="url" rel="index"><span itemprop="name">DateTime</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="主要涉及的模块Modules"><a href="#主要涉及的模块Modules" class="headerlink" title="主要涉及的模块Modules"></a>主要涉及的模块Modules</h2><p><a href="https://nbviewer.jupyter.org/github/leichong2019/leichong2019.github.io/blob/master/jupyters/Python_Basic
+_Date_and_Time%281%29.ipynb" target="_blank" rel="noopener">Jupter notebook NBViewer传送门</a></p>
+<ul>
+<li><code>datetime</code> Fast implementation of the datetime type. datetime提供操作日期和时间相关的类型</li>
+<li><code>calendar</code> Calendar printing functions. calendar模块提供和日历操作及显示打印相关的类</li>
+<li><code>time</code> This module provides various functions to manipulate time values. time模块提供了很多方法工具，用来操作时间相关的类型。</li>
+</ul>
+<h2 id="datetime模块"><a href="#datetime模块" class="headerlink" title="datetime模块"></a>datetime模块</h2><h3 id="模块中包含的类"><a href="#模块中包含的类" class="headerlink" title="模块中包含的类"></a>模块中包含的类</h3><ul>
+<li>datetime(builtins.object)<ul>
+<li><strong>date</strong><ul>
+<li><strong>datetime</strong></li>
+</ul>
+</li>
+<li>time</li>
+<li>timedelta</li>
+<li>tzinfo<ul>
+<li>timezone</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="class-datetime-date-year-month-day"><a href="#class-datetime-date-year-month-day" class="headerlink" title="class datetime.date(year, month, day)"></a>class datetime.date(year, month, day)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">代表一个理想化的Gregorian日历中的日期，包括年、月、日等属性。</span><br><span class="line">An idealized naive date, assuming the current Gregorian calendar always was, and always will be, in effect. Attributes: year, month, and day.</span><br><span class="line">All arguments are required. Arguments may be integers, in the following ranges:</span><br><span class="line"></span><br><span class="line">MINYEAR &lt;= year &lt;= MAXYEAR</span><br><span class="line">1 &lt;= month &lt;= 12</span><br><span class="line">1 &lt;= day &lt;= number of days in the given month and year</span><br></pre></td></tr></table></figure>
+<h4 id="class-methods"><a href="#class-methods" class="headerlink" title="class methods:"></a>class methods:</h4><h5 id="classmethod-date-today"><a href="#classmethod-date-today" class="headerlink" title="classmethod date.today()"></a>classmethod date.today()</h5><p>Return the current local date. This is equivalent to date.fromtimestamp(time.time()).</p>
+<h5 id="classmethod-date-fromtimestamp-timestamp"><a href="#classmethod-date-fromtimestamp-timestamp" class="headerlink" title="classmethod date.fromtimestamp(timestamp)"></a>classmethod date.fromtimestamp(timestamp)</h5><p>Return the local date corresponding to the POSIX timestamp, such as is returned by time.time(). This may raise OverflowError, if the timestamp is out of the range of values supported by the platform C localtime() function, and OSError on localtime() failure. It’s common for this to be restricted to years from 1970 through 2038. Note that on non-POSIX systems that include leap seconds in their notion of a timestamp, leap seconds are ignored by fromtimestamp().</p>
+<p>Changed in version 3.3: Raise OverflowError instead of ValueError if the timestamp is out of the range of values supported by the platform C localtime() function. Raise OSError instead of ValueError on localtime() failure.</p>
+<h5 id="classmethod-date-fromordinal-ordinal"><a href="#classmethod-date-fromordinal-ordinal" class="headerlink" title="classmethod date.fromordinal(ordinal)"></a>classmethod date.fromordinal(ordinal)</h5><p>Return the date corresponding to the proleptic Gregorian ordinal, where January 1 of year 1 has ordinal 1. ValueError is raised unless 1 &lt;= ordinal &lt;= date.max.toordinal(). For any date d, date.fromordinal(d.toordinal()) == d.</p>
+<h5 id="classmethod-date-fromisoformat-date-string"><a href="#classmethod-date-fromisoformat-date-string" class="headerlink" title="classmethod date.fromisoformat(date_string)"></a>classmethod date.fromisoformat(date_string)</h5><p>Return a date corresponding to a date_string in the format emitted by date.isoformat(). Specifically, this function supports strings in the format(s) YYYY-MM-DD.</p>
+<p>Caution This does not support parsing arbitrary ISO 8601 strings - it is only intended as the inverse operation of date.isoformat().<br>New in version 3.7.</p>
+<h4 id="Instance-methods"><a href="#Instance-methods" class="headerlink" title="Instance methods:"></a>Instance methods:</h4><h5 id="date-replace-year-self-year-month-self-month-day-self-day"><a href="#date-replace-year-self-year-month-self-month-day-self-day" class="headerlink" title="date.replace(year=self.year, month=self.month, day=self.day)"></a>date.replace(year=self.year, month=self.month, day=self.day)</h5><h5 id="date-timetuple"><a href="#date-timetuple" class="headerlink" title="date.timetuple()"></a>date.timetuple()</h5><p>Return a time.struct_time such as returned by time.localtime(). The hours, minutes and seconds are 0, and the DST flag is -1. d.timetuple() is equivalent to time.struct_time((d.year, d.month, d.day, 0, 0, 0, d.weekday(), yday, -1)), where yday = d.toordinal() - date(d.year, 1, 1).toordinal() + 1 is the day number within the current year starting with 1 for January 1st.</p>
+<h5 id="date-toordinal"><a href="#date-toordinal" class="headerlink" title="date.toordinal()"></a>date.toordinal()</h5><p>Return the proleptic Gregorian ordinal of the date, where January 1 of year 1 has ordinal 1. For any date object d, date.fromordinal(d.toordinal()) == d.</p>
+<h5 id="date-weekday"><a href="#date-weekday" class="headerlink" title="date.weekday()"></a>date.weekday()</h5><p>Return the day of the week as an integer, where Monday is 0 and Sunday is 6. For example, date(2002, 12, 4).weekday() == 2, a Wednesday. See also isoweekday().</p>
+<h5 id="date-isoweekday"><a href="#date-isoweekday" class="headerlink" title="date.isoweekday()"></a>date.isoweekday()</h5><p>Return the day of the week as an integer, where Monday is 1 and Sunday is 7. For example, date(2002, 12, 4).isoweekday() == 3, a Wednesday. See also weekday(), isocalendar().</p>
+<h5 id="date-isocalendar"><a href="#date-isocalendar" class="headerlink" title="date.isocalendar()"></a>date.isocalendar()</h5><p>Return a 3-tuple, (ISO year, ISO week number, ISO weekday).<br>The ISO calendar is a widely used variant of the Gregorian calendar. See <a href="https://www.staff.science.uu.nl/~gent0113/calendar/isocalendar.htm" target="_blank" rel="noopener">https://www.staff.science.uu.nl/~gent0113/calendar/isocalendar.htm</a> for a good explanation.</p>
+<p>The ISO year consists of 52 or 53 full weeks, and where a week starts on a Monday and ends on a Sunday. The first week of an ISO year is the first (Gregorian) calendar week of a year containing a Thursday. This is called week number 1, and the ISO year of that Thursday is the same as its Gregorian year.</p>
+<p>For example, 2004 begins on a Thursday, so the first week of ISO year 2004 begins on Monday, 29 Dec 2003 and ends on Sunday, 4 Jan 2004, so that date(2003, 12, 29).isocalendar() == (2004, 1, 1) and date(2004, 1, 4).isocalendar() == (2004, 1, 7).</p>
+<h5 id="date-isoformat"><a href="#date-isoformat" class="headerlink" title="date.isoformat()"></a>date.isoformat()</h5><p>Return a string representing the date in ISO 8601 format, ‘YYYY-MM-DD’. For example, date(2002, 12, 4).isoformat() == ‘2002-12-04’.</p>
+<h5 id="date-str"><a href="#date-str" class="headerlink" title="date.str()"></a>date.<strong>str</strong>()</h5><p>For a date d, str(d) is equivalent to d.isoformat().</p>
+<h5 id="date-ctime"><a href="#date-ctime" class="headerlink" title="date.ctime()"></a>date.ctime()</h5><p>Return a string representing the date, for example date(2002, 12, 4).ctime() == ‘Wed Dec 4 00:00:00 2002’. d.ctime() is equivalent to time.ctime(time.mktime(d.timetuple())) on platforms where the native C ctime() function (which time.ctime() invokes, but which date.ctime() does not invoke) conforms to the C standard.</p>
+<h5 id="date-strftime-format"><a href="#date-strftime-format" class="headerlink" title="date.strftime(format)"></a><strong>date.strftime(format)</strong></h5><p>Return a string representing the date, controlled by an explicit format string. Format codes referring to hours, minutes or seconds will see 0 values. For a complete list of formatting directives, see strftime() and strptime() Behavior.</p>
+<h5 id="date-format-format"><a href="#date-format-format" class="headerlink" title="date.format(format)"></a>date.<strong>format</strong>(format)</h5><p>Same as date.strftime(). This makes it possible to specify a format string for a date object in formatted string literals and when using str.format(). For a complete list of formatting directives, see strftime() and strptime() Behavior.</p>
+<h4 id="example"><a href="#example" class="headerlink" title="example"></a>example</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> date</span><br><span class="line">dToday = date.today()</span><br><span class="line"></span><br><span class="line">print(dToday)</span><br><span class="line">print(dToday.timetuple())</span><br><span class="line">print(dToday.isoformat())</span><br><span class="line">print(dToday.strftime(<span class="string">"%d/%m/%Y"</span>))</span><br><span class="line">print(dToday.strftime(<span class="string">"%A %d. %B %Y"</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">dBirthday = date(date.today().year, <span class="number">6</span>, <span class="number">24</span>)</span><br><span class="line">dBirthday.toordinal()  <span class="comment"># Days from 0001/01/01</span></span><br></pre></td></tr></table></figure>
+<pre><code>2019-04-24
+time.struct_time(tm_year=2019, tm_mon=4, tm_mday=24, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=2, tm_yday=114, tm_isdst=-1)
+2019-04-24
+24/04/2019
+Wednesday 24. April 2019
+
+
+
+
+
+737234
+</code></pre><h3 id="class-datetime-datetime-year-month-day-hour-0-minute-0-second-0-microsecond-0-tzinfo-None-fold-0"><a href="#class-datetime-datetime-year-month-day-hour-0-minute-0-second-0-microsecond-0-tzinfo-None-fold-0" class="headerlink" title="class datetime.datetime(year, month, day, hour=0, minute=0, second=0, microsecond=0, tzinfo=None, *, fold=0)"></a>class datetime.datetime(year, month, day, hour=0, minute=0, second=0, microsecond=0, tzinfo=None, *, fold=0)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">The year, month and day arguments are required. tzinfo may be None, or an instance of a tzinfo subclass. The remaining arguments may be integers, in the following ranges:</span><br><span class="line"></span><br><span class="line">MINYEAR &lt;= year &lt;= MAXYEAR,</span><br><span class="line">1 &lt;= month &lt;= 12,</span><br><span class="line">1 &lt;= day &lt;= number of days in the given month and year,</span><br><span class="line">0 &lt;= hour &lt; 24,</span><br><span class="line">0 &lt;= minute &lt; 60,</span><br><span class="line">0 &lt;= second &lt; 60,</span><br><span class="line">0 &lt;= microsecond &lt; 1000000,</span><br><span class="line">fold in [0, 1].</span><br></pre></td></tr></table></figure>
+<h4 id="class-methods-1"><a href="#class-methods-1" class="headerlink" title="class methods:"></a>class methods:</h4><h5 id="classmethod-datetime-now-tz-None"><a href="#classmethod-datetime-now-tz-None" class="headerlink" title="classmethod datetime.now(tz=None)"></a>classmethod datetime.now(tz=None)</h5><h5 id="classmethod-datetime-utcnow"><a href="#classmethod-datetime-utcnow" class="headerlink" title="classmethod datetime.utcnow()"></a>classmethod datetime.utcnow()</h5><h5 id="classmethod-datetime-fromtimestamp-timestamp-tz-None"><a href="#classmethod-datetime-fromtimestamp-timestamp-tz-None" class="headerlink" title="classmethod datetime.fromtimestamp(timestamp, tz=None)"></a>classmethod datetime.fromtimestamp(timestamp, tz=None)</h5><h5 id="classmethod-datetime-fromordinal-ordinal"><a href="#classmethod-datetime-fromordinal-ordinal" class="headerlink" title="classmethod datetime.fromordinal(ordinal)"></a>classmethod datetime.fromordinal(ordinal)</h5><h5 id="classmethod-datetime-combine-date-time-tzinfo-self-tzinfo"><a href="#classmethod-datetime-combine-date-time-tzinfo-self-tzinfo" class="headerlink" title="classmethod datetime.combine(date, time, tzinfo=self.tzinfo)"></a>classmethod datetime.combine(date, time, tzinfo=self.tzinfo)</h5><h5 id="classmethod-datetime-fromisoformat-date-string"><a href="#classmethod-datetime-fromisoformat-date-string" class="headerlink" title="classmethod datetime.fromisoformat(date_string)"></a>classmethod datetime.fromisoformat(date_string)</h5><h4 id="Instance-methods-1"><a href="#Instance-methods-1" class="headerlink" title="Instance methods:"></a>Instance methods:</h4><h4 id="example-of-using-datetime"><a href="#example-of-using-datetime" class="headerlink" title="example of using datetime"></a>example of using datetime</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime, date, time</span><br><span class="line"></span><br><span class="line">d = date(<span class="number">2019</span>, <span class="number">4</span>, <span class="number">24</span>)</span><br><span class="line">t = time(<span class="number">12</span>, <span class="number">30</span>)</span><br><span class="line">print(<span class="string">'combined data/time.'</span> ,datetime.combine(d, t))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Using datetime.now() or datetime.utcnow()</span></span><br><span class="line">tNow = datetime.now()</span><br><span class="line">utNow = datetime.utcnow()</span><br><span class="line">print(tNow)</span><br><span class="line">print(utNow)</span><br><span class="line"></span><br><span class="line"><span class="comment">## Using datetime.strptime()</span></span><br><span class="line">dt = datetime.strptime(<span class="string">"21/11/06 16:30"</span>, <span class="string">"%d/%m/%y %H:%M"</span>)</span><br><span class="line">print(type(dt))</span><br><span class="line">print(dt)</span><br><span class="line"></span><br><span class="line">tt = dt.timetuple()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> tt:</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line"><span class="comment">## format datetime to format string</span></span><br><span class="line">dt.strftime(<span class="string">"%A, %d. %B %Y %I:%M%p"</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>combined data/time. 2019-04-24 12:30:00
+2019-04-24 11:24:26.485213
+2019-04-24 03:24:26.485241
+&lt;class &apos;datetime.datetime&apos;&gt;
+2006-11-21 16:30:00
+2006
+11
+21
+16
+30
+0
+1
+325
+-1
+
+
+
+
+
+&apos;Tuesday, 21. November 2006 04:30PM&apos;
+</code></pre><h4 id="example-of-using-datetime-with-tzinfo"><a href="#example-of-using-datetime-with-tzinfo" class="headerlink" title="example of using datetime with tzinfo"></a>example of using datetime with tzinfo</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> timedelta, datetime, tzinfo</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GMT1</span><span class="params">(tzinfo)</span>:</span></span><br><span class="line">     <span class="function"><span class="keyword">def</span> <span class="title">utcoffset</span><span class="params">(self, dt)</span>:</span></span><br><span class="line">         <span class="keyword">return</span> timedelta(hours=<span class="number">1</span>) + self.dst(dt)</span><br><span class="line">     <span class="function"><span class="keyword">def</span> <span class="title">dst</span><span class="params">(self, dt)</span>:</span></span><br><span class="line">         <span class="comment"># DST starts last Sunday in March</span></span><br><span class="line">         d = datetime(dt.year, <span class="number">4</span>, <span class="number">1</span>)   <span class="comment"># ends last Sunday in October</span></span><br><span class="line">         self.dston = d - timedelta(days=d.weekday() + <span class="number">1</span>)</span><br><span class="line">         d = datetime(dt.year, <span class="number">11</span>, <span class="number">1</span>)</span><br><span class="line">         self.dstoff = d - timedelta(days=d.weekday() + <span class="number">1</span>)</span><br><span class="line">         <span class="keyword">if</span> self.dston &lt;=  dt.replace(tzinfo=<span class="literal">None</span>) &lt; self.dstoff:</span><br><span class="line">             <span class="keyword">return</span> timedelta(hours=<span class="number">1</span>)</span><br><span class="line">         <span class="keyword">else</span>:</span><br><span class="line">             <span class="keyword">return</span> timedelta(<span class="number">0</span>)</span><br><span class="line">     <span class="function"><span class="keyword">def</span> <span class="title">tzname</span><span class="params">(self,dt)</span>:</span></span><br><span class="line">          <span class="keyword">return</span> <span class="string">"GMT +1"</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GMT2</span><span class="params">(tzinfo)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">utcoffset</span><span class="params">(self, dt)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> timedelta(hours=<span class="number">2</span>) + self.dst(dt)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dst</span><span class="params">(self, dt)</span>:</span></span><br><span class="line">        d = datetime(dt.year, <span class="number">4</span>, <span class="number">1</span>)</span><br><span class="line">        self.dston = d - timedelta(days=d.weekday() + <span class="number">1</span>)</span><br><span class="line">        d = datetime(dt.year, <span class="number">11</span>, <span class="number">1</span>)</span><br><span class="line">        self.dstoff = d - timedelta(days=d.weekday() + <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">if</span> self.dston &lt;=  dt.replace(tzinfo=<span class="literal">None</span>) &lt; self.dstoff:</span><br><span class="line">            <span class="keyword">return</span> timedelta(hours=<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> timedelta(<span class="number">0</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">tzname</span><span class="params">(self,dt)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"GMT +2"</span></span><br><span class="line"></span><br><span class="line">gmt1 = GMT1()</span><br></pre></td></tr></table></figure>
+<h3 id="class-datetime-time-hour-0-minute-0-second-0-microsecond-0-tzinfo-None-fold-0"><a href="#class-datetime-time-hour-0-minute-0-second-0-microsecond-0-tzinfo-None-fold-0" class="headerlink" title="class datetime.time(hour=0, minute=0, second=0, microsecond=0, tzinfo=None, *, fold=0)"></a>class datetime.time(hour=0, minute=0, second=0, microsecond=0, tzinfo=None, *, fold=0)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">All arguments are optional. tzinfo may be None, or an instance of a tzinfo subclass. The remaining arguments may be integers, in the following ranges:</span><br><span class="line"></span><br><span class="line">0 &lt;= hour &lt; 24,</span><br><span class="line">0 &lt;= minute &lt; 60,</span><br><span class="line">0 &lt;= second &lt; 60,</span><br><span class="line">0 &lt;= microsecond &lt; 1000000,</span><br><span class="line">fold in [0, 1].</span><br><span class="line">If an argument outside those ranges is given, ValueError is raised. All default to 0 except tzinfo, which defaults to None.</span><br></pre></td></tr></table></figure>
+<h4 id="classmethod-time-fromisoformat-time-string"><a href="#classmethod-time-fromisoformat-time-string" class="headerlink" title="classmethod time.fromisoformat(time_string)"></a>classmethod time.fromisoformat(time_string)</h4><p>Return a time corresponding to a time_string in one of the formats emitted by time.isoformat(). Specifically, this function supports strings in the format(s) HH[:MM[:SS[.fff[fff]]]][+HH:MM[:SS[.ffffff]]].</p>
+<h4 id="Instance-methods-2"><a href="#Instance-methods-2" class="headerlink" title="Instance methods:"></a>Instance methods:</h4><h5 id="time-replace-hour-self-hour-minute-self-minute-second-self-second-microsecond-self-microsecond-tzinfo-self-tzinfo-fold-0"><a href="#time-replace-hour-self-hour-minute-self-minute-second-self-second-microsecond-self-microsecond-tzinfo-self-tzinfo-fold-0" class="headerlink" title="time.replace(hour=self.hour, minute=self.minute, second=self.second, microsecond=self.microsecond, tzinfo=self.tzinfo, * fold=0)"></a>time.replace(hour=self.hour, minute=self.minute, second=self.second, microsecond=self.microsecond, tzinfo=self.tzinfo, * fold=0)</h5><h5 id="time-isoformat-timespec-’auto’"><a href="#time-isoformat-timespec-’auto’" class="headerlink" title="time.isoformat(timespec=’auto’)"></a>time.isoformat(timespec=’auto’)</h5><h5 id="time-strftime-format"><a href="#time-strftime-format" class="headerlink" title="time.strftime(format)"></a>time.strftime(format)</h5><h5 id="time-tzname"><a href="#time-tzname" class="headerlink" title="time.tzname()"></a>time.tzname()</h5><h4 id="example-1"><a href="#example-1" class="headerlink" title="example"></a>example</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> time, tzinfo, timedelta</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GMT1</span><span class="params">(tzinfo)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">utcoffset</span><span class="params">(self, dt)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> timedelta(hours=<span class="number">1</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dst</span><span class="params">(self, dt)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> timedelta(<span class="number">0</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">tzname</span><span class="params">(self,dt)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Europe/Prague"</span></span><br><span class="line"></span><br><span class="line">t = time(<span class="number">12</span>, <span class="number">10</span>, <span class="number">30</span>, tzinfo=GMT1())</span><br><span class="line">print(t)                               <span class="comment"># doctest: +ELLIPSIS</span></span><br><span class="line"><span class="comment">#datetime.time(12, 10, 30, tzinfo=&lt;GMT1 object at 0x...&gt;)</span></span><br><span class="line">gmt = GMT1()</span><br><span class="line"></span><br><span class="line">print(t.isoformat())</span><br><span class="line"><span class="comment">#'12:10:30+01:00'</span></span><br><span class="line"></span><br><span class="line">print(t.dst())</span><br><span class="line"><span class="comment">#datetime.timedelta(0)</span></span><br><span class="line"></span><br><span class="line">print(t.tzname())</span><br><span class="line"><span class="comment">#'Europe/Prague'</span></span><br><span class="line"></span><br><span class="line">print(t.strftime(<span class="string">"%H:%M:%S %Z"</span>))</span><br><span class="line"><span class="comment">#'12:10:30 Europe/Prague'</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">'The &#123;&#125; is &#123;:%H:%M&#125;.'</span>.format(<span class="string">"time"</span>, t))</span><br><span class="line"><span class="comment">#'The time is 12:10.'</span></span><br></pre></td></tr></table></figure>
+<pre><code>12:10:30+01:00
+12:10:30+01:00
+0:00:00
+Europe/Prague
+12:10:30 Europe/Prague
+The time is 12:10.
+</code></pre><h3 id="class-datetime-tzinfo-abstract-base-class-for-datetime-use"><a href="#class-datetime-tzinfo-abstract-base-class-for-datetime-use" class="headerlink" title="class datetime.tzinfo  (abstract base class, for datetime use)"></a>class datetime.tzinfo  (abstract base class, for datetime use)</h3><h3 id="class-datetime-timezone-offset-name-None"><a href="#class-datetime-timezone-offset-name-None" class="headerlink" title="class datetime.timezone(offset, name=None)"></a>class datetime.timezone(offset, name=None)</h3><h3 id="class-datetime-timedelta-days-0-seconds-0-microseconds-0-milliseconds-0-minutes-0-hours-0-weeks-0"><a href="#class-datetime-timedelta-days-0-seconds-0-microseconds-0-milliseconds-0-minutes-0-hours-0-weeks-0" class="headerlink" title="class datetime.timedelta(days=0, seconds=0, microseconds=0, milliseconds=0, minutes=0, hours=0, weeks=0)"></a>class datetime.timedelta(days=0, seconds=0, microseconds=0, milliseconds=0, minutes=0, hours=0, weeks=0)</h3><p>A timedelta object represents a duration, the difference between two dates or times.</p>
+<h2 id="strftime-and-strptime-Behavior"><a href="#strftime-and-strptime-Behavior" class="headerlink" title="strftime() and strptime() Behavior"></a>strftime() and strptime() Behavior</h2><p><code>date, datetime, and time</code> objects all support a <code>strftime(format) method</code>, to create a string representing the time under the control of an explicit format string. Broadly speaking, d.strftime(fmt) acts like the time module’s time.strftime(fmt, d.timetuple()) although not all objects support a timetuple() method.</p>
+<ul>
+<li>实例方法， <code>data、datetime、time</code>这三个实例，都支持 <code>strftime(format)</code>方法，将实例代表的时间，格式化成对应的字符串。</li>
+</ul>
+<p>Conversely, the <code>datetime.strptime()</code> class method creates a <code>datetime</code> object from a string representing a date and time and a corresponding format string. <code>datetime.strptime(date_string, format)</code> is equivalent to datetime(*(time.strptime(date_string, format)[0:6])), except when the format includes sub-second components or timezone offset information, which are supported in datetime.strptime but are discarded by time.strptime.</p>
+<p>类似的、time、date 也有类似的类方法</p>
+<h2 id="calendar模块"><a href="#calendar模块" class="headerlink" title="calendar模块"></a>calendar模块</h2><p>calendar - Calendar printing functions</p>
+<h3 id="模块中包含的类-1"><a href="#模块中包含的类-1" class="headerlink" title="模块中包含的类"></a>模块中包含的类</h3><ul>
+<li>builtins.ValueError(builtins.Exception)<ul>
+<li>IllegalMonthError</li>
+<li>IllegalWeekdayError</li>
+</ul>
+</li>
+<li>builtins.object<ul>
+<li>Calendar<ul>
+<li>HTMLCalendar<ul>
+<li>LocaleHTMLCalendar</li>
+</ul>
+</li>
+<li>TextCalendar<ul>
+<li>LocaleTextCalendar</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> calendar</span><br><span class="line">help(calendar)</span><br></pre></td></tr></table></figure>
+<pre><code>Help on module calendar:
+
+NAME
+    calendar - Calendar printing functions
+
+MODULE REFERENCE
+    https://docs.python.org/3.7/library/calendar
+
+    The following documentation is automatically generated from the Python
+    source files.  It may be incomplete, incorrect or include features that
+    are considered implementation detail and may vary between Python
+    implementations.  When in doubt, consult the module reference at the
+    location listed above.
+
+DESCRIPTION
+    Note when comparing these calendars to the ones printed by cal(1): By
+    default, these calendars have Monday as the first day of the week, and
+    Sunday as the last (the European convention). Use setfirstweekday() to
+    set the first day of the week (0=Monday, 6=Sunday).
+
+CLASSES
+    builtins.ValueError(builtins.Exception)
+        IllegalMonthError
+        IllegalWeekdayError
+    builtins.object
+        Calendar
+            HTMLCalendar
+                LocaleHTMLCalendar
+            TextCalendar
+                LocaleTextCalendar
+
+    class Calendar(builtins.object)
+     |  Calendar(firstweekday=0)
+     |  
+     |  Base calendar class. This class doesn&apos;t do any formatting. It simply
+     |  provides data to subclasses.
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, firstweekday=0)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  getfirstweekday(self)
+     |  
+     |  itermonthdates(self, year, month)
+     |      Return an iterator for one month. The iterator will yield datetime.date
+     |      values and will always iterate through complete weeks, so it will yield
+     |      dates outside the specified month.
+     |  
+     |  itermonthdays(self, year, month)
+     |      Like itermonthdates(), but will yield day numbers. For days outside
+     |      the specified month the day number is 0.
+     |  
+     |  itermonthdays2(self, year, month)
+     |      Like itermonthdates(), but will yield (day number, weekday number)
+     |      tuples. For days outside the specified month the day number is 0.
+     |  
+     |  itermonthdays3(self, year, month)
+     |      Like itermonthdates(), but will yield (year, month, day) tuples.  Can be
+     |      used for dates outside of datetime.date range.
+     |  
+     |  itermonthdays4(self, year, month)
+     |      Like itermonthdates(), but will yield (year, month, day, day_of_week) tuples.
+     |      Can be used for dates outside of datetime.date range.
+     |  
+     |  iterweekdays(self)
+     |      Return an iterator for one week of weekday numbers starting with the
+     |      configured first one.
+     |  
+     |  monthdatescalendar(self, year, month)
+     |      Return a matrix (list of lists) representing a month&apos;s calendar.
+     |      Each row represents a week; week entries are datetime.date values.
+     |  
+     |  monthdays2calendar(self, year, month)
+     |      Return a matrix representing a month&apos;s calendar.
+     |      Each row represents a week; week entries are
+     |      (day number, weekday number) tuples. Day numbers outside this month
+     |      are zero.
+     |  
+     |  monthdayscalendar(self, year, month)
+     |      Return a matrix representing a month&apos;s calendar.
+     |      Each row represents a week; days outside this month are zero.
+     |  
+     |  setfirstweekday(self, firstweekday)
+     |  
+     |  yeardatescalendar(self, year, width=3)
+     |      Return the data for the specified year ready for formatting. The return
+     |      value is a list of month rows. Each month row contains up to width months.
+     |      Each month contains between 4 and 6 weeks and each week contains 1-7
+     |      days. Days are datetime.date objects.
+     |  
+     |  yeardays2calendar(self, year, width=3)
+     |      Return the data for the specified year ready for formatting (similar to
+     |      yeardatescalendar()). Entries in the week lists are
+     |      (day number, weekday number) tuples. Day numbers outside this month are
+     |      zero.
+     |  
+     |  yeardayscalendar(self, year, width=3)
+     |      Return the data for the specified year ready for formatting (similar to
+     |      yeardatescalendar()). Entries in the week lists are day numbers.
+     |      Day numbers outside this month are zero.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  firstweekday
+
+    class HTMLCalendar(Calendar)
+     |  HTMLCalendar(firstweekday=0)
+     |  
+     |  This calendar returns complete HTML pages.
+     |  
+     |  Method resolution order:
+     |      HTMLCalendar
+     |      Calendar
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  formatday(self, day, weekday)
+     |      Return a day as a table cell.
+     |  
+     |  formatmonth(self, theyear, themonth, withyear=True)
+     |      Return a formatted month as a table.
+     |  
+     |  formatmonthname(self, theyear, themonth, withyear=True)
+     |      Return a month name as a table row.
+     |  
+     |  formatweek(self, theweek)
+     |      Return a complete week as a table row.
+     |  
+     |  formatweekday(self, day)
+     |      Return a weekday name as a table header.
+     |  
+     |  formatweekheader(self)
+     |      Return a header for a week as a table row.
+     |  
+     |  formatyear(self, theyear, width=3)
+     |      Return a formatted year as a table of tables.
+     |  
+     |  formatyearpage(self, theyear, width=3, css=&apos;calendar.css&apos;, encoding=None)
+     |      Return a formatted year as a complete HTML page.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  cssclass_month = &apos;month&apos;
+     |  
+     |  cssclass_month_head = &apos;month&apos;
+     |  
+     |  cssclass_noday = &apos;noday&apos;
+     |  
+     |  cssclass_year = &apos;year&apos;
+     |  
+     |  cssclass_year_head = &apos;year&apos;
+     |  
+     |  cssclasses = [&apos;mon&apos;, &apos;tue&apos;, &apos;wed&apos;, &apos;thu&apos;, &apos;fri&apos;, &apos;sat&apos;, &apos;sun&apos;]
+     |  
+     |  cssclasses_weekday_head = [&apos;mon&apos;, &apos;tue&apos;, &apos;wed&apos;, &apos;thu&apos;, &apos;fri&apos;, &apos;sat&apos;, &apos;...
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from Calendar:
+     |  
+     |  __init__(self, firstweekday=0)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  getfirstweekday(self)
+     |  
+     |  itermonthdates(self, year, month)
+     |      Return an iterator for one month. The iterator will yield datetime.date
+     |      values and will always iterate through complete weeks, so it will yield
+     |      dates outside the specified month.
+     |  
+     |  itermonthdays(self, year, month)
+     |      Like itermonthdates(), but will yield day numbers. For days outside
+     |      the specified month the day number is 0.
+     |  
+     |  itermonthdays2(self, year, month)
+     |      Like itermonthdates(), but will yield (day number, weekday number)
+     |      tuples. For days outside the specified month the day number is 0.
+     |  
+     |  itermonthdays3(self, year, month)
+     |      Like itermonthdates(), but will yield (year, month, day) tuples.  Can be
+     |      used for dates outside of datetime.date range.
+     |  
+     |  itermonthdays4(self, year, month)
+     |      Like itermonthdates(), but will yield (year, month, day, day_of_week) tuples.
+     |      Can be used for dates outside of datetime.date range.
+     |  
+     |  iterweekdays(self)
+     |      Return an iterator for one week of weekday numbers starting with the
+     |      configured first one.
+     |  
+     |  monthdatescalendar(self, year, month)
+     |      Return a matrix (list of lists) representing a month&apos;s calendar.
+     |      Each row represents a week; week entries are datetime.date values.
+     |  
+     |  monthdays2calendar(self, year, month)
+     |      Return a matrix representing a month&apos;s calendar.
+     |      Each row represents a week; week entries are
+     |      (day number, weekday number) tuples. Day numbers outside this month
+     |      are zero.
+     |  
+     |  monthdayscalendar(self, year, month)
+     |      Return a matrix representing a month&apos;s calendar.
+     |      Each row represents a week; days outside this month are zero.
+     |  
+     |  setfirstweekday(self, firstweekday)
+     |  
+     |  yeardatescalendar(self, year, width=3)
+     |      Return the data for the specified year ready for formatting. The return
+     |      value is a list of month rows. Each month row contains up to width months.
+     |      Each month contains between 4 and 6 weeks and each week contains 1-7
+     |      days. Days are datetime.date objects.
+     |  
+     |  yeardays2calendar(self, year, width=3)
+     |      Return the data for the specified year ready for formatting (similar to
+     |      yeardatescalendar()). Entries in the week lists are
+     |      (day number, weekday number) tuples. Day numbers outside this month are
+     |      zero.
+     |  
+     |  yeardayscalendar(self, year, width=3)
+     |      Return the data for the specified year ready for formatting (similar to
+     |      yeardatescalendar()). Entries in the week lists are day numbers.
+     |      Day numbers outside this month are zero.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from Calendar:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  firstweekday
+
+    class IllegalMonthError(builtins.ValueError)
+     |  IllegalMonthError(month)
+     |  
+     |  Inappropriate argument value (of correct type).
+     |  
+     |  Method resolution order:
+     |      IllegalMonthError
+     |      builtins.ValueError
+     |      builtins.Exception
+     |      builtins.BaseException
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, month)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  __str__(self)
+     |      Return str(self).
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from builtins.ValueError:
+     |  
+     |  __new__(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.BaseException:
+     |  
+     |  __delattr__(self, name, /)
+     |      Implement delattr(self, name).
+     |  
+     |  __getattribute__(self, name, /)
+     |      Return getattr(self, name).
+     |  
+     |  __reduce__(...)
+     |      Helper for pickle.
+     |  
+     |  __repr__(self, /)
+     |      Return repr(self).
+     |  
+     |  __setattr__(self, name, value, /)
+     |      Implement setattr(self, name, value).
+     |  
+     |  __setstate__(...)
+     |  
+     |  with_traceback(...)
+     |      Exception.with_traceback(tb) --
+     |      set self.__traceback__ to tb and return self.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from builtins.BaseException:
+     |  
+     |  __cause__
+     |      exception cause
+     |  
+     |  __context__
+     |      exception context
+     |  
+     |  __dict__
+     |  
+     |  __suppress_context__
+     |  
+     |  __traceback__
+     |  
+     |  args
+
+    class IllegalWeekdayError(builtins.ValueError)
+     |  IllegalWeekdayError(weekday)
+     |  
+     |  Inappropriate argument value (of correct type).
+     |  
+     |  Method resolution order:
+     |      IllegalWeekdayError
+     |      builtins.ValueError
+     |      builtins.Exception
+     |      builtins.BaseException
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, weekday)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  __str__(self)
+     |      Return str(self).
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from builtins.ValueError:
+     |  
+     |  __new__(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.BaseException:
+     |  
+     |  __delattr__(self, name, /)
+     |      Implement delattr(self, name).
+     |  
+     |  __getattribute__(self, name, /)
+     |      Return getattr(self, name).
+     |  
+     |  __reduce__(...)
+     |      Helper for pickle.
+     |  
+     |  __repr__(self, /)
+     |      Return repr(self).
+     |  
+     |  __setattr__(self, name, value, /)
+     |      Implement setattr(self, name, value).
+     |  
+     |  __setstate__(...)
+     |  
+     |  with_traceback(...)
+     |      Exception.with_traceback(tb) --
+     |      set self.__traceback__ to tb and return self.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from builtins.BaseException:
+     |  
+     |  __cause__
+     |      exception cause
+     |  
+     |  __context__
+     |      exception context
+     |  
+     |  __dict__
+     |  
+     |  __suppress_context__
+     |  
+     |  __traceback__
+     |  
+     |  args
+
+    class LocaleHTMLCalendar(HTMLCalendar)
+     |  LocaleHTMLCalendar(firstweekday=0, locale=None)
+     |  
+     |  This class can be passed a locale name in the constructor and will return
+     |  month and weekday names in the specified locale. If this locale includes
+     |  an encoding all strings containing month and weekday names will be returned
+     |  as unicode.
+     |  
+     |  Method resolution order:
+     |      LocaleHTMLCalendar
+     |      HTMLCalendar
+     |      Calendar
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, firstweekday=0, locale=None)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  formatmonthname(self, theyear, themonth, withyear=True)
+     |      Return a month name as a table row.
+     |  
+     |  formatweekday(self, day)
+     |      Return a weekday name as a table header.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from HTMLCalendar:
+     |  
+     |  formatday(self, day, weekday)
+     |      Return a day as a table cell.
+     |  
+     |  formatmonth(self, theyear, themonth, withyear=True)
+     |      Return a formatted month as a table.
+     |  
+     |  formatweek(self, theweek)
+     |      Return a complete week as a table row.
+     |  
+     |  formatweekheader(self)
+     |      Return a header for a week as a table row.
+     |  
+     |  formatyear(self, theyear, width=3)
+     |      Return a formatted year as a table of tables.
+     |  
+     |  formatyearpage(self, theyear, width=3, css=&apos;calendar.css&apos;, encoding=None)
+     |      Return a formatted year as a complete HTML page.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes inherited from HTMLCalendar:
+     |  
+     |  cssclass_month = &apos;month&apos;
+     |  
+     |  cssclass_month_head = &apos;month&apos;
+     |  
+     |  cssclass_noday = &apos;noday&apos;
+     |  
+     |  cssclass_year = &apos;year&apos;
+     |  
+     |  cssclass_year_head = &apos;year&apos;
+     |  
+     |  cssclasses = [&apos;mon&apos;, &apos;tue&apos;, &apos;wed&apos;, &apos;thu&apos;, &apos;fri&apos;, &apos;sat&apos;, &apos;sun&apos;]
+     |  
+     |  cssclasses_weekday_head = [&apos;mon&apos;, &apos;tue&apos;, &apos;wed&apos;, &apos;thu&apos;, &apos;fri&apos;, &apos;sat&apos;, &apos;...
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from Calendar:
+     |  
+     |  getfirstweekday(self)
+     |  
+     |  itermonthdates(self, year, month)
+     |      Return an iterator for one month. The iterator will yield datetime.date
+     |      values and will always iterate through complete weeks, so it will yield
+     |      dates outside the specified month.
+     |  
+     |  itermonthdays(self, year, month)
+     |      Like itermonthdates(), but will yield day numbers. For days outside
+     |      the specified month the day number is 0.
+     |  
+     |  itermonthdays2(self, year, month)
+     |      Like itermonthdates(), but will yield (day number, weekday number)
+     |      tuples. For days outside the specified month the day number is 0.
+     |  
+     |  itermonthdays3(self, year, month)
+     |      Like itermonthdates(), but will yield (year, month, day) tuples.  Can be
+     |      used for dates outside of datetime.date range.
+     |  
+     |  itermonthdays4(self, year, month)
+     |      Like itermonthdates(), but will yield (year, month, day, day_of_week) tuples.
+     |      Can be used for dates outside of datetime.date range.
+     |  
+     |  iterweekdays(self)
+     |      Return an iterator for one week of weekday numbers starting with the
+     |      configured first one.
+     |  
+     |  monthdatescalendar(self, year, month)
+     |      Return a matrix (list of lists) representing a month&apos;s calendar.
+     |      Each row represents a week; week entries are datetime.date values.
+     |  
+     |  monthdays2calendar(self, year, month)
+     |      Return a matrix representing a month&apos;s calendar.
+     |      Each row represents a week; week entries are
+     |      (day number, weekday number) tuples. Day numbers outside this month
+     |      are zero.
+     |  
+     |  monthdayscalendar(self, year, month)
+     |      Return a matrix representing a month&apos;s calendar.
+     |      Each row represents a week; days outside this month are zero.
+     |  
+     |  setfirstweekday(self, firstweekday)
+     |  
+     |  yeardatescalendar(self, year, width=3)
+     |      Return the data for the specified year ready for formatting. The return
+     |      value is a list of month rows. Each month row contains up to width months.
+     |      Each month contains between 4 and 6 weeks and each week contains 1-7
+     |      days. Days are datetime.date objects.
+     |  
+     |  yeardays2calendar(self, year, width=3)
+     |      Return the data for the specified year ready for formatting (similar to
+     |      yeardatescalendar()). Entries in the week lists are
+     |      (day number, weekday number) tuples. Day numbers outside this month are
+     |      zero.
+     |  
+     |  yeardayscalendar(self, year, width=3)
+     |      Return the data for the specified year ready for formatting (similar to
+     |      yeardatescalendar()). Entries in the week lists are day numbers.
+     |      Day numbers outside this month are zero.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from Calendar:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  firstweekday
+
+    class LocaleTextCalendar(TextCalendar)
+     |  LocaleTextCalendar(firstweekday=0, locale=None)
+     |  
+     |  This class can be passed a locale name in the constructor and will return
+     |  month and weekday names in the specified locale. If this locale includes
+     |  an encoding all strings containing month and weekday names will be returned
+     |  as unicode.
+     |  
+     |  Method resolution order:
+     |      LocaleTextCalendar
+     |      TextCalendar
+     |      Calendar
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, firstweekday=0, locale=None)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  formatmonthname(self, theyear, themonth, width, withyear=True)
+     |      Return a formatted month name.
+     |  
+     |  formatweekday(self, day, width)
+     |      Returns a formatted week day name.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from TextCalendar:
+     |  
+     |  formatday(self, day, weekday, width)
+     |      Returns a formatted day.
+     |  
+     |  formatmonth(self, theyear, themonth, w=0, l=0)
+     |      Return a month&apos;s calendar string (multi-line).
+     |  
+     |  formatweek(self, theweek, width)
+     |      Returns a single week in a string (no newline).
+     |  
+     |  formatweekheader(self, width)
+     |      Return a header for a week.
+     |  
+     |  formatyear(self, theyear, w=2, l=1, c=6, m=3)
+     |      Returns a year&apos;s calendar as a multi-line string.
+     |  
+     |  prmonth(self, theyear, themonth, w=0, l=0)
+     |      Print a month&apos;s calendar.
+     |  
+     |  prweek(self, theweek, width)
+     |      Print a single week (no newline).
+     |  
+     |  pryear(self, theyear, w=0, l=0, c=6, m=3)
+     |      Print a year&apos;s calendar.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from Calendar:
+     |  
+     |  getfirstweekday(self)
+     |  
+     |  itermonthdates(self, year, month)
+     |      Return an iterator for one month. The iterator will yield datetime.date
+     |      values and will always iterate through complete weeks, so it will yield
+     |      dates outside the specified month.
+     |  
+     |  itermonthdays(self, year, month)
+     |      Like itermonthdates(), but will yield day numbers. For days outside
+     |      the specified month the day number is 0.
+     |  
+     |  itermonthdays2(self, year, month)
+     |      Like itermonthdates(), but will yield (day number, weekday number)
+     |      tuples. For days outside the specified month the day number is 0.
+     |  
+     |  itermonthdays3(self, year, month)
+     |      Like itermonthdates(), but will yield (year, month, day) tuples.  Can be
+     |      used for dates outside of datetime.date range.
+     |  
+     |  itermonthdays4(self, year, month)
+     |      Like itermonthdates(), but will yield (year, month, day, day_of_week) tuples.
+     |      Can be used for dates outside of datetime.date range.
+     |  
+     |  iterweekdays(self)
+     |      Return an iterator for one week of weekday numbers starting with the
+     |      configured first one.
+     |  
+     |  monthdatescalendar(self, year, month)
+     |      Return a matrix (list of lists) representing a month&apos;s calendar.
+     |      Each row represents a week; week entries are datetime.date values.
+     |  
+     |  monthdays2calendar(self, year, month)
+     |      Return a matrix representing a month&apos;s calendar.
+     |      Each row represents a week; week entries are
+     |      (day number, weekday number) tuples. Day numbers outside this month
+     |      are zero.
+     |  
+     |  monthdayscalendar(self, year, month)
+     |      Return a matrix representing a month&apos;s calendar.
+     |      Each row represents a week; days outside this month are zero.
+     |  
+     |  setfirstweekday(self, firstweekday)
+     |  
+     |  yeardatescalendar(self, year, width=3)
+     |      Return the data for the specified year ready for formatting. The return
+     |      value is a list of month rows. Each month row contains up to width months.
+     |      Each month contains between 4 and 6 weeks and each week contains 1-7
+     |      days. Days are datetime.date objects.
+     |  
+     |  yeardays2calendar(self, year, width=3)
+     |      Return the data for the specified year ready for formatting (similar to
+     |      yeardatescalendar()). Entries in the week lists are
+     |      (day number, weekday number) tuples. Day numbers outside this month are
+     |      zero.
+     |  
+     |  yeardayscalendar(self, year, width=3)
+     |      Return the data for the specified year ready for formatting (similar to
+     |      yeardatescalendar()). Entries in the week lists are day numbers.
+     |      Day numbers outside this month are zero.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from Calendar:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  firstweekday
+
+    class TextCalendar(Calendar)
+     |  TextCalendar(firstweekday=0)
+     |  
+     |  Subclass of Calendar that outputs a calendar as a simple plain text
+     |  similar to the UNIX program cal.
+     |  
+     |  Method resolution order:
+     |      TextCalendar
+     |      Calendar
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  formatday(self, day, weekday, width)
+     |      Returns a formatted day.
+     |  
+     |  formatmonth(self, theyear, themonth, w=0, l=0)
+     |      Return a month&apos;s calendar string (multi-line).
+     |  
+     |  formatmonthname(self, theyear, themonth, width, withyear=True)
+     |      Return a formatted month name.
+     |  
+     |  formatweek(self, theweek, width)
+     |      Returns a single week in a string (no newline).
+     |  
+     |  formatweekday(self, day, width)
+     |      Returns a formatted week day name.
+     |  
+     |  formatweekheader(self, width)
+     |      Return a header for a week.
+     |  
+     |  formatyear(self, theyear, w=2, l=1, c=6, m=3)
+     |      Returns a year&apos;s calendar as a multi-line string.
+     |  
+     |  prmonth(self, theyear, themonth, w=0, l=0)
+     |      Print a month&apos;s calendar.
+     |  
+     |  prweek(self, theweek, width)
+     |      Print a single week (no newline).
+     |  
+     |  pryear(self, theyear, w=0, l=0, c=6, m=3)
+     |      Print a year&apos;s calendar.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from Calendar:
+     |  
+     |  __init__(self, firstweekday=0)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  getfirstweekday(self)
+     |  
+     |  itermonthdates(self, year, month)
+     |      Return an iterator for one month. The iterator will yield datetime.date
+     |      values and will always iterate through complete weeks, so it will yield
+     |      dates outside the specified month.
+     |  
+     |  itermonthdays(self, year, month)
+     |      Like itermonthdates(), but will yield day numbers. For days outside
+     |      the specified month the day number is 0.
+     |  
+     |  itermonthdays2(self, year, month)
+     |      Like itermonthdates(), but will yield (day number, weekday number)
+     |      tuples. For days outside the specified month the day number is 0.
+     |  
+     |  itermonthdays3(self, year, month)
+     |      Like itermonthdates(), but will yield (year, month, day) tuples.  Can be
+     |      used for dates outside of datetime.date range.
+     |  
+     |  itermonthdays4(self, year, month)
+     |      Like itermonthdates(), but will yield (year, month, day, day_of_week) tuples.
+     |      Can be used for dates outside of datetime.date range.
+     |  
+     |  iterweekdays(self)
+     |      Return an iterator for one week of weekday numbers starting with the
+     |      configured first one.
+     |  
+     |  monthdatescalendar(self, year, month)
+     |      Return a matrix (list of lists) representing a month&apos;s calendar.
+     |      Each row represents a week; week entries are datetime.date values.
+     |  
+     |  monthdays2calendar(self, year, month)
+     |      Return a matrix representing a month&apos;s calendar.
+     |      Each row represents a week; week entries are
+     |      (day number, weekday number) tuples. Day numbers outside this month
+     |      are zero.
+     |  
+     |  monthdayscalendar(self, year, month)
+     |      Return a matrix representing a month&apos;s calendar.
+     |      Each row represents a week; days outside this month are zero.
+     |  
+     |  setfirstweekday(self, firstweekday)
+     |  
+     |  yeardatescalendar(self, year, width=3)
+     |      Return the data for the specified year ready for formatting. The return
+     |      value is a list of month rows. Each month row contains up to width months.
+     |      Each month contains between 4 and 6 weeks and each week contains 1-7
+     |      days. Days are datetime.date objects.
+     |  
+     |  yeardays2calendar(self, year, width=3)
+     |      Return the data for the specified year ready for formatting (similar to
+     |      yeardatescalendar()). Entries in the week lists are
+     |      (day number, weekday number) tuples. Day numbers outside this month are
+     |      zero.
+     |  
+     |  yeardayscalendar(self, year, width=3)
+     |      Return the data for the specified year ready for formatting (similar to
+     |      yeardatescalendar()). Entries in the week lists are day numbers.
+     |      Day numbers outside this month are zero.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from Calendar:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  firstweekday
+
+FUNCTIONS
+    calendar = formatyear(theyear, w=2, l=1, c=6, m=3) method of TextCalendar instance
+        Returns a year&apos;s calendar as a multi-line string.
+
+    firstweekday = getfirstweekday() method of TextCalendar instance
+
+    isleap(year)
+        Return True for leap years, False for non-leap years.
+
+    leapdays(y1, y2)
+        Return number of leap years in range [y1, y2).
+        Assume y1 &lt;= y2.
+
+    month = formatmonth(theyear, themonth, w=0, l=0) method of TextCalendar instance
+        Return a month&apos;s calendar string (multi-line).
+
+    monthcalendar = monthdayscalendar(year, month) method of TextCalendar instance
+        Return a matrix representing a month&apos;s calendar.
+        Each row represents a week; days outside this month are zero.
+
+    monthrange(year, month)
+        Return weekday (0-6 ~ Mon-Sun) and number of days (28-31) for
+        year, month.
+
+    prcal = pryear(theyear, w=0, l=0, c=6, m=3) method of TextCalendar instance
+        Print a year&apos;s calendar.
+
+    prmonth(theyear, themonth, w=0, l=0) method of TextCalendar instance
+        Print a month&apos;s calendar.
+
+    setfirstweekday(firstweekday)
+
+    timegm(tuple)
+        Unrelated but handy function to calculate Unix timestamp from GMT.
+
+    weekday(year, month, day)
+        Return weekday (0-6 ~ Mon-Sun) for year, month (1-12), day (1-31).
+
+    weekheader = formatweekheader(width) method of TextCalendar instance
+        Return a header for a week.
+
+DATA
+    __all__ = [&apos;IllegalMonthError&apos;, &apos;IllegalWeekdayError&apos;, &apos;setfirstweekda...
+    day_abbr = &lt;calendar._localized_day object&gt;
+    day_name = &lt;calendar._localized_day object&gt;
+    month_abbr = &lt;calendar._localized_month object&gt;
+    month_name = &lt;calendar._localized_month object&gt;
+
+FILE
+    /home/yutianc/miniconda3/lib/python3.7/calendar.py
+</code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/23/EBS-Foreign-Currency-Accounting(1)/" rel="next" title="EBS外币会计核算(一)">
+                <i class="fa fa-chevron-left"></i> EBS外币会计核算(一)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Chong">
+            
+              <p class="site-author-name" itemprop="name">Chong</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/leichong2019" title="GitHub &rarr; https://github.com/leichong2019" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:chong.lei@gmail.com" title="E-Mail &rarr; mailto:chong.lei@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#主要涉及的模块Modules"><span class="nav-number">1.</span> <span class="nav-text">主要涉及的模块Modules</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#datetime模块"><span class="nav-number">2.</span> <span class="nav-text">datetime模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模块中包含的类"><span class="nav-number">2.1.</span> <span class="nav-text">模块中包含的类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class-datetime-date-year-month-day"><span class="nav-number">2.2.</span> <span class="nav-text">class datetime.date(year, month, day)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#class-methods"><span class="nav-number">2.2.1.</span> <span class="nav-text">class methods:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#classmethod-date-today"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">classmethod date.today()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#classmethod-date-fromtimestamp-timestamp"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">classmethod date.fromtimestamp(timestamp)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#classmethod-date-fromordinal-ordinal"><span class="nav-number">2.2.1.3.</span> <span class="nav-text">classmethod date.fromordinal(ordinal)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#classmethod-date-fromisoformat-date-string"><span class="nav-number">2.2.1.4.</span> <span class="nav-text">classmethod date.fromisoformat(date_string)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Instance-methods"><span class="nav-number">2.2.2.</span> <span class="nav-text">Instance methods:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#date-replace-year-self-year-month-self-month-day-self-day"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">date.replace(year=self.year, month=self.month, day=self.day)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#date-timetuple"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">date.timetuple()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#date-toordinal"><span class="nav-number">2.2.2.3.</span> <span class="nav-text">date.toordinal()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#date-weekday"><span class="nav-number">2.2.2.4.</span> <span class="nav-text">date.weekday()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#date-isoweekday"><span class="nav-number">2.2.2.5.</span> <span class="nav-text">date.isoweekday()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#date-isocalendar"><span class="nav-number">2.2.2.6.</span> <span class="nav-text">date.isocalendar()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#date-isoformat"><span class="nav-number">2.2.2.7.</span> <span class="nav-text">date.isoformat()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#date-str"><span class="nav-number">2.2.2.8.</span> <span class="nav-text">date.str()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#date-ctime"><span class="nav-number">2.2.2.9.</span> <span class="nav-text">date.ctime()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#date-strftime-format"><span class="nav-number">2.2.2.10.</span> <span class="nav-text">date.strftime(format)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#date-format-format"><span class="nav-number">2.2.2.11.</span> <span class="nav-text">date.format(format)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#example"><span class="nav-number">2.2.3.</span> <span class="nav-text">example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class-datetime-datetime-year-month-day-hour-0-minute-0-second-0-microsecond-0-tzinfo-None-fold-0"><span class="nav-number">2.3.</span> <span class="nav-text">class datetime.datetime(year, month, day, hour=0, minute=0, second=0, microsecond=0, tzinfo=None, *, fold=0)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#class-methods-1"><span class="nav-number">2.3.1.</span> <span class="nav-text">class methods:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#classmethod-datetime-now-tz-None"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">classmethod datetime.now(tz=None)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#classmethod-datetime-utcnow"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">classmethod datetime.utcnow()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#classmethod-datetime-fromtimestamp-timestamp-tz-None"><span class="nav-number">2.3.1.3.</span> <span class="nav-text">classmethod datetime.fromtimestamp(timestamp, tz=None)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#classmethod-datetime-fromordinal-ordinal"><span class="nav-number">2.3.1.4.</span> <span class="nav-text">classmethod datetime.fromordinal(ordinal)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#classmethod-datetime-combine-date-time-tzinfo-self-tzinfo"><span class="nav-number">2.3.1.5.</span> <span class="nav-text">classmethod datetime.combine(date, time, tzinfo=self.tzinfo)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#classmethod-datetime-fromisoformat-date-string"><span class="nav-number">2.3.1.6.</span> <span class="nav-text">classmethod datetime.fromisoformat(date_string)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Instance-methods-1"><span class="nav-number">2.3.2.</span> <span class="nav-text">Instance methods:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#example-of-using-datetime"><span class="nav-number">2.3.3.</span> <span class="nav-text">example of using datetime</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#example-of-using-datetime-with-tzinfo"><span class="nav-number">2.3.4.</span> <span class="nav-text">example of using datetime with tzinfo</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class-datetime-time-hour-0-minute-0-second-0-microsecond-0-tzinfo-None-fold-0"><span class="nav-number">2.4.</span> <span class="nav-text">class datetime.time(hour=0, minute=0, second=0, microsecond=0, tzinfo=None, *, fold=0)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#classmethod-time-fromisoformat-time-string"><span class="nav-number">2.4.1.</span> <span class="nav-text">classmethod time.fromisoformat(time_string)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Instance-methods-2"><span class="nav-number">2.4.2.</span> <span class="nav-text">Instance methods:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#time-replace-hour-self-hour-minute-self-minute-second-self-second-microsecond-self-microsecond-tzinfo-self-tzinfo-fold-0"><span class="nav-number">2.4.2.1.</span> <span class="nav-text">time.replace(hour=self.hour, minute=self.minute, second=self.second, microsecond=self.microsecond, tzinfo=self.tzinfo, * fold=0)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#time-isoformat-timespec-’auto’"><span class="nav-number">2.4.2.2.</span> <span class="nav-text">time.isoformat(timespec=’auto’)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#time-strftime-format"><span class="nav-number">2.4.2.3.</span> <span class="nav-text">time.strftime(format)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#time-tzname"><span class="nav-number">2.4.2.4.</span> <span class="nav-text">time.tzname()</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#example-1"><span class="nav-number">2.4.3.</span> <span class="nav-text">example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class-datetime-tzinfo-abstract-base-class-for-datetime-use"><span class="nav-number">2.5.</span> <span class="nav-text">class datetime.tzinfo  (abstract base class, for datetime use)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class-datetime-timezone-offset-name-None"><span class="nav-number">2.6.</span> <span class="nav-text">class datetime.timezone(offset, name=None)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class-datetime-timedelta-days-0-seconds-0-microseconds-0-milliseconds-0-minutes-0-hours-0-weeks-0"><span class="nav-number">2.7.</span> <span class="nav-text">class datetime.timedelta(days=0, seconds=0, microseconds=0, milliseconds=0, minutes=0, hours=0, weeks=0)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#strftime-and-strptime-Behavior"><span class="nav-number">3.</span> <span class="nav-text">strftime() and strptime() Behavior</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#calendar模块"><span class="nav-number">4.</span> <span class="nav-text">calendar模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模块中包含的类-1"><span class="nav-number">4.1.</span> <span class="nav-text">模块中包含的类</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chong</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
