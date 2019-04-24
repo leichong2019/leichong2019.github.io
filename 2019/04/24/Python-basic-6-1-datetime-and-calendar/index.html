@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="Chong&#39;s Site book">
 <meta property="og:description" content="主要涉及的模块ModulesJupter notebook NBViewer传送门  datetime Fast implementation of the datetime type. datetime提供操作日期和时间相关的类型 calendar Calendar printing functions. calendar模块提供和日历操作及显示打印相关的类 time This module p">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-24T05:55:55.554Z">
+<meta property="og:updated_time" content="2019-04-24T05:57:19.894Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python-基础(6.1)-datetime and calendar">
 <meta name="twitter:description" content="主要涉及的模块ModulesJupter notebook NBViewer传送门  datetime Fast implementation of the datetime type. datetime提供操作日期和时间相关的类型 calendar Calendar printing functions. calendar模块提供和日历操作及显示打印相关的类 time This module p">
@@ -490,7 +490,7 @@
                 
               
 
-              <time title="创建时间：2019-04-24 13:49:41 / 修改时间：13:55:55" itemprop="dateCreated datePublished" datetime="2019-04-24T13:49:41+08:00">2019-04-24</time>
+              <time title="创建时间：2019-04-24 13:49:41 / 修改时间：13:57:19" itemprop="dateCreated datePublished" datetime="2019-04-24T13:49:41+08:00">2019-04-24</time>
             
 
             
@@ -586,7 +586,7 @@ _Date_and_Time%281%29.ipynb" target="_blank" rel="noopener">Jupter notebook NBVi
 <h3 id="class-datetime-date-year-month-day"><a href="#class-datetime-date-year-month-day" class="headerlink" title="class datetime.date(year, month, day)"></a>class datetime.date(year, month, day)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">代表一个理想化的Gregorian日历中的日期，包括年、月、日等属性。</span><br><span class="line">An idealized naive date, assuming the current Gregorian calendar always was, and always will be, in effect. Attributes: year, month, and day.</span><br><span class="line">All arguments are required. Arguments may be integers, in the following ranges:</span><br><span class="line"></span><br><span class="line">MINYEAR &lt;= year &lt;= MAXYEAR</span><br><span class="line">1 &lt;= month &lt;= 12</span><br><span class="line">1 &lt;= day &lt;= number of days in the given month and year</span><br></pre></td></tr></table></figure>
 <h4 id="class-methods"><a href="#class-methods" class="headerlink" title="class methods:"></a>class methods:</h4><h5 id="classmethod-date-today"><a href="#classmethod-date-today" class="headerlink" title="classmethod date.today()"></a>classmethod date.today()</h5><p>Return the current local date. This is equivalent to date.fromtimestamp(time.time()).</p>
 <h5 id="classmethod-date-fromtimestamp-timestamp"><a href="#classmethod-date-fromtimestamp-timestamp" class="headerlink" title="classmethod date.fromtimestamp(timestamp)"></a>classmethod date.fromtimestamp(timestamp)</h5><p>Return the local date corresponding to the POSIX timestamp, such as is returned by time.time(). This may raise OverflowError, if the timestamp is out of the range of values supported by the platform C localtime() function, and OSError on localtime() failure. It’s common for this to be restricted to years from 1970 through 2038. Note that on non-POSIX systems that include leap seconds in their notion of a timestamp, leap seconds are ignored by fromtimestamp().</p>
-<p>Changed in version 3.3: Raise OverflowError instead of ValueError if the timestamp is out of the range of values supported by the platform C localtime() function. Raise OSError instead of ValueError on localtime() failure.</p>
+<p>Changed in version 3.3: Raise OverflowError instead of ValueError if the timestamp is out of the range of values supported by the platform C localtime() function. Raise OSError instead of ValueError on localtime() failure.<br><a id="more"></a></p>
 <h5 id="classmethod-date-fromordinal-ordinal"><a href="#classmethod-date-fromordinal-ordinal" class="headerlink" title="classmethod date.fromordinal(ordinal)"></a>classmethod date.fromordinal(ordinal)</h5><p>Return the date corresponding to the proleptic Gregorian ordinal, where January 1 of year 1 has ordinal 1. ValueError is raised unless 1 &lt;= ordinal &lt;= date.max.toordinal(). For any date d, date.fromordinal(d.toordinal()) == d.</p>
 <h5 id="classmethod-date-fromisoformat-date-string"><a href="#classmethod-date-fromisoformat-date-string" class="headerlink" title="classmethod date.fromisoformat(date_string)"></a>classmethod date.fromisoformat(date_string)</h5><p>Return a date corresponding to a date_string in the format emitted by date.isoformat(). Specifically, this function supports strings in the format(s) YYYY-MM-DD.</p>
 <p>Caution This does not support parsing arbitrary ISO 8601 strings - it is only intended as the inverse operation of date.isoformat().<br>New in version 3.7.</p>
