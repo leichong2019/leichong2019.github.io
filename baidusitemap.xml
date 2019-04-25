@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://leichong2019.github.io/2019/04/25/Process-PDF-by-pdfminer-six/</loc>
+    <lastmod>2019-04-25</lastmod>
+  </url>  <url>
     <loc>https://leichong2019.github.io/2019/04/24/Python-basic-9-Asyncio/</loc>
     <lastmod>2019-04-24</lastmod>
   </url>  <url>
