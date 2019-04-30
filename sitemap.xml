@@ -2,6 +2,314 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://leichong2019.github.io/markdown_ref/index.html</loc>
+    
+    <lastmod>2019-04-30T02:04:08.912Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/tools/texts.html</loc>
+    
+    <lastmod>2019-04-30T01:52:54.279Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/tools/sublime-markdown-extended.html</loc>
+    
+    <lastmod>2019-04-30T01:52:54.210Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/tools/stackedit.html</loc>
+    
+    <lastmod>2019-04-30T01:52:54.119Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/tools/retext.html</loc>
+    
+    <lastmod>2019-04-30T01:52:54.045Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/tools/readme.html</loc>
+    
+    <lastmod>2019-04-30T01:52:53.985Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/tools/mou.html</loc>
+    
+    <lastmod>2019-04-30T01:52:53.923Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/tools/mdcharm.html</loc>
+    
+    <lastmod>2019-04-30T01:52:53.863Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/tools/markpad.html</loc>
+    
+    <lastmod>2019-04-30T01:52:53.808Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/tools/markdownpad.html</loc>
+    
+    <lastmod>2019-04-30T01:52:53.748Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/tools/markdown-pro.html</loc>
+    
+    <lastmod>2019-04-30T01:52:53.688Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/tools/markdown-edit.html</loc>
+    
+    <lastmod>2019-04-30T01:52:53.621Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/tools/macdown.html</loc>
+    
+    <lastmod>2019-04-30T01:52:53.561Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/tools/idea-markdown.html</loc>
+    
+    <lastmod>2019-04-30T01:52:53.502Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/tools/haroopad.html</loc>
+    
+    <lastmod>2019-04-30T01:52:53.448Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/tools/dillinger.html</loc>
+    
+    <lastmod>2019-04-30T01:52:53.389Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/tools/cutemarked.html</loc>
+    
+    <lastmod>2019-04-30T01:52:53.330Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/tools/cmd-markdown.html</loc>
+    
+    <lastmod>2019-04-30T01:52:53.268Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/tools/atom-markdown-preview.html</loc>
+    
+    <lastmod>2019-04-30T01:52:53.209Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/syntax/readme.html</loc>
+    
+    <lastmod>2019-04-30T01:52:53.097Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/syntax/paragraphs-and-line-breaks.html</loc>
+    
+    <lastmod>2019-04-30T01:52:53.037Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/syntax/lists.html</loc>
+    
+    <lastmod>2019-04-30T01:52:52.949Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/syntax/links.html</loc>
+    
+    <lastmod>2019-04-30T01:52:52.882Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/syntax/images.html</loc>
+    
+    <lastmod>2019-04-30T01:52:52.826Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/syntax/horizontal-rule.html</loc>
+    
+    <lastmod>2019-04-30T01:52:52.773Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/syntax/headers.html</loc>
+    
+    <lastmod>2019-04-30T01:52:52.716Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/syntax/emphasis.html</loc>
+    
+    <lastmod>2019-04-30T01:52:52.657Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/syntax/code.html</loc>
+    
+    <lastmod>2019-04-30T01:52:52.601Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/syntax/blockquotes.html</loc>
+    
+    <lastmod>2019-04-30T01:52:52.540Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/syntax/blackslash-escapes.html</loc>
+    
+    <lastmod>2019-04-30T01:52:52.469Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/extension/task-list.html</loc>
+    
+    <lastmod>2019-04-30T01:52:52.291Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/extension/table.html</loc>
+    
+    <lastmod>2019-04-30T01:52:52.235Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/extension/strikethrougn.html</loc>
+    
+    <lastmod>2019-04-30T01:52:52.164Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/extension/readme.html</loc>
+    
+    <lastmod>2019-04-30T01:52:52.099Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/extension/code-blocks-and-highlighting.html</loc>
+    
+    <lastmod>2019-04-30T01:52:52.021Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/convert/word.html</loc>
+    
+    <lastmod>2019-04-30T01:52:51.934Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/convert/readme.html</loc>
+    
+    <lastmod>2019-04-30T01:52:51.856Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/convert/pdf.html</loc>
+    
+    <lastmod>2019-04-30T01:52:51.747Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/convert/html.html</loc>
+    
+    <lastmod>2019-04-30T01:52:51.670Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/about/readme.html</loc>
+    
+    <lastmod>2019-04-30T01:52:51.487Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/about/helloworld.html</loc>
+    
+    <lastmod>2019-04-30T01:52:51.418Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/article/about/hello.html</loc>
+    
+    <lastmod>2019-04-30T01:52:51.351Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/search_index.json</loc>
+    
+    <lastmod>2019-04-30T01:52:51.233Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/markdown_ref/package.json</loc>
+    
+    <lastmod>2019-04-30T01:52:51.188Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://leichong2019.github.io/2019/03/25/01-Get-Start-with-Pandas/</loc>
     
     <lastmod>2019-04-30T01:19:46.417Z</lastmod>
@@ -184,98 +492,35 @@
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/third-party-services/math-equations/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/tag-plugins/label/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/theme-settings/posts/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/tag-plugins/video/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/third-party-services/statistics-and-analytics/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/tag-plugins/button/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/third-party-services/comments-and-widgets/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/tag-plugins/note/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/third-party-services/external-libraries/index.html</loc>
-    
-    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://leichong2019.github.io/docs/third-party-services/search-services/index.html</loc>
-    
-    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://leichong2019.github.io/docs/tag-plugins/tabs/index.html</loc>
-    
-    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://leichong2019.github.io/docs/third-party-services/index.html</loc>
-    
-    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://leichong2019.github.io/docs/faqs/index.html</loc>
-    
-    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://leichong2019.github.io/docs/troubleshooting/index.html</loc>
-    
-    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://leichong2019.github.io/docs/advanced-settings/index.html</loc>
-    
-    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://leichong2019.github.io/docs/theme-settings/index.html</loc>
-    
-    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://leichong2019.github.io/docs/getting-started/data-files/index.html</loc>
-    
-    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://leichong2019.github.io/docs/getting-started/installation/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/getting-started/update-from-v5/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
@@ -296,21 +541,28 @@
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/getting-started/update-from-v5/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/getting-started/installation/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/tag-plugins/button/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/getting-started/data-files/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/tag-plugins/label/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/getting-started/index.html</loc>
+    
+    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/docs/advanced-settings/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
@@ -324,42 +576,28 @@
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/tag-plugins/note/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/troubleshooting/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/tag-plugins/video/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/third-party-services/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/theme-settings/custom-pages/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/tag-plugins/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/theme-settings/seo/index.html</loc>
-    
-    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://leichong2019.github.io/docs/theme-settings/footer/index.html</loc>
-    
-    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://leichong2019.github.io/docs/third-party-services/chat-services/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/faqs/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
@@ -373,7 +611,14 @@
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/getting-started/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/third-party-services/search-services/index.html</loc>
+    
+    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/docs/third-party-services/statistics-and-analytics/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
@@ -401,7 +646,70 @@
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/tag-plugins/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/third-party-services/math-equations/index.html</loc>
+    
+    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/docs/third-party-services/comments-and-widgets/index.html</loc>
+    
+    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/docs/theme-settings/posts/index.html</loc>
+    
+    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/docs/tag-plugins/tabs/index.html</loc>
+    
+    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/docs/third-party-services/external-libraries/index.html</loc>
+    
+    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/docs/third-party-services/chat-services/index.html</loc>
+    
+    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/docs/theme-settings/seo/index.html</loc>
+    
+    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/docs/theme-settings/footer/index.html</loc>
+    
+    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/docs/theme-settings/custom-pages/index.html</loc>
+    
+    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/docs/theme-settings/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
