@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo_cat_32.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo_cat_32.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo_cat_32.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo_cat_32.png?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="对于Linux内核来说，运行的内核版本都是一样，只要有对应中文的编码解码规则（字符集），有中文字体显示支持，Linux就能处理好中文信息。同理，对于其他语言也是一样。 什么是locale在Linux中，它使用locale命令来设置和显示程序运行的语言环境（也就是系统运行语言环境，应用进程是在系统的进程之上运行的，应用程序的父进程是init进程） locale的英文直译为场所，地区，地域，但它在Li">
+<meta name="keywords" content="Linux,locale">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux ssh 中文编码">
+<meta property="og:url" content="https://leichong2019.github.io/2019/04/03/linux-ssh-locale/index.html">
+<meta property="og:site_name" content="Chong&#39;s Site book">
+<meta property="og:description" content="对于Linux内核来说，运行的内核版本都是一样，只要有对应中文的编码解码规则（字符集），有中文字体显示支持，Linux就能处理好中文信息。同理，对于其他语言也是一样。 什么是locale在Linux中，它使用locale命令来设置和显示程序运行的语言环境（也就是系统运行语言环境，应用进程是在系统的进程之上运行的，应用程序的父进程是init进程） locale的英文直译为场所，地区，地域，但它在Li">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-03T08:19:16.008Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux ssh 中文编码">
+<meta name="twitter:description" content="对于Linux内核来说，运行的内核版本都是一样，只要有对应中文的编码解码规则（字符集），有中文字体显示支持，Linux就能处理好中文信息。同理，对于其他语言也是一样。 什么是locale在Linux中，它使用locale命令来设置和显示程序运行的语言环境（也就是系统运行语言环境，应用进程是在系统的进程之上运行的，应用程序的父进程是init进程） locale的英文直译为场所，地区，地域，但它在Li">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://leichong2019.github.io/2019/04/03/linux-ssh-locale/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>linux ssh 中文编码 | Chong's Site book</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chong's Site book</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">15</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">22</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">29</span></a>
+
+  </li>
+        
+        
+        
+          
+            
+            
+            
+              
+              
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-hexo_docs">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>Hexo_docs</a>
+
+  </li>
+
+
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+        
+        
+        
+        
+          
+          <li class="menu-item menu-item-references">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/references/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>references</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-markdown_ref">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/markdown_ref/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>markdown_ref</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/leichong2019/" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://leichong2019.github.io/2019/04/03/linux-ssh-locale/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo_cat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chong's Site book">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">linux ssh 中文编码
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-03 15:35:45 / 修改时间：16:19:16" itemprop="dateCreated datePublished" datetime="2019-04-03T15:35:45+08:00">2019-04-03</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/命令/" itemprop="url" rel="index"><span itemprop="name">命令</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>对于Linux内核来说，运行的内核版本都是一样，只要有对应中文的编码解码规则（字符集），有中文字体显示支持，Linux就能处理好中文信息。<br>同理，对于其他语言也是一样。</p>
+<h2 id="什么是locale"><a href="#什么是locale" class="headerlink" title="什么是locale"></a>什么是locale</h2><p>在Linux中，它使用locale命令来设置和显示程序运行的语言环境（也就是系统运行语言环境，应用进程是在系统的进程之上运行的，应用程序的父进程是init进程）</p>
+<p>locale的英文直译为场所，地区，地域，但它在Linux中含义要更大，在Linux中Locale根据计算机用户所使用的语言，所在国家或者地区，以及当地的文化传统定义一个软件运行时的语言环境 。</p>
+<p>locale的主要作用是描述某一个地域内的人们的语言习惯和文化传统和生活习惯。一个地区的locale就是根据几大类的习惯（变量）定义的。</p>
+<h2 id="locale的命名规则"><a href="#locale的命名规则" class="headerlink" title="locale的命名规则"></a>locale的命名规则</h2><p>locale 命名规则：</p>
+<blockquote>
+<p>&lt;语言&gt;_&lt;地区&gt;.&lt;字符集编码&gt;&lt;@修正值&gt;</p>
+</blockquote>
+<p>例如：<br><code>zh_CN.UTF-8</code>，zh代表中文，CN代表大陆地区，UTF-8表示字符集。</p>
+<p><code>de_DE.UTF-8@euro</code>, de表示德语，DE表示德国，UTF-8表示字符集，euro表示按照欧洲习惯加以修正 </p>
+<p>这个命令规则就是说我们在设置locale的相关变量时，都是使用这种格式给变量进行赋值</p>
+<h2 id="locale命令及参数讲解"><a href="#locale命令及参数讲解" class="headerlink" title="locale命令及参数讲解"></a>locale命令及参数讲解</h2><p>设置Locale的根本其实就是设置一组总共12个LC开头的变量（不包括LANG和LC_ALL）</p>
+<p>Linux中locale文件存放位置： /usr/share/i18n/locales<br><a id="more"></a></p>
+<h3 id="LANG"><a href="#LANG" class="headerlink" title="LANG"></a>LANG</h3><p>LANG的优先级是最低的，它是所有LC_<em>变量的默认值。下方所有以LC_开头变量（不包括LC_ALL）中，如果存在没有设置变量值的变量，那么系统将会使用LANG的变量值来给这个变量进行赋值。如果变量有值，则保持不变，不受影响。可以看到，我们上面示例中的输出中的LC_</em>变量的值其实就是LANG变量决定的</p>
+<h3 id="LC-CTYPE"><a href="#LC-CTYPE" class="headerlink" title="LC_CTYPE"></a>LC_CTYPE</h3><p><strong>用于字符分类和字符串处理，控制所有字符的处理方式，包括字符编码，字符是单字节还是多字节，如何打印等，这个变量是最重要的。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">LC_NUMERIC              #用于格式化非货币的数字显示。</span><br><span class="line">LC_TIME                      #用于格式化时间和日期。</span><br><span class="line">LC_COLLATE                #用于比较和排序。</span><br><span class="line">LC_MONETORY           #用于格式化货币单位。</span><br><span class="line">LC_MESSAGES             #用于控制程序输出时所使用的语言，主要是提示信息，错误信息，状态信息， 标题，标签， 按钮和菜单等。</span><br><span class="line">LC_PAPER                     #默认纸张尺寸大小</span><br><span class="line">LC_NAME                     #姓名书写方式</span><br><span class="line">LC_ADDRESS                #地址书写方式</span><br><span class="line">LC_TELEPHONE            #电话号码书写方式</span><br><span class="line">LC_MEASUREMENT     #度量衡表达方式</span><br><span class="line">LC_IDENTIFICATION    #locale对自身包含信息的概述</span><br></pre></td></tr></table></figure>
+<h3 id="LC-ALL"><a href="#LC-ALL" class="headerlink" title="LC_ALL"></a>LC_ALL</h3><p>它不是环境变量，它是一个宏，可通过该变量的设置覆盖所有的LC_<em>变量。这个变量设置之后，可以废除LC_</em>的设置值，使得这些变量的设置值与LC_ALL的值一致，注意，LANG变量不受影响。</p>
+<p>宏：可能会有人对宏没概念，简单说明下，我们在计算机领域说的宏（Macro)，是批量处理的一个说法。宏是一种通过某种指定规则来处理数据的过程，可以称之为语法替换（大家应该在编辑器里匹配替换过数据，但这这里要复杂点），这里不同数据替换，宏是获取某种输入（通常是字符串），然后如何根据事先定义的规则，转换成对应的输出（通常也是字符串)。真实的宏要比这里说的复杂，有兴趣可以自行查资料。<br>在这里，我们这个宏操作就是用LC_ALL的值去覆盖LC_*的变量值</p>
+<p>格式化：上面的含义讲到格式化，可能会有人不太清楚，格式化就是重新设定组织数据的规则，拿我们日常生活举例子，我们要记录一段数据，我们可以记在方格纸上，可以记在横格纸上，可以记在白纸上等等，这里的这种的纸张格式就是组织数据的一种方式，不同格式，记录方式和数据量等都不一样，我们在Windows系统中，经常做的格式化优盘操作就是这样，可以把自带的FAT32格式，重新格式化定义为NTFS格式，你可以理解为，将优盘的记录数据从方格纸方式变成横格纸方式。</p>
+<p><code>优先级级别：</code>LC_ALL&gt;LC_*&gt;LANG</p>
+<p><code>注意：</code>定义这么多变量在某些情况下是很有用的，例如，当我需要一个能够输入中文的英文环境，我可以把 LC_CTYPE设定成zh_CN.GB18030，而其他所有的项都是en_US.UTF-8。 </p>
+<p><code>总结：</code>LANG是LC_<em>的默认值，而LC_ALL比LC_</em>的优先级都高，设置完LC_ALL之后，会强制重置LC_<em>的值，如果不将LC_ALL的值重置为空，则无法再去设置LC_</em>的值</p>
+<p>补充：一般来说，我们在新装系统之后，我们的变量的值将会是下面这种情况：<br>NTP-slave:~ # locale<br>LANG=POSIX<br>LC_CTYPE=en_US.UTF-8<br>LC_NUMERIC=”POSIX”<br>LC_TIME=”POSIX”<br>LC_COLLATE=”POSIX”<br>LC_MONETARY=”POSIX”<br>LC_MESSAGES=”POSIX”<br>LC_PAPER=”POSIX”<br>LC_NAME=”POSIX”<br>LC_ADDRESS=”POSIX”<br>LC_TELEPHONE=”POSIX”<br>LC_MEASUREMENT=”POSIX”<br>LC_IDENTIFICATION=”POSIX”<br>LC_ALL=</p>
+<p>讲解：C是系统默认的locale，而POSIX是C的别名，这是标准的C Locale。它所指定的属性和行为由ISO C标准所指定。当我们新安装完一个系统时，默认的locale就是C或POSIX。<br>我们这里说的C其实就是ASCII编码。</p>
+<p>POSIX：可移植操作系统接口（Portable Operating System Interface of UNIX，缩写为 POSIX ），POSIX标准定义了操作系统应该为应用程序提供的接口标准，是IEEE为要在各种UNIX操作系统上运行的软件而定义的一系列API标准的总称，其正式称呼为IEEE 1003，而国际标准名称为ISO/IEC 9945。<br>换句话说，为一个POSIX兼容的操作系统编写的程序，可以在任何其它的POSIX操作系统（即使是来自另一个厂商）上编译执行。</p>
+<p>总结：POSIX是一种类UNIX系统的通用接口标准，基于这个标准开发的程序，能够灵活的迁移到不同版本系统上使用。</p>
+<p>在这里，locale中的POSIX说的就是一种业内统一的默认locale标准，不区分地域，所有Linux发行版本都支持。</p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令:"></a>常用命令:</h2><h3 id="查看当前locale设置"><a href="#查看当前locale设置" class="headerlink" title="查看当前locale设置"></a>查看当前locale设置</h3><blockquote>
+<p>locale</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[oracle@CASystem ~]$ locale</span><br><span class="line">LANG=zh_CN.UTF-8</span><br><span class="line">LC_CTYPE=zh_CN.UTF-8</span><br><span class="line">LC_NUMERIC=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_TIME=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_COLLATE=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_MONETARY=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_MESSAGES=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_PAPER=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_NAME=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_ADDRESS=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_TELEPHONE=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_MEASUREMENT=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_IDENTIFICATION=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_ALL=</span><br></pre></td></tr></table></figure>
+<h3 id="查看当前系统的所有可用locale"><a href="#查看当前系统的所有可用locale" class="headerlink" title="查看当前系统的所有可用locale"></a>查看当前系统的所有可用locale</h3><blockquote>
+<p>locale -a</p>
+</blockquote>
+<h3 id="设置系统的locale（此处以zh-CN-utf8为例）"><a href="#设置系统的locale（此处以zh-CN-utf8为例）" class="headerlink" title="设置系统的locale（此处以zh_CN.utf8为例）"></a>设置系统的locale（此处以zh_CN.utf8为例）</h3><blockquote>
+<p>1）编辑文件：/etc/profie，在文件末尾添加以下内容并报错退出</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#vim /etc/profile</span><br><span class="line">export LC_ALL=zh_CN.utf8</span><br><span class="line">export LANG=zh_CN.utf8</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2）执行生效命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#source /etc/profile</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="最后保持Linux服务器端-LC-设置和-ssh工具的编码设置一致，即可正常显示中文"><a href="#最后保持Linux服务器端-LC-设置和-ssh工具的编码设置一致，即可正常显示中文" class="headerlink" title="最后保持Linux服务器端 LC#设置和 ssh工具的编码设置一致，即可正常显示中文"></a>最后保持Linux服务器端 LC#设置和 ssh工具的编码设置一致，即可正常显示中文</h3>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/locale/" rel="tag"># locale</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/01/Linux-Disk-Management/" rel="next" title="Linux 磁盘管理">
+                <i class="fa fa-chevron-left"></i> Linux 磁盘管理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/09/Oracle-Developer-Suite-Install/" rel="prev" title="安装久违的Oracle Developer Suite">
+                安装久违的Oracle Developer Suite <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo_cat.jpg" alt="Chong">
+            
+              <p class="site-author-name" itemprop="name">Chong</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/leichong2019" title="GitHub &rarr; https://github.com/leichong2019" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是locale"><span class="nav-number">1.</span> <span class="nav-text">什么是locale</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#locale的命名规则"><span class="nav-number">2.</span> <span class="nav-text">locale的命名规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#locale命令及参数讲解"><span class="nav-number">3.</span> <span class="nav-text">locale命令及参数讲解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LANG"><span class="nav-number">3.1.</span> <span class="nav-text">LANG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LC-CTYPE"><span class="nav-number">3.2.</span> <span class="nav-text">LC_CTYPE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LC-ALL"><span class="nav-number">3.3.</span> <span class="nav-text">LC_ALL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用命令"><span class="nav-number">4.</span> <span class="nav-text">常用命令:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看当前locale设置"><span class="nav-number">4.1.</span> <span class="nav-text">查看当前locale设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看当前系统的所有可用locale"><span class="nav-number">4.2.</span> <span class="nav-text">查看当前系统的所有可用locale</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置系统的locale（此处以zh-CN-utf8为例）"><span class="nav-number">4.3.</span> <span class="nav-text">设置系统的locale（此处以zh_CN.utf8为例）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后保持Linux服务器端-LC-设置和-ssh工具的编码设置一致，即可正常显示中文"><span class="nav-number">4.4.</span> <span class="nav-text">最后保持Linux服务器端 LC#设置和 ssh工具的编码设置一致，即可正常显示中文</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">All right reserved</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

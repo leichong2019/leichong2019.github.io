@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo_cat_32.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo_cat_32.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo_cat_32.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo_cat_32.png?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="日期和时间 Date and Time datetime模块123456789101112131415161718192021from datetime import date from datetime import timefrom datetime import datetime&amp;gt; today = date.today()&amp;gt; print(today)&amp;gt; 2019-03-04">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python-基础(6)-Date and Time">
+<meta property="og:url" content="https://leichong2019.github.io/2019/04/23/Python-basic-6-Date-and-Time/index.html">
+<meta property="og:site_name" content="Chong&#39;s Site book">
+<meta property="og:description" content="日期和时间 Date and Time datetime模块123456789101112131415161718192021from datetime import date from datetime import timefrom datetime import datetime&amp;gt; today = date.today()&amp;gt; print(today)&amp;gt; 2019-03-04">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-23T15:17:58.999Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python-基础(6)-Date and Time">
+<meta name="twitter:description" content="日期和时间 Date and Time datetime模块123456789101112131415161718192021from datetime import date from datetime import timefrom datetime import datetime&amp;gt; today = date.today()&amp;gt; print(today)&amp;gt; 2019-03-04">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://leichong2019.github.io/2019/04/23/Python-basic-6-Date-and-Time/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Python-基础(6)-Date and Time | Chong's Site book</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chong's Site book</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">15</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">22</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">29</span></a>
+
+  </li>
+        
+        
+        
+          
+            
+            
+            
+              
+              
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-hexo_docs">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>Hexo_docs</a>
+
+  </li>
+
+
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+        
+        
+        
+        
+          
+          <li class="menu-item menu-item-references">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/references/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>references</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-markdown_ref">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/markdown_ref/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>markdown_ref</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/leichong2019/" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://leichong2019.github.io/2019/04/23/Python-basic-6-Date-and-Time/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo_cat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chong's Site book">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python-基础(6)-Date and Time
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-23 00:38:25 / 修改时间：23:17:58" itemprop="dateCreated datePublished" datetime="2019-04-23T00:38:25+08:00">2019-04-23</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/basic/" itemprop="url" rel="index"><span itemprop="name">basic</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/basic/DateTime/" itemprop="url" rel="index"><span itemprop="name">DateTime</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="日期和时间-Date-and-Time"><a href="#日期和时间-Date-and-Time" class="headerlink" title="日期和时间 Date and Time"></a>日期和时间 Date and Time</h2><p><br></p>
+<h3 id="datetime模块"><a href="#datetime模块" class="headerlink" title="datetime模块"></a>datetime模块</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> date </span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">&gt; today = date.today()</span><br><span class="line">&gt; print(today)</span><br><span class="line">&gt; <span class="number">2019</span><span class="number">-03</span><span class="number">-04</span></span><br><span class="line"></span><br><span class="line">&gt; print(today.day, today.month, today.year)</span><br><span class="line">&gt; (<span class="number">4</span>, <span class="number">3</span>, <span class="number">2019</span>)</span><br><span class="line"></span><br><span class="line">&gt; print(today.weekday()) <span class="comment">## returns an integers in the range 0 to 6, where 0 represents Monday and 6 represents Sunday.</span></span><br><span class="line">&gt; <span class="number">0</span></span><br><span class="line"></span><br><span class="line">&gt; today = datetime.now()</span><br><span class="line">&gt; print(today)</span><br><span class="line">&gt; <span class="number">2019</span><span class="number">-03</span><span class="number">-04</span> <span class="number">21</span>:<span class="number">55</span>:<span class="number">56.228000</span></span><br><span class="line"></span><br><span class="line">&gt; time = datetime.time(datetime.now())</span><br><span class="line">&gt; print(time) </span><br><span class="line">&gt; <span class="number">21</span>:<span class="number">56</span>:<span class="number">16.040000</span></span><br></pre></td></tr></table></figure>
+<h3 id="timedelta类"><a href="#timedelta类" class="headerlink" title="timedelta类"></a>timedelta类</h3><p>用于实现date和time对象的计算<br>This module is used to perform date and time calculations.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> date </span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> timedelta</span><br><span class="line"></span><br><span class="line">print(timedelta(days=<span class="number">365</span>, hours=<span class="number">5</span>, minutes=<span class="number">1</span>)) <span class="comment"># 365 days, 5:01:00</span></span><br><span class="line">today  = datetime.now()</span><br><span class="line">print(today + timedelta(days=<span class="number">60</span>)) <span class="comment"># 2019-03-29 18:41:46.720811</span></span><br><span class="line">print(today - timedelta(days=<span class="number">57</span>)) <span class="comment"># 2018-12-02 18:42:36.774421</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>timedelta</strong> object takes the following parameters: days, seconds, microseconds, milliseconds, minutes, hours, weeks.<br>To find past or future dates, simply use plus or minus sign with the required difference from current date.</p>
+<h3 id="日历模块Calendar"><a href="#日历模块Calendar" class="headerlink" title="日历模块Calendar"></a>日历模块Calendar</h3><p>Calendar related operations and displaying in formatted way.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> calendar</span><br><span class="line"></span><br><span class="line">c = calendar.TextCalendar(calendar.MONDAY)</span><br><span class="line">st = c.formatmonth(<span class="number">2017</span>, <span class="number">1</span>, <span class="number">0</span>,<span class="number">0</span>)</span><br><span class="line">print(st)</span><br><span class="line"></span><br><span class="line">hc = calendar.HTMLCalendar(calendar.MONDAY)</span><br><span class="line">st = hc.formatmonth(<span class="number">2017</span>, <span class="number">1</span>)</span><br><span class="line">print(st)</span><br><span class="line"></span><br><span class="line"><span class="comment">#Output</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">    January 2017</span></span><br><span class="line"><span class="string">Mo Tu We Th Fr Sa Su</span></span><br><span class="line"><span class="string">                   1</span></span><br><span class="line"><span class="string"> 2  3  4  5  6  7  8</span></span><br><span class="line"><span class="string"> 9 10 11 12 13 14 15</span></span><br><span class="line"><span class="string">16 17 18 19 20 21 22</span></span><br><span class="line"><span class="string">23 24 25 26 27 28 29</span></span><br><span class="line"><span class="string">30 31</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;table border="0" cellpadding="0" cellspacing="0" class="month"&gt;</span></span><br><span class="line"><span class="string">&lt;tr&gt;&lt;th colspan="7" class="month"&gt;January 2017&lt;/th&gt;&lt;/tr&gt;</span></span><br><span class="line"><span class="string">&lt;tr&gt;&lt;th class="mon"&gt;Mon&lt;/th&gt;&lt;th class="tue"&gt;Tue&lt;/th&gt;&lt;th class="wed"&gt;Wed&lt;/th&gt;&lt;th class="thu"&gt;Thu&lt;/th&gt;&lt;th class="fri"&gt;Fri&lt;/th&gt;&lt;th class="sat"&gt;Sat&lt;/th&gt;&lt;th class="sun"&gt;Sun&lt;/th&gt;&lt;/tr&gt;</span></span><br><span class="line"><span class="string">&lt;tr&gt;&lt;td class="noday"&gt;&amp;nbsp;&lt;/td&gt;&lt;td class="noday"&gt;&amp;nbsp;&lt;/td&gt;&lt;td class="noday"&gt;&amp;nbsp;&lt;/td&gt;&lt;td class="noday"&gt;&amp;nbsp;&lt;/td&gt;&lt;td class="noday"&gt;&amp;nbsp;&lt;/td&gt;&lt;td class="noday"&gt;&amp;nbsp;&lt;/td&gt;&lt;td class="sun"&gt;1&lt;/td&gt;&lt;/tr&gt;</span></span><br><span class="line"><span class="string">&lt;tr&gt;&lt;td class="mon"&gt;2&lt;/td&gt;&lt;td class="tue"&gt;3&lt;/td&gt;&lt;td class="wed"&gt;4&lt;/td&gt;&lt;td class="thu"&gt;5&lt;/td&gt;&lt;td class="fri"&gt;6&lt;/td&gt;&lt;td class="sat"&gt;7&lt;/td&gt;&lt;td class="sun"&gt;8&lt;/td&gt;&lt;/tr&gt;</span></span><br><span class="line"><span class="string">&lt;tr&gt;&lt;td class="mon"&gt;9&lt;/td&gt;&lt;td class="tue"&gt;10&lt;/td&gt;&lt;td class="wed"&gt;11&lt;/td&gt;&lt;td class="thu"&gt;12&lt;/td&gt;&lt;td class="fri"&gt;13&lt;/td&gt;&lt;td class="sat"&gt;14&lt;/td&gt;&lt;td class="sun"&gt;15&lt;/td&gt;&lt;/tr&gt;</span></span><br><span class="line"><span class="string">&lt;tr&gt;&lt;td class="mon"&gt;16&lt;/td&gt;&lt;td class="tue"&gt;17&lt;/td&gt;&lt;td class="wed"&gt;18&lt;/td&gt;&lt;td class="thu"&gt;19&lt;/td&gt;&lt;td class="fri"&gt;20&lt;/td&gt;&lt;td class="sat"&gt;21&lt;/td&gt;&lt;td class="sun"&gt;22&lt;/td&gt;&lt;/tr&gt;</span></span><br><span class="line"><span class="string">&lt;tr&gt;&lt;td class="mon"&gt;23&lt;/td&gt;&lt;td class="tue"&gt;24&lt;/td&gt;&lt;td class="wed"&gt;25&lt;/td&gt;&lt;td class="thu"&gt;26&lt;/td&gt;&lt;td class="fri"&gt;27&lt;/td&gt;&lt;td class="sat"&gt;28&lt;/td&gt;&lt;td class="sun"&gt;29&lt;/td&gt;&lt;/tr&gt;</span></span><br><span class="line"><span class="string">&lt;tr&gt;&lt;td class="mon"&gt;30&lt;/td&gt;&lt;td class="tue"&gt;31&lt;/td&gt;&lt;td class="noday"&gt;&amp;nbsp;&lt;/td&gt;&lt;td class="noday"&gt;&amp;nbsp;&lt;/td&gt;&lt;td class="noday"&gt;&amp;nbsp;&lt;/td&gt;&lt;td class="noday"&gt;&amp;nbsp;&lt;/td&gt;&lt;td class="noday"&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt;</span></span><br><span class="line"><span class="string">&lt;/table&gt;</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><figcaption><span>return HTML code for the calendar in table format. ```Calendar.SUNDAY``` indicates that the first day </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">in the formatted calendar will be Sunday. In the above example, ```Calendar.MONDAY``` is used. Hence, we can see in the output that the first day in the representation is Monday.</span><br><span class="line">#### Iterating through dates of a month</span><br><span class="line">```Python</span><br><span class="line">import calendar</span><br><span class="line"></span><br><span class="line">c = calendar.TextCalendar(calendar.MONDAY)</span><br><span class="line">for i in c.itermonthdays(2017, 8):</span><br><span class="line">    print(i, end = &apos; &apos;)</span><br><span class="line">print(&apos;&apos;)</span><br><span class="line">for name in calendar.month_name:</span><br><span class="line">    print(name, end = &apos; &apos;)</span><br><span class="line">print(&apos;&apos;)</span><br><span class="line">for day in calendar.day_name:</span><br><span class="line">    print(day, end = &apos; &apos;)</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">Output:</span><br><span class="line">0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 0 0 0</span><br><span class="line"> January February March April May June July August September October November December</span><br><span class="line">Monday Tuesday Wednesday Thursday Friday Saturday Sunday</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="Back-To-Top"><a href="#Back-To-Top" class="headerlink" title="Back To Top"></a><a href="#date-and-time">Back To Top</a></h3>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/22/Python-basic-5-Classes/" rel="next" title="Python-基础(5)-Classes">
+                <i class="fa fa-chevron-left"></i> Python-基础(5)-Classes
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/23/EBS-Foreign-Currency-Accounting(1)/" rel="prev" title="EBS外币会计核算(一)">
+                EBS外币会计核算(一) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo_cat.jpg" alt="Chong">
+            
+              <p class="site-author-name" itemprop="name">Chong</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/leichong2019" title="GitHub &rarr; https://github.com/leichong2019" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#日期和时间-Date-and-Time"><span class="nav-number">1.</span> <span class="nav-text">日期和时间 Date and Time</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#datetime模块"><span class="nav-number">1.1.</span> <span class="nav-text">datetime模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#timedelta类"><span class="nav-number">1.2.</span> <span class="nav-text">timedelta类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日历模块Calendar"><span class="nav-number">1.3.</span> <span class="nav-text">日历模块Calendar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Back-To-Top"><span class="nav-number">1.4.</span> <span class="nav-text">Back To Top</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">All right reserved</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

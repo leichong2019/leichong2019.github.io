@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo_cat_32.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo_cat_32.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo_cat_32.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo_cat_32.png?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="飘往NBviewer版本的捷径 Table of Contents 1&amp;nbsp;&amp;nbsp;string编辑1.1&amp;nbsp;&amp;nbsp;修整截断头尾strip()1.2&amp;nbsp;&amp;nbsp;右截断、左截断2&amp;nbsp;&amp;nbsp;in 和 not in 操作3&amp;nbsp;&amp;nbsp;The upper(), lower(), isupper(), islower() string metho">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 基础(1) string">
+<meta property="og:url" content="https://leichong2019.github.io/2019/04/19/Python-basic(1)-string/index.html">
+<meta property="og:site_name" content="Chong&#39;s Site book">
+<meta property="og:description" content="飘往NBviewer版本的捷径 Table of Contents 1&amp;nbsp;&amp;nbsp;string编辑1.1&amp;nbsp;&amp;nbsp;修整截断头尾strip()1.2&amp;nbsp;&amp;nbsp;右截断、左截断2&amp;nbsp;&amp;nbsp;in 和 not in 操作3&amp;nbsp;&amp;nbsp;The upper(), lower(), isupper(), islower() string metho">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-20T15:43:53.540Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 基础(1) string">
+<meta name="twitter:description" content="飘往NBviewer版本的捷径 Table of Contents 1&amp;nbsp;&amp;nbsp;string编辑1.1&amp;nbsp;&amp;nbsp;修整截断头尾strip()1.2&amp;nbsp;&amp;nbsp;右截断、左截断2&amp;nbsp;&amp;nbsp;in 和 not in 操作3&amp;nbsp;&amp;nbsp;The upper(), lower(), isupper(), islower() string metho">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://leichong2019.github.io/2019/04/19/Python-basic(1)-string/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Python 基础(1) string | Chong's Site book</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chong's Site book</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">15</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">22</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">29</span></a>
+
+  </li>
+        
+        
+        
+          
+            
+            
+            
+              
+              
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-hexo_docs">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>Hexo_docs</a>
+
+  </li>
+
+
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+        
+        
+        
+        
+          
+          <li class="menu-item menu-item-references">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/references/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>references</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-markdown_ref">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/markdown_ref/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>markdown_ref</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/leichong2019/" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://leichong2019.github.io/2019/04/19/Python-basic(1)-string/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo_cat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chong's Site book">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python 基础(1) string
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-19 17:51:45" itemprop="dateCreated datePublished" datetime="2019-04-19T17:51:45+08:00">2019-04-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-20 23:43:53" itemprop="dateModified" datetime="2019-04-20T23:43:53+08:00">2019-04-20</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/basic/" itemprop="url" rel="index"><span itemprop="name">basic</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/basic/string/" itemprop="url" rel="index"><span itemprop="name">string</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://nbviewer.jupyter.org/github/leichong2019/leichong2019.github.io/blob/master/jupyters/Python_Basic%281%29_string.ipynb" target="_blank" rel="noopener">飘往NBviewer版本的捷径</a></p>
+<p></p><h2>Table of Contents<span class="tocSkip"></span></h2><p></p>
+<div class="toc"><ul class="toc-item"><li><span><a href="#string编辑" data-toc-modified-id="string编辑-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>string编辑</a></span><ul class="toc-item"><li><span><a href="#修整截断头尾strip()" data-toc-modified-id="修整截断头尾strip()-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>修整截断头尾strip()</a></span></li><li><span><a href="#右截断、左截断" data-toc-modified-id="右截断、左截断-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>右截断、左截断</a></span></li></ul></li><li><span><a href="#in-和-not-in-操作" data-toc-modified-id="in-和-not-in-操作-2"><span class="toc-item-num">2&nbsp;&nbsp;</span><code>in</code> 和 <code>not in</code> 操作</a></span></li><li><span><a href="#The-upper(),-lower(),-isupper(),-islower()-string-methods" data-toc-modified-id="The-upper(),-lower(),-isupper(),-islower()-string-methods-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>The upper(), lower(), isupper(), islower() string methods</a></span></li><li><span><a href="#string-template-字符串模板" data-toc-modified-id="string-template-字符串模板-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>string template 字符串模板</a></span></li><li><span><a href="#Pyperclip" data-toc-modified-id="Pyperclip-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>Pyperclip</a></span></li><li><span><a href="#string编码和解码" data-toc-modified-id="string编码和解码-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>string编码和解码</a></span><ul class="toc-item"><li><span><a href="#编码（bytes-to-string）" data-toc-modified-id="编码（bytes-to-string）-6.1"><span class="toc-item-num">6.1&nbsp;&nbsp;</span>编码（bytes to string）</a></span><ul class="toc-item"><li><span><a href="#chr(i)-buildin-function-将制定整数unicode编码返回对应的字符string" data-toc-modified-id="chr(i)-buildin-function-将制定整数unicode编码返回对应的字符string-6.1.1"><span class="toc-item-num">6.1.1&nbsp;&nbsp;</span><code>chr(i)</code> buildin function 将制定整数unicode编码返回对应的字符string</a></span></li><li><span><a href="#bytes.decode(encoding=&quot;utf-8&quot;,-errors=&quot;strict&quot;)" data-toc-modified-id="bytes.decode(encoding=&quot;utf-8&quot;,-errors=&quot;strict&quot;)-6.1.2"><span class="toc-item-num">6.1.2&nbsp;&nbsp;</span><code>bytes.decode(encoding=”utf-8”, errors=”strict”)</code></a></span></li><li><span><a href="#str(object=b'',-encoding='utf-8',-errors='strict')-buildin-function" data-toc-modified-id="str(object=b'',-encoding='utf-8',-errors='strict')-buildin-function-6.1.3"><span class="toc-item-num">6.1.3&nbsp;&nbsp;</span><code>str(object=b’’, encoding=’utf-8’, errors=’strict’)</code> buildin function</a></span></li></ul></li><li><span><a href="#解码（string--to-bytes）" data-toc-modified-id="解码（string--to-bytes）-6.2"><span class="toc-item-num">6.2&nbsp;&nbsp;</span>解码（string  to bytes）</a></span><ul class="toc-item"><li><span><a href="#ord(c)--buildin-function" data-toc-modified-id="ord(c)--buildin-function-6.2.1"><span class="toc-item-num">6.2.1&nbsp;&nbsp;</span><code>ord(c)</code>  buildin function</a></span></li><li><span><a href="#str.encode(self,-/,-encoding='utf-8',-errors='strict')-将string返回默认utf8-unicode字节" data-toc-modified-id="str.encode(self,-/,-encoding='utf-8',-errors='strict')-将string返回默认utf8-unicode字节-6.2.2"><span class="toc-item-num">6.2.2&nbsp;&nbsp;</span><code>str.encode(self, /, encoding=’utf-8’, errors=’strict’)</code> 将string返回默认utf8 unicode字节</a></span></li><li><span><a href="#class-bytes([source[,-encoding[,-errors]]])-buildin-function" data-toc-modified-id="class-bytes([source[,-encoding[,-errors]]])-buildin-function-6.2.3"><span class="toc-item-num">6.2.3&nbsp;&nbsp;</span><code>class bytes([source[, encoding[, errors]]])</code> buildin function</a></span></li></ul></li></ul></li></ul></div>
+
+<h2 id="string编辑"><a href="#string编辑" class="headerlink" title="string编辑"></a>string编辑</h2><h3 id="修整截断头尾strip"><a href="#修整截断头尾strip" class="headerlink" title="修整截断头尾strip()"></a>修整截断头尾strip()</h3><p><code>str.strip([chars])</code> 去掉字符串左右两端的空格，返回字新的字符串对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">Return a copy of the string with leading and trailing whitespace remove.</span></span><br><span class="line"><span class="string">If chars is given and not None, remove characters in chars instead.</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">check = <span class="string">'    Everything is fine!     '</span></span><br><span class="line">check.strip()</span><br></pre></td></tr></table></figure>
+<pre><code>&apos;Everything is fine!&apos;
+</code></pre><p>如果chars参数指定了，则从字符串两端计算删除指定的 chars 的成员</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#删除字符串两端的[E][e][v][!][ ]</span></span><br><span class="line">check.strip(<span class="string">'Eev! '</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>&apos;rything is fin&apos;
+</code></pre><h3 id="右截断、左截断"><a href="#右截断、左截断" class="headerlink" title="右截断、左截断"></a>右截断、左截断</h3><ul>
+<li>右删除<code>str.rstrip([chars])</code></li>
+<li>左删除<code>str.lstrip([chars])</code></li>
+</ul>
+<a id="more"></a>
+<h2 id="in-和-not-in-操作"><a href="#in-和-not-in-操作" class="headerlink" title="in 和 not in 操作"></a><code>in</code> 和 <code>not in</code> 操作</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'Python'</span> <span class="keyword">in</span> <span class="string">'Python is great!'</span></span><br></pre></td></tr></table></figure>
+<pre><code>True
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'PYTHON'</span> <span class="keyword">in</span> <span class="string">'Python is great!'</span></span><br></pre></td></tr></table></figure>
+<pre><code>False
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">''</span> <span class="keyword">in</span> <span class="string">'Python is great!'</span></span><br></pre></td></tr></table></figure>
+<pre><code>True
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'python'</span> <span class="keyword">not</span> <span class="keyword">in</span> <span class="string">'python and javascript'</span> <span class="comment">## Matches case</span></span><br></pre></td></tr></table></figure>
+<pre><code>False
+</code></pre><ul>
+<li>The in and not in Operators with list</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="string">'P'</span>, <span class="string">'y'</span>, <span class="string">'t'</span>, <span class="string">'h'</span>, <span class="string">'o'</span>, <span class="string">'n'</span>]</span><br><span class="line"><span class="string">'p'</span> <span class="keyword">in</span> a</span><br></pre></td></tr></table></figure>
+<pre><code>False
+</code></pre><h2 id="The-upper-lower-isupper-islower-string-methods"><a href="#The-upper-lower-isupper-islower-string-methods" class="headerlink" title="The upper(), lower(), isupper(), islower() string methods"></a>The upper(), lower(), isupper(), islower() string methods</h2><h2 id="string-template-字符串模板"><a href="#string-template-字符串模板" class="headerlink" title="string template 字符串模板"></a>string template 字符串模板</h2><ul>
+<li>可以预先定义sting模板，然后给模板中的制定替换文字做文字替换操作</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> string <span class="keyword">import</span> Template <span class="comment">#先引入 string.Template</span></span><br><span class="line">language = <span class="string">'Python'</span></span><br><span class="line">t = Template(<span class="string">'$lang is great! $name likes play with $lang'</span>)</span><br><span class="line">t.substitute(lang=language, name=<span class="string">'Dummy'</span>) <span class="comment">## Substitutes name with language variable</span></span><br></pre></td></tr></table></figure>
+<pre><code>&apos;Python is great! Dummy likes play with Python&apos;
+</code></pre><h2 id="Pyperclip"><a href="#Pyperclip" class="headerlink" title="Pyperclip"></a>Pyperclip</h2><ul>
+<li>Pyperclip is python library that help us easily copy and paste string</li>
+<li>First Install it using pip</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyperclip</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import pyperclip</span><br><span class="line">pyperclip.copy(&apos;Hello World&apos;) ## Copy Hello World</span><br><span class="line">pyperclip.paste()</span><br></pre></td></tr></table></figure>
+<h2 id="string编码和解码"><a href="#string编码和解码" class="headerlink" title="string编码和解码"></a>string编码和解码</h2><h3 id="编码（bytes-to-string）"><a href="#编码（bytes-to-string）" class="headerlink" title="编码（bytes to string）"></a>编码（bytes to string）</h3><h4 id="chr-i-buildin-function-将制定整数unicode编码返回对应的字符string"><a href="#chr-i-buildin-function-将制定整数unicode编码返回对应的字符string" class="headerlink" title="chr(i) buildin function 将制定整数unicode编码返回对应的字符string"></a><code>chr(i)</code> buildin function 将制定整数unicode编码返回对应的字符string</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(chr(<span class="number">97</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>a
+</code></pre><h4 id="bytes-decode-encoding-quot-utf-8-quot-errors-quot-strict-quot"><a href="#bytes-decode-encoding-quot-utf-8-quot-errors-quot-strict-quot" class="headerlink" title="bytes.decode(encoding=&quot;utf-8&quot;, errors=&quot;strict&quot;)"></a><code>bytes.decode(encoding=&quot;utf-8&quot;, errors=&quot;strict&quot;)</code></h4><ul>
+<li>根据bytes返回默认utf8编码字符串</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">b'\xe6\x88\x91\xe4\xbb\xac'</span>.decode()</span><br></pre></td></tr></table></figure>
+<pre><code>&apos;我们&apos;
+</code></pre><h4 id="str-object-b-39-39-encoding-39-utf-8-39-errors-39-strict-39-buildin-function"><a href="#str-object-b-39-39-encoding-39-utf-8-39-errors-39-strict-39-buildin-function" class="headerlink" title="str(object=b&#39;&#39;, encoding=&#39;utf-8&#39;, errors=&#39;strict&#39;) buildin function"></a><code>str(object=b&#39;&#39;, encoding=&#39;utf-8&#39;, errors=&#39;strict&#39;)</code> buildin function</h4><ul>
+<li>根据bytes返回制定编码方式的字符串</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str(<span class="string">b'\xe6\x88\x91\xe4\xbb\xac'</span>, <span class="string">'utf8'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>&apos;我们&apos;
+</code></pre><h3 id="解码（string-to-bytes）"><a href="#解码（string-to-bytes）" class="headerlink" title="解码（string  to bytes）"></a>解码（string  to bytes）</h3><h4 id="ord-c-buildin-function"><a href="#ord-c-buildin-function" class="headerlink" title="ord(c)  buildin function"></a><code>ord(c)</code>  buildin function</h4><ul>
+<li>根据给定的字符，返回代表该字符的<code>unicode</code>十进制整数编码</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(ord(<span class="string">'a'</span>))</span><br><span class="line">print(ord(<span class="string">'我'</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>97
+25105
+</code></pre><h4 id="str-encode-self-encoding-39-utf-8-39-errors-39-strict-39-将string返回默认utf8-unicode字节"><a href="#str-encode-self-encoding-39-utf-8-39-errors-39-strict-39-将string返回默认utf8-unicode字节" class="headerlink" title="str.encode(self, /, encoding=&#39;utf-8&#39;, errors=&#39;strict&#39;) 将string返回默认utf8 unicode字节"></a><code>str.encode(self, /, encoding=&#39;utf-8&#39;, errors=&#39;strict&#39;)</code> 将string返回默认utf8 unicode字节</h4><ul>
+<li>返回<code>bytes</code>对象</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'我们'</span>.encode()</span><br></pre></td></tr></table></figure>
+<pre><code>b&apos;\xe6\x88\x91\xe4\xbb\xac&apos;
+</code></pre><h4 id="class-bytes-source-encoding-errors-buildin-function"><a href="#class-bytes-source-encoding-errors-buildin-function" class="headerlink" title="class bytes([source[, encoding[, errors]]]) buildin function"></a><code>class bytes([source[, encoding[, errors]]])</code> buildin function</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bytes(<span class="string">'我们'</span>, <span class="string">'utf8'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>b&apos;\xe6\x88\x91\xe4\xbb\xac&apos;
+</code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/09/Oracle-Developer-Suite-Install/" rel="next" title="安装久违的Oracle Developer Suite">
+                <i class="fa fa-chevron-left"></i> 安装久违的Oracle Developer Suite
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/20/Python-basic-2-number/" rel="prev" title="Python-基础(2)-number">
+                Python-基础(2)-number <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo_cat.jpg" alt="Chong">
+            
+              <p class="site-author-name" itemprop="name">Chong</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/leichong2019" title="GitHub &rarr; https://github.com/leichong2019" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Table of Contents</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#string编辑"><span class="nav-number">2.</span> <span class="nav-text">string编辑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修整截断头尾strip"><span class="nav-number">2.1.</span> <span class="nav-text">修整截断头尾strip()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#右截断、左截断"><span class="nav-number">2.2.</span> <span class="nav-text">右截断、左截断</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#in-和-not-in-操作"><span class="nav-number">3.</span> <span class="nav-text">in 和 not in 操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-upper-lower-isupper-islower-string-methods"><span class="nav-number">4.</span> <span class="nav-text">The upper(), lower(), isupper(), islower() string methods</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#string-template-字符串模板"><span class="nav-number">5.</span> <span class="nav-text">string template 字符串模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pyperclip"><span class="nav-number">6.</span> <span class="nav-text">Pyperclip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#string编码和解码"><span class="nav-number">7.</span> <span class="nav-text">string编码和解码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编码（bytes-to-string）"><span class="nav-number">7.1.</span> <span class="nav-text">编码（bytes to string）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#chr-i-buildin-function-将制定整数unicode编码返回对应的字符string"><span class="nav-number">7.1.1.</span> <span class="nav-text">chr(i) buildin function 将制定整数unicode编码返回对应的字符string</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bytes-decode-encoding-quot-utf-8-quot-errors-quot-strict-quot"><span class="nav-number">7.1.2.</span> <span class="nav-text">bytes.decode(encoding=&quot;utf-8&quot;, errors=&quot;strict&quot;)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#str-object-b-39-39-encoding-39-utf-8-39-errors-39-strict-39-buildin-function"><span class="nav-number">7.1.3.</span> <span class="nav-text">str(object=b&#39;&#39;, encoding=&#39;utf-8&#39;, errors=&#39;strict&#39;) buildin function</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解码（string-to-bytes）"><span class="nav-number">7.2.</span> <span class="nav-text">解码（string  to bytes）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ord-c-buildin-function"><span class="nav-number">7.2.1.</span> <span class="nav-text">ord(c)  buildin function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#str-encode-self-encoding-39-utf-8-39-errors-39-strict-39-将string返回默认utf8-unicode字节"><span class="nav-number">7.2.2.</span> <span class="nav-text">str.encode(self, /, encoding=&#39;utf-8&#39;, errors=&#39;strict&#39;) 将string返回默认utf8 unicode字节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#class-bytes-source-encoding-errors-buildin-function"><span class="nav-number">7.2.3.</span> <span class="nav-text">class bytes([source[, encoding[, errors]]]) buildin function</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">All right reserved</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

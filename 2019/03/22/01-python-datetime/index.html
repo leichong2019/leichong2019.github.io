@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo_cat_32.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo_cat_32.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo_cat_32.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo_cat_32.png?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Python中和时间相关的模块包括time datetime calendar time在time模块中时间表示的格式主要有三种：  timestamp（时间戳）时间戳表示的是从1970年1月1日00:00:00开始按秒计算的偏移量。如：1528116025.5841389，它表示的就是2018年6月4日10:40:25距离1970年1月1日00:00:00的总秒数。 struct_time（时间">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="01 Python 基础之时间类型处理">
+<meta property="og:url" content="https://leichong2019.github.io/2019/03/22/01-python-datetime/index.html">
+<meta property="og:site_name" content="Chong&#39;s Site book">
+<meta property="og:description" content="Python中和时间相关的模块包括time datetime calendar time在time模块中时间表示的格式主要有三种：  timestamp（时间戳）时间戳表示的是从1970年1月1日00:00:00开始按秒计算的偏移量。如：1528116025.5841389，它表示的就是2018年6月4日10:40:25距离1970年1月1日00:00:00的总秒数。 struct_time（时间">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://leichong2019.github.io/2019/03/22/01-python-datetime/Datetime_process.png">
+<meta property="og:image" content="https://leichong2019.github.io/2019/03/22/01-python-datetime/DatetimeFormatString.png">
+<meta property="og:updated_time" content="2019-04-23T15:17:47.942Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="01 Python 基础之时间类型处理">
+<meta name="twitter:description" content="Python中和时间相关的模块包括time datetime calendar time在time模块中时间表示的格式主要有三种：  timestamp（时间戳）时间戳表示的是从1970年1月1日00:00:00开始按秒计算的偏移量。如：1528116025.5841389，它表示的就是2018年6月4日10:40:25距离1970年1月1日00:00:00的总秒数。 struct_time（时间">
+<meta name="twitter:image" content="https://leichong2019.github.io/2019/03/22/01-python-datetime/Datetime_process.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://leichong2019.github.io/2019/03/22/01-python-datetime/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>01 Python 基础之时间类型处理 | Chong's Site book</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chong's Site book</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">15</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">22</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">29</span></a>
+
+  </li>
+        
+        
+        
+          
+            
+            
+            
+              
+              
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-hexo_docs">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>Hexo_docs</a>
+
+  </li>
+
+
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+        
+        
+        
+        
+          
+          <li class="menu-item menu-item-references">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/references/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>references</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-markdown_ref">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/markdown_ref/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>markdown_ref</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/leichong2019/" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://leichong2019.github.io/2019/03/22/01-python-datetime/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo_cat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chong's Site book">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">01 Python 基础之时间类型处理
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-22 15:38:12" itemprop="dateCreated datePublished" datetime="2019-03-22T15:38:12+08:00">2019-03-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-23 23:17:47" itemprop="dateModified" datetime="2019-04-23T23:17:47+08:00">2019-04-23</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/basic/" itemprop="url" rel="index"><span itemprop="name">basic</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/basic/DateTime/" itemprop="url" rel="index"><span itemprop="name">DateTime</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Python中和时间相关的模块包括<code>time</code> <code>datetime</code> <code>calendar</code></p>
+<h3 id="time"><a href="#time" class="headerlink" title="time"></a>time</h3><p>在time模块中时间表示的格式主要有三种：</p>
+<ul>
+<li><em>timestamp（时间戳）</em><br>时间戳表示的是从1970年1月1日00:00:00开始按秒计算的<strong>偏移量</strong>。<br>如：1528116025.5841389，它表示的就是2018年6月4日10:40:25距离1970年1月1日00:00:00的总秒数。</li>
+<li><em>struct_time（时间元组）</em><br>它由九个元素组成，如：time.struct_time(tm_year=2018, tm_mon=5, tm_mday=22, tm_hour=15, tm_min=35, tm_sec=51, tm_wday=1, tm_yday=142, tm_isdst=-1)</li>
+<li><em>format string（格式化时间）</em><br>前面两个时间表示的格式可能对电脑来说，较易读懂，但是对于我们人类来说，却很复杂，因此格式化之后可以使时间更具可读性，它不仅有固定格式还有自定义格式。</li>
+</ul>
+<img src="/2019/03/22/01-python-datetime/Datetime_process.png" title="日期格式之间的相互转化">
+<a id="more"></a>
+<h4 id="time转换为struct-time元组"><a href="#time转换为struct-time元组" class="headerlink" title="time转换为struct_time元组"></a>time转换为struct_time元组</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time   <span class="comment">#导入时间模块</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### time convert to struct_type tuple</span></span><br><span class="line">print(time.time()) <span class="comment">#得到当前的时间戳,偏移描述 float</span></span><br><span class="line">print(time.localtime(time.time())) <span class="comment">#得到本地时间  return struct_type class</span></span><br><span class="line">print(time.gmtime(time.time())) <span class="comment">#得到格林威治（GMT）时间   return struct_type class</span></span><br></pre></td></tr></table></figure>
+<pre><code>1553225996.474412
+time.struct_time(tm_year=2019, tm_mon=3, tm_mday=22, tm_hour=11, tm_min=39, tm_sec=56, tm_wday=4, tm_yday=81, tm_isdst=0)
+time.struct_time(tm_year=2019, tm_mon=3, tm_mday=22, tm_hour=3, tm_min=39, tm_sec=56, tm_wday=4, tm_yday=81, tm_isdst=0)
+</code></pre><ul>
+<li>time.localtime() 返回的是当前默认时区的元组信息</li>
+<li>time.gmtime() 0时区（格林尼治天文台）的元组信息</li>
+</ul>
+<h4 id="struct-time元组转换为time时间戳"><a href="#struct-time元组转换为time时间戳" class="headerlink" title="struct_time元组转换为time时间戳"></a>struct_time元组转换为time时间戳</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(time.time())</span><br><span class="line"></span><br><span class="line"><span class="comment">#注意到 localtime的时间精度到了秒，所以转换成时间戳也是精确到秒</span></span><br><span class="line">print(time.mktime(time.localtime()))</span><br></pre></td></tr></table></figure>
+<pre><code>1553226224.3220398
+1553226224.0
+</code></pre><h4 id="struct-time元组转换成-format-string"><a href="#struct-time元组转换成-format-string" class="headerlink" title="struct_time元组转换成 format string"></a>struct_time元组转换成 format string</h4><blockquote>
+<p>time.strftime(formatstring , struct_time)  将日期转换成文字列</p>
+</blockquote>
+<ul>
+<li>%Y表示完整的年份（000-9999）</li>
+<li>%m表示月份（01-12）</li>
+<li>%d表示月内中的一天（0-31）</li>
+<li>%X表示当地相应的时间表示</li>
+<li>%B表示本地完整月份名称</li>
+</ul>
+<p>其余时间日期格式化符号：<br><img src="/2019/03/22/01-python-datetime/DatetimeFormatString.png" title="日期格式化字符串"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(time.strftime(<span class="string">"%Y-%m-%d %X"</span>,time.localtime(time.time())))</span><br></pre></td></tr></table></figure>
+<pre><code>2019-03-22 11:45:43
+</code></pre><h4 id="format-string-转换成struct-time"><a href="#format-string-转换成struct-time" class="headerlink" title="format string 转换成struct_time"></a>format string 转换成struct_time</h4><blockquote>
+<p>time.strptime(string, formatstring)</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(time.strptime(<span class="string">'2019-03-22 13:36:21'</span>, <span class="string">'%Y-%m-%d %X'</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>time.struct_time(tm_year=2019, tm_mon=3, tm_mday=22, tm_hour=13, tm_min=36, tm_sec=21, tm_wday=4, tm_yday=81, tm_isdst=-1)
+</code></pre><h4 id="按固定格式，time-struct-time-也可以转换成format-string的"><a href="#按固定格式，time-struct-time-也可以转换成format-string的" class="headerlink" title="按固定格式，time(struct_time)也可以转换成format string的"></a>按固定格式，time(struct_time)也可以转换成format string的</h4><p>只是只能通过默认的固定格式（%a %b %d %H:%M:%S %Y），不太符合我们的使用习惯。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(time.ctime(time.time()))</span><br></pre></td></tr></table></figure>
+<pre><code>Fri Mar 22 13:39:40 2019
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(time.asctime(time.localtime()))</span><br></pre></td></tr></table></figure>
+<pre><code>Fri Mar 22 13:40:42 2019
+</code></pre><h3 id="Pandas的to-datetime"><a href="#Pandas的to-datetime" class="headerlink" title="Pandas的to_datetime()"></a>Pandas的to_datetime()</h3><p>除了Python自带的日期处理模块，pandas也给我们带来很大的灵活性，自动帮我们选择可行的格式字符串。</p>
+<p>pandas中的to_datetime()函数可以轻松将其转化为Python可识别的标准日期格式。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">a = [<span class="string">"4 sep 2018 "</span>,<span class="string">"Jan 23 .2017"</span>,<span class="string">"2016. 6 may"</span>,<span class="string">"May 2nd. 2016"</span>,<span class="string">"21. 8. 1976 23:18"</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">    print(pd.to_datetime(i))</span><br></pre></td></tr></table></figure>
+<pre><code>2018-09-04 00:00:00
+2017-01-23 00:00:00
+2016-05-06 00:00:00
+2016-05-02 00:00:00
+1976-08-21 23:18:00
+</code></pre><h3 id="chronyk时间解析库"><a href="#chronyk时间解析库" class="headerlink" title="chronyk时间解析库"></a>chronyk时间解析库</h3><p>chronyk是一个小型的第三方时间解析库，它可以将<code>相对时间概念转换为标准时间</code>。</p>
+<p>这一库需在cmd命令行中输入：</p>
+<blockquote>
+<p>pip install chronyk</p>
+</blockquote>
+<p>进行安装。</p>
+<p>chronyk包中包含一个Chronyk类，该类中定义了4个初始化参数：</p>
+<ul>
+<li><code>timestr</code> 参数timestr表示需解析的时间字符串，其默认值为None，不传入这一参数时，Chronyk类会解析当前系统时间</li>
+<li><code>timezone</code> timezone是一个设置时区的参数，其值为当地时区与格林威治时间（世界时间）的偏移秒数，西区偏移量为正值，东区偏移量为负值，我国为东八区，与世界时间相差8个小时，偏移秒数为-28800（=-3600*8），其默认值也为东八区的-28800，当解析世界时间时，应将这一参数设置为timezone=0</li>
+<li><code>allowpast</code> <code>allowfuture</code> allowfuture（allowpast）为布尔类型的参数，表示是否允许解析未来（过去）的时间，默认值均为True。</li>
+</ul>
+<p>Chronyk类中也定义了一系列函数，用于将传入的时间字符串转换为不同的表示形式，以下举例介绍常用的timestring()函数、timestamp()函数及relativestring()函数。</p>
+<h4 id="timestring-函数"><a href="#timestring-函数" class="headerlink" title="timestring()函数"></a>timestring()函数</h4><p>timestring()函数用于输出指定格式的标准日期。</p>
+<p>函数中包含一个默认参数pattern=”%Y-%m-%d %H:%M:%S”。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> chronyk  <span class="comment">#导入chronyk包</span></span><br><span class="line"></span><br><span class="line">t = chronyk.Chronyk()  <span class="comment">#调用chronyk包中的Chronyk类</span></span><br><span class="line">print(t.timestring())  </span><br><span class="line"></span><br><span class="line">t = chronyk.Chronyk(<span class="string">"now"</span>,timezone=<span class="number">0</span>) <span class="comment">#timezone设置为0表示解析当前世界时间</span></span><br><span class="line">print(t.timestring())</span><br><span class="line"></span><br><span class="line">t = chronyk.Chronyk()</span><br><span class="line">print(t.timestring(<span class="string">"%Y-%m-%d"</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>2019-03-22 14:10:15
+2019-03-22 06:10:15
+2019-03-22
+</code></pre><h4 id="timestamp-函数"><a href="#timestamp-函数" class="headerlink" title="timestamp()函数"></a>timestamp()函数</h4><p>timestamp()函数用于输出时间戳。</p>
+<p>时间戳表示的是从1970年1月1日00:00:00开始按秒计算的偏移量，如1552713312.0表示2019年3月16日13:15:12距离1970年1月1日00:00:00的总秒数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">t = chronyk.Chronyk(<span class="string">"now"</span>)</span><br><span class="line">print(t.timestring())</span><br><span class="line"></span><br><span class="line">t = chronyk.Chronyk(<span class="string">"1 day ago"</span>)</span><br><span class="line">print(t.timestring())  </span><br><span class="line">print(t.timestamp())</span><br></pre></td></tr></table></figure>
+<pre><code>2019-03-22 14:16:17
+2019-03-21 14:16:17
+1553148977.0
+</code></pre><h4 id="3、relativestring-函数、timestring-函数"><a href="#3、relativestring-函数、timestring-函数" class="headerlink" title="3、relativestring()函数、timestring()函数"></a>3、relativestring()函数、timestring()函数</h4><ul>
+<li>timestring()函数是将一个表示相对时间概念的字符串（如：1 day ago）转化为一个具体的日期。</li>
+<li>relativestring()函数的作用与此相反，用于将具体的日期转化为一个表示相对时间概念的字符串。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">t = chronyk.Chronyk(<span class="string">'now'</span>)</span><br><span class="line"></span><br><span class="line">print(t.timestring())</span><br></pre></td></tr></table></figure>
+<pre><code>2019-03-22 14:23:46
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">t = chronyk.Chronyk(<span class="string">"2019-03-30"</span>)</span><br><span class="line">t.relativestring()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">b = [<span class="string">"1 month ago"</span>,<span class="string">"2 hours ago"</span>,<span class="string">"2 days ago"</span>,<span class="string">"in 3 days"</span>,<span class="string">"2 days and 30 hours ago"</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> b:</span><br><span class="line">    t = chronyk.Chronyk(i)</span><br><span class="line">    print(t.timestring())</span><br></pre></td></tr></table></figure>
+<pre><code>2019-02-22 14:28:02
+2019-03-22 12:28:02
+2019-03-20 14:28:02
+2019-03-25 14:28:02
+2019-03-19 08:28:02
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> chronyk</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pre_date</span><span class="params">(arg1,*arg2)</span>:</span></span><br><span class="line">    timeArray = time.strptime(arg1, <span class="string">"%Y-%m-%d %H:%M:%S"</span>)</span><br><span class="line">    timeStamp = time.mktime(timeArray)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> arg2:</span><br><span class="line">        t = chronyk.Chronyk(i)</span><br><span class="line">        x = t.timestamp()</span><br><span class="line">        y = time.time() - timeStamp</span><br><span class="line">        z = x - y</span><br><span class="line">        Array = time.localtime(z)</span><br><span class="line">        otherStyleTime = time.strftime(<span class="string">"%Y-%m-%d %H:%M:%S"</span>, Array)</span><br><span class="line">        print(otherStyleTime)</span><br><span class="line"></span><br><span class="line">a = <span class="string">'2019-03-09 12:00:00'</span></span><br><span class="line"></span><br><span class="line">b = [<span class="string">"1 month ago"</span>,<span class="string">"2 hours ago"</span>,<span class="string">"2 days ago"</span>,<span class="string">"in 3 days"</span>,<span class="string">"2 days and 30 hours ago"</span>]</span><br><span class="line"></span><br><span class="line">z = pre_date(a,*b)</span><br></pre></td></tr></table></figure>
+<pre><code>2019-02-09 11:59:59
+2019-03-09 09:59:59
+2019-03-07 11:59:59
+2019-03-12 11:59:59
+2019-03-06 05:59:59
+</code></pre><p>以上代码编写的思路在于利用当前时间和过去时间之间的时间差来计算列表中时间的时间戳，再将时间戳转化为标准日期格式便解析出了列表b相对于”2019-03-09 12:00:00”这一时间的标准格式日期。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/22/Python-Reference/" rel="next" title="Python Reference">
+                <i class="fa fa-chevron-left"></i> Python Reference
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/24/Hexo-Tags-Plugins/" rel="prev" title="Hexo Tags Plugins">
+                Hexo Tags Plugins <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo_cat.jpg" alt="Chong">
+            
+              <p class="site-author-name" itemprop="name">Chong</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/leichong2019" title="GitHub &rarr; https://github.com/leichong2019" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#time"><span class="nav-number">1.</span> <span class="nav-text">time</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#time转换为struct-time元组"><span class="nav-number">1.1.</span> <span class="nav-text">time转换为struct_time元组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#struct-time元组转换为time时间戳"><span class="nav-number">1.2.</span> <span class="nav-text">struct_time元组转换为time时间戳</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#struct-time元组转换成-format-string"><span class="nav-number">1.3.</span> <span class="nav-text">struct_time元组转换成 format string</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#format-string-转换成struct-time"><span class="nav-number">1.4.</span> <span class="nav-text">format string 转换成struct_time</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按固定格式，time-struct-time-也可以转换成format-string的"><span class="nav-number">1.5.</span> <span class="nav-text">按固定格式，time(struct_time)也可以转换成format string的</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pandas的to-datetime"><span class="nav-number">2.</span> <span class="nav-text">Pandas的to_datetime()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chronyk时间解析库"><span class="nav-number">3.</span> <span class="nav-text">chronyk时间解析库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#timestring-函数"><span class="nav-number">3.1.</span> <span class="nav-text">timestring()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#timestamp-函数"><span class="nav-number">3.2.</span> <span class="nav-text">timestamp()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、relativestring-函数、timestring-函数"><span class="nav-number">3.3.</span> <span class="nav-text">3、relativestring()函数、timestring()函数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">All right reserved</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

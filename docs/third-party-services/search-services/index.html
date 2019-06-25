@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo_cat_32.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo_cat_32.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo_cat_32.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo_cat_32.png?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="NexT User Docs – Third-party Service Integration – Search Services">
+<meta name="keywords" content="EBS,财务模块,APEX,Python,数据分析">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Search Services">
+<meta property="og:url" content="https://leichong2019.github.io/docs/third-party-services/search-services/index.html">
+<meta property="og:site_name" content="Chong&#39;s Site book">
+<meta property="og:description" content="NexT User Docs – Third-party Service Integration – Search Services">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://leichong2019.github.io/images/docs/algolia-2.png">
+<meta property="og:image" content="https://leichong2019.github.io/images/docs/algolia-4.png">
+<meta property="og:image" content="https://leichong2019.github.io/images/docs/algolia-5.png">
+<meta property="og:image" content="https://leichong2019.github.io/images/docs/algolia-5-2.png">
+<meta property="og:image" content="https://leichong2019.github.io/images/docs/algolia-7.png">
+<meta property="og:image" content="https://leichong2019.github.io/images/docs/swiftype-1.png">
+<meta property="og:image" content="https://leichong2019.github.io/images/docs/swiftype-2.png">
+<meta property="og:image" content="https://leichong2019.github.io/images/docs/swiftype-3.png">
+<meta property="og:image" content="https://leichong2019.github.io/images/docs/swiftype-4.png">
+<meta property="og:updated_time" content="2019-03-22T18:01:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Search Services">
+<meta name="twitter:description" content="NexT User Docs – Third-party Service Integration – Search Services">
+<meta name="twitter:image" content="https://leichong2019.github.io/images/docs/algolia-2.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://leichong2019.github.io/docs/third-party-services/search-services/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Search Services | Chong's Site book</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chong's Site book</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">15</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">22</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">29</span></a>
+
+  </li>
+        
+        
+        
+          
+            
+            
+            
+              
+              
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-hexo_docs menu-item-active">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>Hexo_docs</a>
+
+  </li>
+
+
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+        
+        
+        
+        
+          
+          <li class="menu-item menu-item-references">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/references/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>references</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-markdown_ref">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/markdown_ref/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>markdown_ref</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/leichong2019/" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+
+        
+        
+        
+
+          
+          <ul id="sub-menu" class="sub-menu menu">
+          
+            
+            
+              
+              
+                
+              
+            
+          
+            
+            
+              
+              
+              
+                
+                  
+                  
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-getting-started">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/getting-started/" rel="section"><i class="menu-item-icon fa fa-fw fa-flag"></i> <br>Getting Started</a>
+
+  </li>
+
+
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+            
+            
+              
+              
+              
+                
+                  
+                  
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-theme-settings">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/theme-settings/" rel="section"><i class="menu-item-icon fa fa-fw fa-star"></i> <br>Theme Settings</a>
+
+  </li>
+
+
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+            
+            
+              
+              
+              
+                
+                  
+                  
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-third-party-services menu-item-active">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/third-party-services/" rel="section"><i class="menu-item-icon fa fa-fw fa-plug"></i> <br>Third Party Services</a>
+
+  </li>
+
+
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+            
+            
+              
+              
+              
+                
+                  
+                  
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-tag-plugins">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/tag-plugins/" rel="section"><i class="menu-item-icon fa fa-fw fa-rocket"></i> <br>Tag Plugins</a>
+
+  </li>
+
+
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+            
+            
+              
+              
+                
+                  
+                
+                
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-advanced-settings">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/advanced-settings/" rel="section"><i class="menu-item-icon fa fa-fw fa-cogs"></i> <br>Advanced Settings</a>
+
+  </li>
+
+
+              
+            
+          
+            
+            
+              
+              
+                
+                  
+                
+                
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-faq's">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/faqs/" rel="section"><i class="menu-item-icon fa fa-fw fa-life-ring"></i> <br>FAQ's</a>
+
+  </li>
+
+
+              
+            
+          
+            
+            
+              
+              
+                
+                  
+                
+                
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-troubleshooting">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/troubleshooting/" rel="section"><i class="menu-item-icon fa fa-fw fa-bug"></i> <br>Troubleshooting</a>
+
+  </li>
+
+
+              
+            
+          
+          </ul>
+          
+
+          
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+
+              
+                
+                
+                  
+                
+                
+              
+                
+                
+                
+
+                  
+                  
+                  
+                    
+                  
+                  
+
+                
+              
+                
+                
+                
+
+                  
+                  
+                  
+                    
+                  
+                  
+
+                
+              
+                
+                
+                
+
+                  
+                  
+                  
+                    
+
+                      
+                      <ul id="sub-menu-2" class="sub-menu menu">
+                      
+                        
+                        
+                        
+                          
+                        
+                      
+                        
+                        
+                        
+                          
+                            
+                          
+                          
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-comments-and-widgets">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/third-party-services/comments-and-widgets/" rel="section"><i class="menu-item-icon fa fa-fw fa-comments-o"></i> <br>Comments and Widgets</a>
+
+  </li>
+
+
+                        
+                      
+                        
+                        
+                        
+                          
+                            
+                          
+                          
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-statistics-and-analytics">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/third-party-services/statistics-and-analytics/" rel="section"><i class="menu-item-icon fa fa-fw fa-bar-chart"></i> <br>Statistics and Analytics</a>
+
+  </li>
+
+
+                        
+                      
+                        
+                        
+                        
+                          
+                            
+                          
+                          
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-content-sharing-services">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/third-party-services/content-sharing-services/" rel="section"><i class="menu-item-icon fa fa-fw fa-share-square"></i> <br>Content Sharing Services</a>
+
+  </li>
+
+
+                        
+                      
+                        
+                        
+                        
+                          
+                            
+                          
+                          
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-search-services menu-item-active">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/third-party-services/search-services/" rel="section"><i class="menu-item-icon fa fa-fw fa-search-plus"></i> <br>Search Services</a>
+
+  </li>
+
+
+                        
+                      
+                        
+                        
+                        
+                          
+                            
+                          
+                          
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-external-libraries">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/third-party-services/external-libraries/" rel="section"><i class="menu-item-icon fa fa-fw fa-puzzle-piece"></i> <br>External Libraries</a>
+
+  </li>
+
+
+                        
+                      
+                        
+                        
+                        
+                          
+                            
+                          
+                          
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-math-equations">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/third-party-services/math-equations/" rel="section"><i class="menu-item-icon fa fa-fw fa-superscript"></i> <br>Math Equations</a>
+
+  </li>
+
+
+                        
+                      
+                        
+                        
+                        
+                          
+                            
+                          
+                          
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-chat-services">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/third-party-services/chat-services/" rel="section"><i class="menu-item-icon fa fa-fw fa-comment"></i> <br>Chat Services</a>
+
+  </li>
+
+
+                        
+                      
+                      </ul>
+                      
+
+                    
+                  
+                  
+
+                
+              
+                
+                
+                
+
+                  
+                  
+                  
+                    
+                  
+                  
+
+                
+              
+                
+                
+                
+              
+                
+                
+                
+              
+                
+                
+                
+              
+
+            
+          
+            
+            
+          
+            
+            
+          
+          
+
+        
+        
+
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">Search Services
+
+</h1>
+
+<div class="post-meta">
+  
+    <div class="post-description">NexT User Docs – Third-party Service Integration – Search Services</div>
+  
+  
+
+
+  
+  
+  <ul class="breadcrumb">
+    
+      
+      
+        
+          
+            
+          
+          
+            <li><a href="/docs/">DOCS</a></li>
+          
+        
+      
+    
+      
+      
+        
+          
+            
+          
+          
+            <li><a href="/docs/third-party-services/">THIRD-PARTY-SERVICES</a></li>
+          
+        
+      
+    
+      
+      
+        
+          <li>SEARCH-SERVICES</li>
+        
+      
+    
+      
+      
+    
+  </ul>
+
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+        
+        
+          <h3 id="Local-Search"><a href="#Local-Search" class="headerlink" title="Local Search"></a>Local Search</h3><p>Local search no need any external 3rd-party services and can be extra indexed by search engines. That search method recommended for most users.</p>
+<div class="tabs" id="local-search"><ul class="nav-tabs"><li class="tab active"><a href="#local-search-1">Installation →</a></li><li class="tab"><a href="#local-search-2">Hexo Config →</a></li><li class="tab"><a href="#local-search-3">NexT Config</a></li></ul><div class="tab-content"><div class="tab-pane active" id="local-search-1"><p>Install <code>hexo-generator-searchdb</code> by run following command in <span class="label info">site root dir</span>:</p>
+<pre><code>$ npm install hexo-generator-searchdb --save
+</code></pre></div><div class="tab-pane" id="local-search-2"><p>Edit <span class="label info">site config file</span> and add following content:</p>
+<figure class="highlight yml"><figcaption><span>hexo/_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">search:</span></span><br><span class="line"><span class="attr">  path:</span> <span class="string">search.xml</span></span><br><span class="line"><span class="attr">  field:</span> <span class="string">post</span></span><br><span class="line"><span class="attr">  format:</span> <span class="string">html</span></span><br><span class="line"><span class="attr">  limit:</span> <span class="number">10000</span></span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="local-search-3"><p>Edit <span class="label primary">theme config file</span> to enable Local Search:</p>
+<figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Local search</span></span><br><span class="line"><span class="comment"># Dependencies: <a href="https://github.com/theme-next/hexo-generator-searchdb" target="_blank" rel="noopener">https://github.com/theme-next/hexo-generator-searchdb</a></span></span><br><span class="line"><span class="attr">local_search:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment"># if auto, trigger search by changing input</span></span><br><span class="line">  <span class="comment"># if manual, trigger search by pressing enter key or search button</span></span><br><span class="line"><span class="attr">  trigger:</span> <span class="string">auto</span></span><br><span class="line">  <span class="comment"># show top n results per article, show all results by setting to -1</span></span><br><span class="line"><span class="attr">  top_n_per_article:</span> <span class="number">1</span></span><br><span class="line">  <span class="comment"># unescape html strings to the readable one</span></span><br><span class="line"><span class="attr">  unescape:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure></div></div></div>
+<h3 id="Algolia-Search"><a href="#Algolia-Search" class="headerlink" title="Algolia Search"></a>Algolia Search</h3><p>NexT provides Algolia search plugin for index your hexo website content. What you should note here is that only turn on <code>enable</code> of <code>algolia_search</code> in <span class="label primary">theme config file</span> cannot let you use the algolia search correctly, you need to install corresponding <a href="https://github.com/oncletom/hexo-algolia" target="_blank" rel="noopener">Hexo Algolia</a> plugin to seach your website with Algolia. Follow the steps described below to complete the installation of Algolia search.</p>
+<div class="tabs" id="algolia-search"><ul class="nav-tabs"><li class="tab active"><a href="#algolia-search-1">Registration →</a></li><li class="tab"><a href="#algolia-search-2">Algolia Config →</a></li><li class="tab"><a href="#algolia-search-3">Hexo Config →</a></li><li class="tab"><a href="#algolia-search-4">Algolia Module →</a></li><li class="tab"><a href="#algolia-search-5">NexT Config</a></li></ul><div class="tab-content"><div class="tab-pane active" id="algolia-search-1"><p>Register at <a href="https://www.algolia.com" target="_blank" rel="noopener">Algolia</a>, you can log in directly using GitHub or Google Account. Upon Customer’s initial sign-up for an Account, Customer will have a free, fourteen (14) day evaluation period (the «Evaluation Period») for the Algolia Services commencing on the Effective Date, subject to the limitations on Algolia’s website. After that, Algolia offers a free, branded version for up to 10k records and 100k operations per month.</p></div><div class="tab-pane" id="algolia-search-2"><ol>
+<li><p>If a tutorial pops up, you can skip it. Go straight to create an <code>Index</code> which will be used later.<br><img src="/images/docs/algolia-2.png" alt="Algolia Create Index"></p>
+</li>
+<li><p>Go to the <code>API Keys</code> page and find your credentials. You will need the <code>Application ID</code> and the <code>Search-only API key</code> in the following sections. The <code>Admin API key</code> need to keep confidential. Never store your Admin API Key as <code>apiKey</code> in <span class="label primary">theme config file</span>: it would give full control of your Algolia index to others and you don’t want to face the consequences.<br><img src="/images/docs/algolia-4.png" alt="Algolia API Keys"></p>
+</li>
+<li><p>In the <code>API Keys</code> page, click the <code>ALL API KEYS</code> and the <code>edit</code> option in the created APIKEY to activate a pop-up box where you can setup authorizations and restrictions with a great level of precision. Check <code>Add records</code>, <code>Delete records</code>, <code>List indices</code>, <code>Delete index</code> features in ACL permissions that will be allowed for the given API key. And then click the <code>Update</code> button.<br><img src="/images/docs/algolia-5.png" alt="Algolia API Keys 2"> <img src="/images/docs/algolia-5-2.png" alt="Algolia Configuring Records"></p>
+</li>
+</ol></div><div class="tab-pane" id="algolia-search-3"><p>In your <span class="label info">site config file</span>, add the following configuration and replace the <code>applicationID</code> &amp; <code>apiKey</code> &amp; <code>indexName</code> with corresponding fields obtained at Algolia.</p>
+<figure class="highlight yml"><figcaption><span>hexo/_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">algolia:</span></span><br><span class="line"><span class="attr">  applicationID:</span> <span class="string">‘Application ID’</span></span><br><span class="line"><span class="attr">  apiKey:</span> <span class="string">‘Search-only API key’</span></span><br><span class="line"><span class="attr">  indexName:</span> <span class="string">‘indexName’</span></span><br><span class="line"><span class="attr">  chunkSize:</span> <span class="number">5000</span></span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="algolia-search-4"><ol>
+<li><p>Algolia requires users to upload their search index data either manually or via provided APIs. Install and configure <a href="https://github.com/oncletom/hexo-algolia" target="_blank" rel="noopener">Hexo Algolia</a> in your Hexo directory. This plugin will index your site and upload selected data to Algolia.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> hexo</span><br><span class="line">$ npm install –save hexo-algolia</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Run the following command to upload index data, keep a weather eye out the output of the command.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">export</span> HEXO_ALGOLIA_INDEXING_KEY=Search-Only API key <span class="comment"># Use Git Bash</span></span><br><span class="line"><span class="comment"># set HEXO_ALGOLIA_INDEXING_KEY=Search-Only API key # Use Windows command line</span></span><br><span class="line">$ hexo clean</span><br><span class="line">$ hexo algolia</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/docs/algolia-7.png" alt="Reload Index"></p>
+</li>
+<li><p>Change dir to NexT directory, and install module to <code>source/lib</code> directory.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> themes/next</span><br><span class="line">$ git <span class="built_in">clone</span> <a href="https://github.com/theme-next/theme-next-algolia-instant-search" target="_blank" rel="noopener">https://github.com/theme-next/theme-next-algolia-instant-search</a> <span class="built_in">source</span>/lib/algolia-instant-search</span><br></pre></td></tr></table></figure>
+
+<div class="note info"><br>         <p>If you want to use the CDN instead of clone this repo, then need to <strong>set vendors</strong> in <span class="label primary">theme config file</span>:</p><figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">vendors:</span></span><br><span class="line">  <span class="string">…</span></span><br><span class="line">  <span class="comment"># Internal version: 1</span></span><br><span class="line">  <span class="comment"># <a href="https://www.algolia.com" target="_blank" rel="noopener">https://www.algolia.com</a></span></span><br><span class="line"><span class="attr">  algolia_instant_js:</span> <span class="attr"><a href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js" target="_blank" rel="noopener">https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js</a></span></span><br><span class="line"><span class="attr">  algolia_instant_css:</span> <span class="attr"><a href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css" target="_blank" rel="noopener">https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css</a></span></span><br><span class="line">  <span class="string">…</span></span><br></pre></td></tr></table></figure><br>       </div>
+</li>
+</ol></div><div class="tab-pane" id="algolia-search-5"><p>In <span class="label primary">theme config file</span>, turn on <code>enable</code> of <code>algolia_search</code>. At the same time, you need to <strong>turn off other search plugins</strong> like Local Search. You can also adjust the text in <code>labels</code> according to your needs.</p>
+<figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Algolia Search</span></span><br><span class="line"><span class="attr">algolia_search:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  hits:</span></span><br><span class="line"><span class="attr">    per_page:</span> <span class="number">10</span></span><br><span class="line"><span class="attr">  labels:</span></span><br><span class="line"><span class="attr">    input_placeholder:</span> <span class="string">Search</span> <span class="string">for</span> <span class="string">Posts</span></span><br><span class="line"><span class="attr">    hits_empty:</span> <span class="string">“We didn’t find any results for the search: $&#123;query&#125;”</span></span><br><span class="line"><span class="attr">    hits_stats:</span> <span class="string">“$&#123;hits&#125; results found in $&#123;time&#125; ms”</span></span><br></pre></td></tr></table></figure></div></div></div>
+<div class="note danger">
+            <p><strong>Known Issues</strong></p><ol><li>The latest version of the <a href="https://github.com/oncletom/hexo-algolia" target="_blank" rel="noopener">Hexo-Algolia</a> plugin removes the content indexing feature, given Algolia’s free account limitation.</li><li>The <a href="https://github.com/LouisBarranqueiro/hexo-algoliasearch" target="_blank" rel="noopener">Hexo-Algoliasearch</a> plugin provides content indexing functionality, but requires the replacement of keywords in the NexT theme. The same problem exists with <code>Record Too Big</code> for Algolia’s free account.<ul><li>Replace all <code>applicationID</code> in <code>source/js/src/algolia-search.js</code> with <code>appId</code></li><li>Replace all <code>applicationID</code> in <code>layout/_partials/head/head.swig</code> with <code>appId</code></li></ul></li></ol>
+          </div>
+<h3 id="Swiftype-Search"><a href="#Swiftype-Search" class="headerlink" title="Swiftype Search"></a>Swiftype Search</h3><div class="tabs" id="swiftype-search"><ul class="nav-tabs"><li class="tab active"><a href="#swiftype-search-1">Sign up →</a></li><li class="tab"><a href="#swiftype-search-2">Create Search Engine →</a></li><li class="tab"><a href="#swiftype-search-3">Customize and Enable Search →</a></li><li class="tab"><a href="#swiftype-search-4">Get Key →</a></li><li class="tab"><a href="#swiftype-search-5">NexT Config</a></li></ul><div class="tab-content"><div class="tab-pane active" id="swiftype-search-1"><p>Go to <a href="https://swiftype.com/users/sign_up" target="_blank" rel="noopener">Swiftype Sign Page</a> to sign up.<br><img src="/images/docs/swiftype-1.png" alt="Swiftype Sign up"></p></div><div class="tab-pane" id="swiftype-search-2"><p>After signing up create a new search engine and follow instructions.<br><img src="/images/docs/swiftype-2.png" alt="Swiftype Create Search Engine"></p></div><div class="tab-pane" id="swiftype-search-3"><p>After creating choose <code>Integrate</code> → <code>Install Search</code> in the menu to customize with instructions. Then click <code>Active</code> button finally.<br><img src="/images/docs/swiftype-3.png" alt="Swiftype Customize And Enable Search"></p></div><div class="tab-pane" id="swiftype-search-4"><p>Back to <code>INSTALL CODE</code> and copy your <code>swiftype_key</code>.<br><img src="/images/docs/swiftype-4.png" alt="Swiftype Get Key"></p></div><div class="tab-pane" id="swiftype-search-5"><p>Edit <span class="label primary">theme config file</span> and fill section <code>swiftype_key</code> with value of your key gets:</p>
+<figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Swiftype Search API Key</span></span><br><span class="line"><span class="attr">swiftype_key:</span> <span class="string">xxxxxxxxx</span></span><br></pre></td></tr></table></figure></div></div></div>
+
+        
+      </div>
+      
+      
+      
+    </div>
+    
+
+
+  
+  
+  <ul class="breadcrumb">
+    
+      
+      
+        
+          
+            
+          
+          
+            <li><a href="/docs/">DOCS</a></li>
+          
+        
+      
+    
+      
+      
+        
+          
+            
+          
+          
+            <li><a href="/docs/third-party-services/">THIRD-PARTY-SERVICES</a></li>
+          
+        
+      
+    
+      
+      
+        
+          <li>SEARCH-SERVICES</li>
+        
+      
+    
+      
+      
+    
+  </ul>
+
+
+    
+    
+    
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo_cat.jpg" alt="Chong">
+            
+              <p class="site-author-name" itemprop="name">Chong</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/leichong2019" title="GitHub &rarr; https://github.com/leichong2019" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Local-Search"><span class="nav-number">1.</span> <span class="nav-text">Local Search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Algolia-Search"><span class="nav-number">2.</span> <span class="nav-text">Algolia Search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Swiftype-Search"><span class="nav-number">3.</span> <span class="nav-text">Swiftype Search</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">All right reserved</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.loadBookmark();
+  
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

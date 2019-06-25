@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo_cat_32.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo_cat_32.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo_cat_32.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo_cat_32.png?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="NexT User Docs – Third-party Service Integration – Statistics and Analytics">
+<meta name="keywords" content="EBS,财务模块,APEX,Python,数据分析">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Statistics and Analytics">
+<meta property="og:url" content="https://leichong2019.github.io/docs/third-party-services/statistics-and-analytics/index.html">
+<meta property="og:site_name" content="Chong&#39;s Site book">
+<meta property="og:description" content="NexT User Docs – Third-party Service Integration – Statistics and Analytics">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://leichong2019.github.io/images/docs/analytics-baidu-id.png">
+<meta property="og:updated_time" content="2019-03-22T18:01:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Statistics and Analytics">
+<meta name="twitter:description" content="NexT User Docs – Third-party Service Integration – Statistics and Analytics">
+<meta name="twitter:image" content="https://leichong2019.github.io/images/docs/analytics-baidu-id.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://leichong2019.github.io/docs/third-party-services/statistics-and-analytics/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Statistics and Analytics | Chong's Site book</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chong's Site book</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">15</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">22</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">29</span></a>
+
+  </li>
+        
+        
+        
+          
+            
+            
+            
+              
+              
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-hexo_docs menu-item-active">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>Hexo_docs</a>
+
+  </li>
+
+
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+            
+            
+            
+          
+        
+        
+        
+        
+          
+          <li class="menu-item menu-item-references">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/references/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>references</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-markdown_ref">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/markdown_ref/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>markdown_ref</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/leichong2019/" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+
+        
+        
+        
+
+          
+          <ul id="sub-menu" class="sub-menu menu">
+          
+            
+            
+              
+              
+                
+              
+            
+          
+            
+            
+              
+              
+              
+                
+                  
+                  
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-getting-started">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/getting-started/" rel="section"><i class="menu-item-icon fa fa-fw fa-flag"></i> <br>Getting Started</a>
+
+  </li>
+
+
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+            
+            
+              
+              
+              
+                
+                  
+                  
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-theme-settings">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/theme-settings/" rel="section"><i class="menu-item-icon fa fa-fw fa-star"></i> <br>Theme Settings</a>
+
+  </li>
+
+
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+            
+            
+              
+              
+              
+                
+                  
+                  
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-third-party-services menu-item-active">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/third-party-services/" rel="section"><i class="menu-item-icon fa fa-fw fa-plug"></i> <br>Third Party Services</a>
+
+  </li>
+
+
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+            
+            
+              
+              
+              
+                
+                  
+                  
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-tag-plugins">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/tag-plugins/" rel="section"><i class="menu-item-icon fa fa-fw fa-rocket"></i> <br>Tag Plugins</a>
+
+  </li>
+
+
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+          
+            
+            
+              
+              
+                
+                  
+                
+                
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-advanced-settings">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/advanced-settings/" rel="section"><i class="menu-item-icon fa fa-fw fa-cogs"></i> <br>Advanced Settings</a>
+
+  </li>
+
+
+              
+            
+          
+            
+            
+              
+              
+                
+                  
+                
+                
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-faq's">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/faqs/" rel="section"><i class="menu-item-icon fa fa-fw fa-life-ring"></i> <br>FAQ's</a>
+
+  </li>
+
+
+              
+            
+          
+            
+            
+              
+              
+                
+                  
+                
+                
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-troubleshooting">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/troubleshooting/" rel="section"><i class="menu-item-icon fa fa-fw fa-bug"></i> <br>Troubleshooting</a>
+
+  </li>
+
+
+              
+            
+          
+          </ul>
+          
+
+          
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+
+              
+                
+                
+                  
+                
+                
+              
+                
+                
+                
+
+                  
+                  
+                  
+                    
+                  
+                  
+
+                
+              
+                
+                
+                
+
+                  
+                  
+                  
+                    
+                  
+                  
+
+                
+              
+                
+                
+                
+
+                  
+                  
+                  
+                    
+
+                      
+                      <ul id="sub-menu-2" class="sub-menu menu">
+                      
+                        
+                        
+                        
+                          
+                        
+                      
+                        
+                        
+                        
+                          
+                            
+                          
+                          
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-comments-and-widgets">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/third-party-services/comments-and-widgets/" rel="section"><i class="menu-item-icon fa fa-fw fa-comments-o"></i> <br>Comments and Widgets</a>
+
+  </li>
+
+
+                        
+                      
+                        
+                        
+                        
+                          
+                            
+                          
+                          
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-statistics-and-analytics menu-item-active">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/third-party-services/statistics-and-analytics/" rel="section"><i class="menu-item-icon fa fa-fw fa-bar-chart"></i> <br>Statistics and Analytics</a>
+
+  </li>
+
+
+                        
+                      
+                        
+                        
+                        
+                          
+                            
+                          
+                          
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-content-sharing-services">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/third-party-services/content-sharing-services/" rel="section"><i class="menu-item-icon fa fa-fw fa-share-square"></i> <br>Content Sharing Services</a>
+
+  </li>
+
+
+                        
+                      
+                        
+                        
+                        
+                          
+                            
+                          
+                          
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-search-services">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/third-party-services/search-services/" rel="section"><i class="menu-item-icon fa fa-fw fa-search-plus"></i> <br>Search Services</a>
+
+  </li>
+
+
+                        
+                      
+                        
+                        
+                        
+                          
+                            
+                          
+                          
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-external-libraries">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/third-party-services/external-libraries/" rel="section"><i class="menu-item-icon fa fa-fw fa-puzzle-piece"></i> <br>External Libraries</a>
+
+  </li>
+
+
+                        
+                      
+                        
+                        
+                        
+                          
+                            
+                          
+                          
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-math-equations">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/third-party-services/math-equations/" rel="section"><i class="menu-item-icon fa fa-fw fa-superscript"></i> <br>Math Equations</a>
+
+  </li>
+
+
+                        
+                      
+                        
+                        
+                        
+                          
+                            
+                          
+                          
+
+  
+  
+    
+  
+  <li class="menu-item menu-item-chat-services">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/docs/third-party-services/chat-services/" rel="section"><i class="menu-item-icon fa fa-fw fa-comment"></i> <br>Chat Services</a>
+
+  </li>
+
+
+                        
+                      
+                      </ul>
+                      
+
+                    
+                  
+                  
+
+                
+              
+                
+                
+                
+
+                  
+                  
+                  
+                    
+                  
+                  
+
+                
+              
+                
+                
+                
+              
+                
+                
+                
+              
+                
+                
+                
+              
+
+            
+          
+            
+            
+          
+            
+            
+          
+          
+
+        
+        
+
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">Statistics and Analytics
+
+</h1>
+
+<div class="post-meta">
+  
+    <div class="post-description">NexT User Docs – Third-party Service Integration – Statistics and Analytics</div>
+  
+  
+
+
+  
+  
+  <ul class="breadcrumb">
+    
+      
+      
+        
+          
+            
+          
+          
+            <li><a href="/docs/">DOCS</a></li>
+          
+        
+      
+    
+      
+      
+        
+          
+            
+          
+          
+            <li><a href="/docs/third-party-services/">THIRD-PARTY-SERVICES</a></li>
+          
+        
+      
+    
+      
+      
+        
+          <li>STATISTICS-AND-ANALYTICS</li>
+        
+      
+    
+      
+      
+    
+  </ul>
+
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+        
+        
+          <h3 id="Analytics-Tools"><a href="#Analytics-Tools" class="headerlink" title="Analytics Tools"></a>Analytics Tools</h3><h4 id="Google-Analytics"><a href="#Google-Analytics" class="headerlink" title="Google Analytics"></a>Google Analytics</h4><ol>
+<li>Create an account and log into <a href="https://analytics.google.com" target="_blank" rel="noopener">Google Analytics</a>. <a href="https://support.google.com/analytics/?hl=en#topic=3544906" target="_blank" rel="noopener">More detailed documentation</a></li>
+<li>Edit <span class="label primary">theme config file</span> and fill <code>tracking_id</code> under  section <code>google_analytics</code> with your Google track ID. Google track ID always starts with <code>UA-</code>. <figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Google Analytics</span></span><br><span class="line"><span class="attr">google_analytics:</span></span><br><span class="line"><span class="attr">  tracking_id:</span> <span class="string">UA-XXXXXXXX-X</span></span><br><span class="line"><span class="attr">  localhost_ignored:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>when field <code>localhost_ignore</code> is set to true, NexT will not send record to google analytics, as long as page request has “localhost” as its host name. This will prevent local debugging from polluting analytics. Set <code>localhost_ignore</code> to disable it.</p>
+<h4 id="Azure-Application-Insights"><a href="#Azure-Application-Insights" class="headerlink" title="Azure Application Insights"></a>Azure Application Insights</h4><ol>
+<li>Create an account and log into <a href="https://portal.azure.com/" target="_blank" rel="noopener">Application Insights</a>. <a href="https://docs.microsoft.com/en-us/azure/application-insights/app-insights-create-new-resource" target="_blank" rel="noopener">More detailed documentation</a></li>
+<li>Edit <span class="label primary">theme config file</span> and change section <code>application_insights</code> to your instrumentation key. <figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Application Insights</span></span><br><span class="line"><span class="attr">application_insights:</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="Baidu-Analytics-China"><a href="#Baidu-Analytics-China" class="headerlink" title="Baidu Analytics (China)"></a>Baidu Analytics (China)</h4><div class="tabs" id="baidu-analytics"><ul class="nav-tabs"><li class="tab active"><a href="#baidu-analytics-1">Login →</a></li><li class="tab"><a href="#baidu-analytics-2">Script ID →</a></li><li class="tab"><a href="#baidu-analytics-3">NexT Config</a></li></ul><div class="tab-content"><div class="tab-pane active" id="baidu-analytics-1"><p>Login to <a href="http://tongji.baidu.com" target="_blank" rel="noopener">Baidu Analytics</a> and locate to site code getting page.</p></div><div class="tab-pane" id="baidu-analytics-2"><p>Copy the script ID after <code>hm.js?</code>, like the following picture:<br>   <img src="/images/docs/analytics-baidu-id.png" alt="NexT Baidu Analytics"></p></div><div class="tab-pane" id="baidu-analytics-3"><p>Edit <span class="label primary">theme config file</span> and change section <code>baidu_analytics</code> to your script ID.</p>
+<figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Baidu Analytics ID</span></span><br><span class="line"><span class="attr">baidu_analytics:</span> <span class="string">your_id</span></span><br></pre></td></tr></table></figure></div></div></div>
+<h4 id="Tencent-Analytics-China"><a href="#Tencent-Analytics-China" class="headerlink" title="Tencent Analytics (China)"></a>Tencent Analytics (China)</h4><ol>
+<li>Please login to <a href="http://ta.qq.com" target="_blank" rel="noopener">Tencent Analytics</a> and get your ID.</li>
+<li><p>Then put it into <code>tencent_analytics</code> section of <span class="label primary">theme config file</span>.</p>
+ <figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Tencent analytics ID</span></span><br><span class="line"><span class="attr">tencent_analytics:</span> <span class="string">your_id</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="Tencent-Mobile-Analytics-China"><a href="#Tencent-Mobile-Analytics-China" class="headerlink" title="Tencent Mobile Analytics (China)"></a>Tencent Mobile Analytics (China)</h4><ol>
+<li>Create an account and log into <a href="https://mta.qq.com/" target="_blank" rel="noopener">Tencent Mobile Analytics</a>. <a href="http://docs.developer.qq.com/mta/register_start.html" target="_blank" rel="noopener">More detailed documentation</a></li>
+<li>Edit <span class="label primary">theme config file</span> and fill section <code>tencent_mta</code>. <figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Tencent MTA ID</span></span><br><span class="line"><span class="attr">tencent_mta:</span> <span class="string">your-tencent-mta-id</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="CNZZ-Analytics-China"><a href="#CNZZ-Analytics-China" class="headerlink" title="CNZZ Analytics (China)"></a>CNZZ Analytics (China)</h4><ol>
+<li>Create an account and log into <a href="http://www.umeng.com/" target="_blank" rel="noopener">CNZZ Analytics</a>. <a href="https://developer.umeng.com/docs/67963/detail/68609" target="_blank" rel="noopener">More detailed documentation</a></li>
+<li>Set the value of section <code>cnzz_siteid</code> in <span class="label primary">theme config file</span> to your CNZZ site ID. You can find this ID in link or the auto-generated script. <figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># CNZZ count</span></span><br><span class="line"><span class="comment">#cnzz_siteid:</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<div class="note warning">
+            <p>The script will show «Webmaster Statistics» and it’s ugly, so I used a <code>display: none;</code> to hide it.</p>
+          </div>
+<h3 id="Counting-Tools"><a href="#Counting-Tools" class="headerlink" title="Counting Tools"></a>Counting Tools</h3><h4 id="Firebase"><a href="#Firebase" class="headerlink" title="Firebase"></a>Firebase</h4><p>Firebase Analytics provides the functionality of visitor statistics.</p>
+<div class="tabs" id="firestore"><ul class="nav-tabs"><li class="tab active"><a href="#firestore-1">Get apiKey & projectId →</a></li><li class="tab"><a href="#firestore-2">NexT Config</a></li></ul><div class="tab-content"><div class="tab-pane active" id="firestore-1"><p>Login to <a href="https://console.firebase.google.com/u/0/" target="_blank" rel="noopener">Firebase</a> to get apiKey and projectId. <a href="https://firebase.google.com/docs/firestore/" target="_blank" rel="noopener">More detailed documentation</a></p></div><div class="tab-pane" id="firestore-2"><p>Edit <span class="label primary">theme config file</span> and add or change <code>firestore</code> section:</p>
+<figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">firestore:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">  collection:</span> <span class="string">articles</span> <span class="comment">#required, a string collection name to access firestore database</span></span><br><span class="line"><span class="attr">  apiKey:</span> <span class="comment">#required</span></span><br><span class="line"><span class="attr">  projectId:</span> <span class="comment">#required</span></span><br><span class="line"><span class="attr">  bluebird:</span> <span class="literal">false</span> <span class="comment">#enable this if you want to include bluebird 3.5.1(core version) Promise polyfill</span></span><br></pre></td></tr></table></figure></div></div></div>
+<h4 id="Busuanzi-Counting-China"><a href="#Busuanzi-Counting-China" class="headerlink" title="Busuanzi Counting (China)"></a>Busuanzi Counting (China)</h4><div class="tabs" id="busuanzi-counting"><ul class="nav-tabs"><li class="tab active"><a href="#busuanzi-counting-1">Global Settings →</a></li><li class="tab"><a href="#busuanzi-counting-2">Site UV Settings →</a></li><li class="tab"><a href="#busuanzi-counting-3">Site PV Settings →</a></li><li class="tab"><a href="#busuanzi-counting-4">Per-page PV Settings</a></li></ul><div class="tab-content"><div class="tab-pane active" id="busuanzi-counting-1"><p>Edit <code>busuanzi_count</code> option in <span class="label primary">theme config file</span>.<br>When <code>enable: true</code>, global setting is enabled. If <code>site_uv</code>, <code>site_pv</code>, <code>page_pv</code> are all <code>false</code>, Busuanzi only counts but never shows.</p></div><div class="tab-pane" id="busuanzi-counting-2"><p>When <code>site_uv: true</code>, it will show site UV in footer.<br><code>site_uv_header</code> and <code>site_uv_footer</code> is custom style words, and you can hide it by leaving it blank. You can also use font-awesome, it looks like <code>[site_uv_header]UV count[site_uv_footer]</code>.</p>
+<figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># View: Site visited by 12345 people.</span></span><br><span class="line"><span class="attr">site_uv:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">site_uv_header:</span> <span class="string">Site</span> <span class="string">visited</span> <span class="string">by</span></span><br><span class="line"><span class="attr">site_uv_footer:</span> <span class="string">people.</span></span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="busuanzi-counting-3"><p>When <code>site_pv: true</code>, it will show site PV in footer.<br><code>site_pv_header</code> and <code>site_pv_footer</code> is custom style words, and you can hide it by leaving it blank, you can also use font-awesome, it looks like <code>[site_pv_header]PV count[site_pv_footer]</code>.</p>
+<figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># View: Site visited by 12345 times.</span></span><br><span class="line"><span class="attr">site_pv:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">site_pv_header:</span> <span class="string">Site</span> <span class="string">visited</span> <span class="string">by</span></span><br><span class="line"><span class="attr">site_pv_footer:</span> <span class="string">times.</span></span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="busuanzi-counting-4"><p>When <code>page_pv: true</code>, it will show page PV under post title.<br><code>page_pv_header</code> and <code>page_pv_footer</code> is custom style words, and you can hide it by leaving it blank, you can also use font-awesome, it looks like <code>[page_pv_header]PV count[page_pv_footer]</code>.</p>
+<figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># View: Post read by 12345 times.</span></span><br><span class="line"><span class="attr">page_pv:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">page_pv_header:</span> <span class="string">Post</span> <span class="string">read</span> <span class="string">by</span></span><br><span class="line"><span class="attr">page_pv_footer:</span> <span class="string">times.</span></span><br></pre></td></tr></table></figure></div></div></div>
+<h4 id="LeanCloud-China"><a href="#LeanCloud-China" class="headerlink" title="LeanCloud (China)"></a>LeanCloud (China)</h4><p>Adding article reading times counting to NexT theme. Documentation how to set the counter up and running safely aviable in <a href="https://github.com/theme-next/hexo-leancloud-counter-security" target="_blank" rel="noopener">hexo-leancloud-counter-security</a>.</p>
+<div class="tabs" id="leancloud-counter"><ul class="nav-tabs"><li class="tab active"><a href="#leancloud-counter-1">Installation →</a></li><li class="tab"><a href="#leancloud-counter-2">Hexo Config →</a></li><li class="tab"><a href="#leancloud-counter-3">NexT Config</a></li></ul><div class="tab-content"><div class="tab-pane active" id="leancloud-counter-1"><p>Install <code>hexo-leancloud-counter-security</code> by run following command in <span class="label info">site root dir</span>:</p>
+<pre><code>$ npm install hexo-leancloud-counter-security --save
+</code></pre></div><div class="tab-pane" id="leancloud-counter-2"><p>Edit <span class="label info">site config file</span> and add following content:</p>
+<figure class="highlight yml"><figcaption><span>hexo/_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">leancloud_counter_security:</span></span><br><span class="line"><span class="attr">  enable_sync:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  app_id:</span> <span class="string">&lt;&lt;your</span> <span class="string">app</span> <span class="string">id&gt;&gt;</span></span><br><span class="line"><span class="attr">  app_key:</span> <span class="string">&lt;&lt;your</span> <span class="string">app</span> <span class="string">key&gt;&gt;</span></span><br><span class="line"><span class="attr">  username:</span> <span class="string">&lt;&lt;your</span> <span class="string">username&gt;&gt;</span> <span class="comment"># Will be asked while deploying if is left blank</span></span><br><span class="line"><span class="attr">  password:</span> <span class="string">&lt;&lt;your</span> <span class="string">password&gt;&gt;</span> <span class="comment"># Recommmended to be left blank. Will be asked while deploying if is left blank</span></span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="leancloud-counter-3"><p>Edit <span class="label primary">theme config file</span> and fill options under <code>leancloud_visitors</code> section.</p>
+<figure class="highlight yml"><figcaption><span>next/_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Show number of visitors to each article.</span></span><br><span class="line"><span class="comment"># You can visit <a href="https://leancloud.cn" target="_blank" rel="noopener">https://leancloud.cn</a> get AppID and AppKey.</span></span><br><span class="line"><span class="attr">leancloud_visitors:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">  app_id:</span> <span class="comment">#&lt;app_id&gt;</span></span><br><span class="line"><span class="attr">  app_key:</span> <span class="comment">#&lt;app_key&gt;</span></span><br><span class="line">  <span class="comment"># Dependencies: <a href="https://github.com/theme-next/hexo-leancloud-counter-security" target="_blank" rel="noopener">https://github.com/theme-next/hexo-leancloud-counter-security</a></span></span><br><span class="line">  <span class="comment"># If you don’t care about security in lc counter and just want to use it directly</span></span><br><span class="line">  <span class="comment"># (without hexo-leancloud-counter-security plugin), set the <code>security</code> to <code>false</code>.</span></span><br><span class="line"><span class="attr">  security:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  betterPerformance:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure></div></div></div>
+
+        
+      </div>
+      
+      
+      
+    </div>
+    
+
+
+  
+  
+  <ul class="breadcrumb">
+    
+      
+      
+        
+          
+            
+          
+          
+            <li><a href="/docs/">DOCS</a></li>
+          
+        
+      
+    
+      
+      
+        
+          
+            
+          
+          
+            <li><a href="/docs/third-party-services/">THIRD-PARTY-SERVICES</a></li>
+          
+        
+      
+    
+      
+      
+        
+          <li>STATISTICS-AND-ANALYTICS</li>
+        
+      
+    
+      
+      
+    
+  </ul>
+
+
+    
+    
+    
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo_cat.jpg" alt="Chong">
+            
+              <p class="site-author-name" itemprop="name">Chong</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/leichong2019" title="GitHub &rarr; https://github.com/leichong2019" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Analytics-Tools"><span class="nav-number">1.</span> <span class="nav-text">Analytics Tools</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Google-Analytics"><span class="nav-number">1.1.</span> <span class="nav-text">Google Analytics</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Azure-Application-Insights"><span class="nav-number">1.2.</span> <span class="nav-text">Azure Application Insights</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Baidu-Analytics-China"><span class="nav-number">1.3.</span> <span class="nav-text">Baidu Analytics (China)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tencent-Analytics-China"><span class="nav-number">1.4.</span> <span class="nav-text">Tencent Analytics (China)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tencent-Mobile-Analytics-China"><span class="nav-number">1.5.</span> <span class="nav-text">Tencent Mobile Analytics (China)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CNZZ-Analytics-China"><span class="nav-number">1.6.</span> <span class="nav-text">CNZZ Analytics (China)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Counting-Tools"><span class="nav-number">2.</span> <span class="nav-text">Counting Tools</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Firebase"><span class="nav-number">2.1.</span> <span class="nav-text">Firebase</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Busuanzi-Counting-China"><span class="nav-number">2.2.</span> <span class="nav-text">Busuanzi Counting (China)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LeanCloud-China"><span class="nav-number">2.3.</span> <span class="nav-text">LeanCloud (China)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">All right reserved</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.loadBookmark();
+  
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
