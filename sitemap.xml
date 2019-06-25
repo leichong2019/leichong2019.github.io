@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://leichong2019.github.io/2019/06/18/DataAnalysis-All-Online/</loc>
+    
+    <lastmod>2019-06-25T05:27:29.102Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://leichong2019.github.io/markdown_ref/article/tools/readme.html</loc>
     
     <lastmod>2019-06-25T03:22:51.220Z</lastmod>
@@ -68,13 +75,6 @@
     <loc>https://leichong2019.github.io/2019/03/25/01-Get-Start-with-Pandas/</loc>
     
     <lastmod>2019-06-25T03:22:51.012Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://leichong2019.github.io/2019/06/18/DataAnalysis-All-Online/</loc>
-    
-    <lastmod>2019-06-25T03:17:28.429Z</lastmod>
     
   </url>
   
@@ -520,6 +520,13 @@
   </url>
   
   <url>
+    <loc>https://leichong2019.github.io/docs/getting-started/data-files/index.html</loc>
+    
+    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://leichong2019.github.io/docs/getting-started/update-from-v5/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
@@ -562,7 +569,14 @@
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/getting-started/data-files/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/tag-plugins/pdf/index.html</loc>
+    
+    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/docs/tag-plugins/note/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
@@ -576,13 +590,6 @@
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/tag-plugins/pdf/index.html</loc>
-    
-    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://leichong2019.github.io/docs/theme-settings/custom-pages/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
@@ -590,14 +597,14 @@
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/theme-settings/footer/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/theme-settings/posts/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/third-party-services/external-libraries/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/theme-settings/seo/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
@@ -618,13 +625,6 @@
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/third-party-services/math-equations/index.html</loc>
-    
-    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://leichong2019.github.io/docs/third-party-services/search-services/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
@@ -639,7 +639,14 @@
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/tag-plugins/note/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/third-party-services/math-equations/index.html</loc>
+    
+    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/docs/third-party-services/external-libraries/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
@@ -653,14 +660,14 @@
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/theme-settings/sidebar/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/tag-plugins/tabs/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/theme-settings/posts/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/theme-settings/sidebar/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
@@ -674,7 +681,7 @@
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/tag-plugins/tabs/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/faqs/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
@@ -682,13 +689,6 @@
   
   <url>
     <loc>https://leichong2019.github.io/docs/tag-plugins/index.html</loc>
-    
-    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://leichong2019.github.io/docs/faqs/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
@@ -730,7 +730,7 @@
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/theme-settings/seo/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/theme-settings/footer/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
