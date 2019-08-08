@@ -239,7 +239,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">15</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">18</span></a>
 
   </li>
         
@@ -258,7 +258,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">22</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">23</span></a>
 
   </li>
         
@@ -277,7 +277,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">30</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">31</span></a>
 
   </li>
         
@@ -420,6 +420,205 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://leichong2019.github.io/2019/08/08/SQLAlchemy-Oracle-encoding-setup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo_cat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chong's Site book">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/08/SQLAlchemy-Oracle-encoding-setup/" class="post-title-link" itemprop="url">SQLAlchemy和cx_Oracle使用中碰到的数据库编码问题</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-08 13:01:37 / 修改时间：16:32:22" itemprop="dateCreated datePublished" datetime="2019-08-08T13:01:37+08:00">2019-08-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/SQLAlchemy/" itemprop="url" rel="index"><span itemprop="name">SQLAlchemy</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-系统结构及问题"><a href="#1-系统结构及问题" class="headerlink" title="1. 系统结构及问题"></a>1. 系统结构及问题</h2><pre><code>最近在搭建基于Jupyter notebook，panda，dash plotly的数据分析系统。从各个业务系统抽取数据，分析展示。
+难免会涉及到中间数据保存，最后返现还是绕不开数据库。为了方便选了Oracle XE，看重其plaggable PDB实在是方便，每个库还可以不同字符编码，兼容各个业务系统。
+然鹅，当我用pd.to_sql输出到DB的时候，却发现各种编码问题，并不是SQLAlchemy create engine的时候指定编码就能解决的。
+</code></pre><p><img src="https://raw.githubusercontent.com/leichong2019/images/master/forNotebooks/20190808130001.png" alt="数据分析系统"></p>
+<h2 id="2-数据读取"><a href="#2-数据读取" class="headerlink" title="2. 数据读取"></a>2. 数据读取</h2><pre><code>当业务系统库是UTF-8，我在XE DB中建了一个UTF-8的PDB，本已实现免除encoding转换。各库中都保留原来的编码，python中提取之后都是unicode，理想很完美。
+
+现实是当我用cx_Oracle读取UTF-8业务库的数据，pandas中数据内容很正常。
+此处穿件连接的encoding选项功能很正常。
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">con = cx_Oracle.connect(data_driver.MAIN_CONNECT_STRING,encoding=<span class="string">"UTF-8"</span>)</span><br><span class="line"></span><br><span class="line">df_all = pd.read_sql_query(con=con， sql=str_sql)</span><br></pre></td></tr></table></figure>
+<h2 id="3-数据写入PDB"><a href="#3-数据写入PDB" class="headerlink" title="3. 数据写入PDB"></a>3. 数据写入PDB</h2><pre><code>写入数据库时，如果直接用cx_Oracle驱动代码比较麻烦，一般直觉肯会用Pandas的DataFrame.to_sql。这样底层的令人痛疼的create table， insert 都一边去，自己要做的就是在pandas里面整理数据，to_sql扔给数据库持久化保存。从效率来看，to_sql也远比 to_excel效率高，节省资源。
+
+写入数据库，代码节大概如下。
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#SQLAlchemy 建立数据库engine</span></span><br><span class="line"><span class="comment">#这里按照文档，用了encoding='utf-8'。 双方数据都是utf-8编码，正常应该没问题。</span></span><br><span class="line">engine = create_engine(<span class="string">'oracle://'</span> + <span class="string">'DATANA:datana@XE_PDB3'</span>,encoding=<span class="string">'utf-8'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看数据库编码，确实是 SIMPLIFIED CHINESE_CHINA.AL32UTF8</span></span><br><span class="line">engine.execute(<span class="string">"select userenv('language') from dual"</span>).fetchall()</span><br><span class="line"></span><br><span class="line"><span class="comment">#写数据</span></span><br><span class="line">df_all.to_sql(name=<span class="string">'表明_table'</span></span><br><span class="line">             ,con=engine  <span class="comment"># utf-8 的sqlalchemy engine</span></span><br><span class="line">             ,if_exists=<span class="string">'replace'</span></span><br><span class="line">             ,chunksize=<span class="number">10000</span></span><br><span class="line">             ,dtype=&#123; <span class="string">'column name'</span> : sqlalchemy.types.VARCHAR(<span class="number">10</span>)  <span class="comment"># 对于pandas中object的列，要定义类型，否则。。。自动clob也是慢</span></span><br><span class="line">             &#125;</span><br><span class="line">             ,index=<span class="literal">False</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<pre><code>写代码的时候自信满满以为照顾到了各方编码，结果还是出来GBK编码错误. 数据中心有&apos;\xa0&apos;全角空格，gbk无法编码。
+返回错误
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UnicodeEncodeError: <span class="string">'gbk'</span> codec can<span class="string">'t encode character '</span>\xa0<span class="string">' in position 0: illegal multibyte sequence</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-问题排查及解决"><a href="#4-问题排查及解决" class="headerlink" title="4. 问题排查及解决"></a>4. 问题排查及解决</h2><pre><code>错误出来之后，首先想到的是数据库编码有问题。
+重复检查数据库，确实双方都是UTF-8， 分析用的XE PDB中也确实是UTF-8， 手工录入&apos;\xa0&apos;都没有问题。所以排除数据库自身编码的问题。
+
+其次想到的是操作系统默认编码，因为服务器是windows，通过chcp 650001，改变默认编码为unicode，在启动python，这样貌似没地方会使gbk编码了吧。应该完美了。
+测试之后，还是被打脸了，错误信息一点变化都没有。
+
+最后想排查cx_Oracle 和SQLAlchemy 这两个库。
+读取数据的时候pandas直接使用的cx_Oracle 连接，指定utf-8编码之后数据是正常的，所以基本上定位是SQLAlchemy的问题。
+
+创建engine的时候，这里指定的encoding是否有效存疑啊。看来还是SQLAlchemy和cx_Oracle集成的时候出现了问题。
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">engine = create_engine(<span class="string">'oracle://'</span> + <span class="string">'DATANA:datana@XE_PDB3'</span>,encoding=<span class="string">'utf-8'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>翻了几篇官方文档，试了各种。。。。此处省略一万种选择。最后找到希望
+</code></pre><p><a href="https://docs.sqlalchemy.org/en/13/core/engines.html#sqlalchemy.create_engine" target="_blank" rel="noopener">Custom DBAPI connect() arguments</a><br><img src="https://raw.githubusercontent.com/leichong2019/images/master/forNotebooks/20190808162450.png" alt></p>
+<p>SQLAlchemy对于创建 engine这件事情，提供了深度客制化的选择。<code>对于cx_Oracle兼容不太满意的情况，可以自己建一个creator，保证cx_Oracle的配置都做好之后，再传给SQLAlchemy。</code></p>
+<p>代码示例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义基于cx_Oracle的creator，在里面生成connection，保证使用UTF-8编码。这是能正常work的，在读取的时候也验证过。</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">con_creator</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> cx_Oracle.connect(<span class="string">'datana/datana@XE_PDB3'</span>, encoding=<span class="string">"UTF-8"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#连接库生成SQLAlchemy engine时，调用creator，这时encoding写上就写上吧，可能真没用。</span></span><br><span class="line">engine = create_engine(<span class="string">'oracle+cx_oracle://'</span>, creator=con_creator ,encoding=<span class="string">'utf-8'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#写数据，这回没有烦人的encoding 错误了。拜拜了gbk</span></span><br><span class="line">df_all.to_sql(name=<span class="string">'表明_table'</span></span><br><span class="line">             ,con=engine  <span class="comment"># utf-8 的sqlalchemy engine</span></span><br><span class="line">             ,if_exists=<span class="string">'replace'</span></span><br><span class="line">             ,chunksize=<span class="number">10000</span></span><br><span class="line">             ,dtype=&#123; <span class="string">'column name'</span> : sqlalchemy.types.VARCHAR(<span class="number">10</span>)  <span class="comment"># 对于pandas中object的列，要定义类型，否则。。。自动clob也是慢</span></span><br><span class="line">             &#125;</span><br><span class="line">             ,index=<span class="literal">False</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<p>摆脱了这个编码问题，继续我建设功能感人的数据分析平台之路。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -2104,185 +2303,11 @@ _Date_and_Time%281%29.ipynb" target="_blank" rel="noopener">Jupter notebook NBVi
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://leichong2019.github.io/2019/04/23/EBS-Foreign-Currency-Accounting(1)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chong">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/logo_cat.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chong's Site book">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/23/EBS-Foreign-Currency-Accounting(1)/" class="post-title-link" itemprop="url">EBS外币会计核算(一)</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-23 14:19:27 / 修改时间：17:04:35" itemprop="dateCreated datePublished" datetime="2019-04-23T14:19:27+08:00">2019-04-23</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/EBS/" itemprop="url" rel="index"><span itemprop="name">EBS</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="外币业务概述"><a href="#外币业务概述" class="headerlink" title="外币业务概述"></a>外币业务概述</h2><p>随着我国改革开放的深入，世界经济一体化的进程日益加快，特别是我国已成功地加入了WTO，跨国的各类经济业务的种类不断增加、规模日益扩大。以外币计价和结算的经济业务的比重越来越大。《企业会计制度》第九章分4条，专门对外币业务的定义及核算进行了规范，财政部将在近期颁布有关外币业务的具体会计准则。</p>
-<h3 id="1-外币：是指企业选定的记帐本位币以外的货币。"><a href="#1-外币：是指企业选定的记帐本位币以外的货币。" class="headerlink" title="1. 外币：是指企业选定的记帐本位币以外的货币。"></a>1. 外币：是指企业选定的记帐本位币以外的货币。</h3><p>我国《企业会计制度》第八条规定：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">企业的会计核算以人民币为记帐本位币。</span><br><span class="line">业务收支以人民币以外的货币为主的企业，可以选用其中一种货币作为记帐本位币，但是编报的财务会计报告，应当折算为记帐本位币。</span><br><span class="line">在境外设立的中国企业向国内报送的财务会计报告，应当折算为人民币。</span><br></pre></td></tr></table></figure></p>
-<p>注意本章所讲的“外币”与一般意义上的（通常的货币概念中的）外币的区别，一般意义上的外币指外国货币。而<code>会计核算中的“外币”指记帐本位币以外的货币</code>。大多数企业的记帐本位币为人民币，但境外设立的中国企业（如承揽和经营境外工程项目的“外经企业”）及一些从事国际金融业务的金融企业等选择其业务收支使用的主要外国货币如美元作为记帐本位币。如果某企业选择美元作为记帐本位币，则人民币便作为该企业的“外币”。<br>因此要注意理解是“外币”是相对于企业选定的记帐本位币而言的，<code>“外币≠外国货币”</code>。</p>
-<h3 id="2-外币业务："><a href="#2-外币业务：" class="headerlink" title="2. 外币业务："></a>2. 外币业务：</h3><p>《企业会计制度》第一百一十七条规定了外币业务的定义：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">外币业务，是指以记帐本位币以外的货币进行的款项收付、往来结算等业务。</span><br></pre></td></tr></table></figure></p>
-<p><code>外币业务的关键是以外币计价</code>，因此要注意理解：</p>
-<ul>
-<li>“外币业务≠与外国客户进行的交易”，如以人民币为记帐本位币的企业与外国企业进行的以人民币计价结算的经济业务等不属于外币业务；</li>
-<li>不能将与国内客户进行的经济业务排除在外币业务之外。<br><br>如：选择人民币为记帐本位币的企业与中国银行之间的美元借款业务、外币兑换业务等都属于外币业务。
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/04/23/EBS-Foreign-Currency-Accounting(1)/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </li></ul></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2326,7 +2351,7 @@ _Date_and_Time%281%29.ipynb" target="_blank" rel="noopener">Jupter notebook NBVi
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2387,7 +2412,9 @@ _Date_and_Time%281%29.ipynb" target="_blank" rel="noopener">Jupter notebook NBVi
                     
                       
                     
-                    <span class="site-state-item-count">22</span>
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2434,7 +2461,13 @@ _Date_and_Time%281%29.ipynb" target="_blank" rel="noopener">Jupter notebook NBVi
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
