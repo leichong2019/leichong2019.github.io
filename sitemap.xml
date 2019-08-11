@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://leichong2019.github.io/2019/08/12/Jupyter-notebook-500-Internal-Server-Error/</loc>
+    
+    <lastmod>2019-08-11T17:46:19.933Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://leichong2019.github.io/2019/08/08/SQLAlchemy-Oracle-encoding-setup/</loc>
     
     <lastmod>2019-08-08T08:39:10.080Z</lastmod>
@@ -527,6 +534,13 @@
   </url>
   
   <url>
+    <loc>https://leichong2019.github.io/docs/getting-started/index.html</loc>
+    
+    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://leichong2019.github.io/docs/getting-started/data-files/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
@@ -541,14 +555,14 @@
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/getting-started/update-from-v5/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/tag-plugins/button/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/tag-plugins/button/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/getting-started/update-from-v5/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
@@ -576,14 +590,14 @@
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/tag-plugins/note/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/tag-plugins/pdf/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/tag-plugins/pdf/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/tag-plugins/note/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
@@ -632,13 +646,6 @@
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/third-party-services/statistics-and-analytics/index.html</loc>
-    
-    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://leichong2019.github.io/docs/third-party-services/search-services/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
@@ -646,7 +653,7 @@
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/tag-plugins/tabs/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/third-party-services/statistics-and-analytics/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
@@ -660,7 +667,7 @@
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/theme-settings/posts/index.html</loc>
+    <loc>https://leichong2019.github.io/docs/tag-plugins/tabs/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
@@ -674,7 +681,21 @@
   </url>
   
   <url>
+    <loc>https://leichong2019.github.io/docs/theme-settings/posts/index.html</loc>
+    
+    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://leichong2019.github.io/docs/theme-settings/sidebar/index.html</loc>
+    
+    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leichong2019.github.io/docs/tag-plugins/mermaid/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
@@ -723,21 +744,7 @@
   </url>
   
   <url>
-    <loc>https://leichong2019.github.io/docs/getting-started/index.html</loc>
-    
-    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://leichong2019.github.io/docs/getting-started/deployment/index.html</loc>
-    
-    <lastmod>2019-03-22T18:01:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://leichong2019.github.io/docs/tag-plugins/mermaid/index.html</loc>
     
     <lastmod>2019-03-22T18:01:02.000Z</lastmod>
     
